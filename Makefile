@@ -6,7 +6,7 @@
 #    By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/20 13:36:23 by sfarren           #+#    #+#              #
-#    Updated: 2024/10/15 11:20:00 by sfarren          ###   ########.fr        #
+#    Updated: 2024/10/15 11:58:04 by sfarren          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,9 +27,12 @@ LIBFT = $(LIBFT_DIR)/libft.a
 
 COUNT_SORT = src/ranking
 
+SRCS =  src/ranking/ranking.c src/ranking/ranking_utils.c \
+		src/stack_ops/swap.c src/stack_ops/rotate.c src/stack_ops/reverse_rotate.c \
+		src/push_swap.c \
+		src/push_swap_utils.c \
+		src/main.c
 
-# TODO: Change from wildcard to explicit list of source files
-SRCS = $(wildcard src/*.c) $(wildcard $(COUNT_SORT)/*.c)
 OBJS = $(SRCS:.c=.o)
 
 all: $(LIBFT) $(NAME)

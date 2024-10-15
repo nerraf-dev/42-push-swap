@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 21:00:45 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/15 11:26:47 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/15 11:46:10 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	push(t_stack *stack, int value, int rank)
 }
 
 // Function to print the stack
-void print_stack(t_stack *stack)
+void	print_stack(t_stack *stack)
 {
 	t_node *current;
 
