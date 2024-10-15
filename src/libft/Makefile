@@ -6,18 +6,19 @@
 #    By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/30 19:05:57 by sfarren           #+#    #+#              #
-#    Updated: 2024/09/20 14:18:16 by sfarren          ###   ########.fr        #
+#    Updated: 2024/10/15 11:10:26 by sfarren          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
 UNAME_S := $(shell uname -s)
-ifeq ($(UNAME_S), Darwin) # macOS
-	CC = gcc
-else
-	CC = clang # Default to clang for other systems, including 42's
-endif
+# ifeq ($(UNAME_S), Darwin) # macOS
+# 	CC = gcc
+# else
+# 	CC = clang # Default to clang for other systems, including 42's
+# endif
+CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
 SRC_DIR = src
