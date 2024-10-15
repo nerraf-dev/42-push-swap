@@ -6,7 +6,7 @@
 #    By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/20 13:36:23 by sfarren           #+#    #+#              #
-#    Updated: 2024/10/15 11:17:11 by sfarren          ###   ########.fr        #
+#    Updated: 2024/10/15 11:20:00 by sfarren          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ UNAME_S := $(shell uname -s)
 # endif
 CC = gcc
 # TODO: remove -g flag
-CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g
 LDFLAGS += -Wl,--preload=/usr/lib/valgrind/libasan.so
 
 NAME = push_swap
