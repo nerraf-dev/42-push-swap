@@ -6,12 +6,13 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 21:00:45 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/15 11:46:10 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/15 16:01:05 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "./ranking/ranking.h"
+#include "./sort/sort_ops.h"
 
 t_node	*create_node(int value, int rank)
 {
@@ -41,7 +42,7 @@ void	push(t_stack *stack, int value, int rank)
 // Function to print the stack
 void	print_stack(t_stack *stack)
 {
-	t_node *current;
+	t_node	*current;
 
 	current = stack->top;
 	while (current != NULL)
@@ -62,8 +63,8 @@ int	push_swap(int *arr, int length)
 
 	ranks = get_ranks(arr, length);
 	if (!ranks)
-		return (-1);
-
+		exit(EXIT_FAILURE);
+		// return (-1);
 	// Print ranks
 	i = 0;
 	while (i < length)
@@ -85,6 +86,28 @@ int	push_swap(int *arr, int length)
 		i--;
 	}
 	print_stack(stack_a);
+
+	if (length ==  2)
+	{
+		ft_printf("SORT 2\n");
+		sort_two(stack_a, ranks);
+		print_stack(stack_a);
+	}
+	else if (length == 3)
+	{
+		ft_printf("SORT 3\n");
+		sort_three(stack_a, ranks, 0, 2);
+		print_stack(stack_a);
+	}
+	else if (length <= 5)
+	{
+		ft_printf("SORT 4/5\n");
+	}
+	else
+	{
+		ft_printf("SORT BIG\n");
+	}
+
 	// Free the stack
 	current = stack_a->top;
 	while (current != NULL)

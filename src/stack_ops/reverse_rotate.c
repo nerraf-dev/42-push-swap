@@ -6,13 +6,14 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 11:37:56 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/15 11:38:29 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/15 15:21:19 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../stack.h"
+#include "../libft/libft.h"
 
-void	reverse_rotate(t_stack *stack)
+static void	reverse_rotate(t_stack *stack)
 {
 	t_node	*prev;
 	t_node	*current;

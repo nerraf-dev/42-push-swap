@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 13:41:39 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/15 11:41:32 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/15 14:02:20 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,9 @@
 # include <limits.h>
 # include <stdlib.h>
 # include "./libft/libft.h"
-
-typedef struct s_node
-{
-	int				value;
-	int				rank;
-	struct s_node	*next;
-}				t_node;
-
-typedef struct s_stack
-{
-	t_node	*top;
-}	t_stack;
+# include "./stack_ops/stack_ops.h"
+# include "./sort/sort_ops.h"
+# include "stack.h"
 
 /**
  * @brief Checks if the given string represents a valid integer.

@@ -1,48 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/15 11:35:01 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/15 15:20:28 by sfarren          ###   ########.fr       */
+/*   Created: 2024/10/15 12:49:24 by sfarren           #+#    #+#             */
+/*   Updated: 2024/10/15 15:20:24 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../stack.h"
 #include "../libft/libft.h"
 
-static void	swap(t_stack *stack)
+static void	push(t_stack *dst, t_stack *src)
 {
-	t_node	*first;
-	t_node	*second;
+	t_node	*top;
 
-	if (!stack->top || !stack->top->next)
+	if (!src->top)
 		return ;
-	first = stack->top;
-	second = stack->top->next;
-	first->next = second->next;
-	second->next = first;
-	stack->top = second;
+	top = src->top;
+	src->top = src->top->next;
+	top->next = dst->top;
+	dst->top = top;
 }
 
-void	sa(t_stack *stack)
+void	pa(t_stack *a, t_stack *b)
 {
-	swap(stack);
-	ft_printf("sa\n");
+	push(a, b);
+	ft_printf("pa\n");
 }
 
-void	sb(t_stack *stack)
+void	pb(t_stack *a, t_stack *b)
 {
-	swap(stack);
-	ft_printf("sb\n");
-}
-
-void	ss(t_stack *a, t_stack *b)
-{
-	swap(a);
-	swap(b);
-	ft_printf("sa\n");
-	ft_printf("sb\n");
+	push(b, a);
+	ft_printf("pb\n");
 }
