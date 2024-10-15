@@ -1,0 +1,8 @@
+{
+	"makefile.configureOnOpen": false,
+	"files.associations": {
+		"queue": "c",
+		"stack": "c",
+		"random": "c"
+	}
+}
