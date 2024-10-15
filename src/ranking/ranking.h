@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c_sort.h                                           :+:      :+:    :+:   */
+/*   ranking.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 21:18:15 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/14 14:15:00 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/15 11:26:28 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef C_SORT_H
-# define C_SORT_H
+#ifndef RANKING_H
+# define RANKING_H
 
 # include <limits.h>
 # include <stdlib.h>

@@ -6,11 +6,11 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 21:48:50 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/14 14:15:47 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/15 11:27:11 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "c_sort.h"
+#include "ranking.h"
 
 t_count_node	*create_count_node(int value)
 {

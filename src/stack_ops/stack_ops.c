@@ -6,11 +6,14 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 19:09:55 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/14 13:44:26 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/15 11:39:50 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+// *** FUNCTIONS MOVED TO INDIVIDUAL FILES WHICH INCLUDE THE PUSH_SWAP COMMANDS ***
+
+
+// #include "../push_swap.h"
 
 // sa (swap a): Swap the first 2 elements at the top of stack a.
 	// Do nothing if there is only one or no elements.
@@ -34,54 +37,54 @@
 
 
 
-void	swap(t_stack *stack)
-{
-	t_node	*first;
-	t_node	*second;
+// void	swap(t_stack *stack)
+// {
+// 	t_node	*first;
+// 	t_node	*second;
 
-	if (!stack->top || !stack->top->next)
-		return ;
-	first = stack->top;
-	second = stack->top->next;
-	first->next = second->next;
-	second->next = first;
-	stack->top = second;
-}
+// 	if (!stack->top || !stack->top->next)
+// 		return ;
+// 	first = stack->top;
+// 	second = stack->top->next;
+// 	first->next = second->next;
+// 	second->next = first;
+// 	stack->top = second;
+// }
 
-void	rotate(t_stack *stack)
-{
-	t_node	*first;
-	t_node	*last;
+// void	rotate(t_stack *stack)
+// {
+// 	t_node	*first;
+// 	t_node	*last;
 
-	if (!stack->top || !stack->top->next)
-		return ;
-	first = stack->top;
-	last = stack->top;
-	while (last->next)
-		last = last->next;
-	stack->top = first->next;
-	first->next = NULL;
-	last->next = first;
-}
+// 	if (!stack->top || !stack->top->next)
+// 		return ;
+// 	first = stack->top;
+// 	last = stack->top;
+// 	while (last->next)
+// 		last = last->next;
+// 	stack->top = first->next;
+// 	first->next = NULL;
+// 	last->next = first;
+// }
 
-void	reverse_rotate(t_stack *stack)
-{
-	t_node	*prev;
-	t_node	*current;
+// void	reverse_rotate(t_stack *stack)
+// {
+// 	t_node	*prev;
+// 	t_node	*current;
 
-	if (!stack->top || !stack->top->next)
-		return ;
-	prev = NULL;
-	current = stack->top;
-	while (current->next)
-	{
-		prev = current;
-		current = current->next;
-	}
-	prev->next = NULL;
-	current->next = stack->top;
-	stack->top = current;
-}
+// 	if (!stack->top || !stack->top->next)
+// 		return ;
+// 	prev = NULL;
+// 	current = stack->top;
+// 	while (current->next)
+// 	{
+// 		prev = current;
+// 		current = current->next;
+// 	}
+// 	prev->next = NULL;
+// 	current->next = stack->top;
+// 	stack->top = current;
+// }
 
 
 

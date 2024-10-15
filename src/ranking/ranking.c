@@ -6,11 +6,11 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 13:18:12 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/14 14:43:59 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/15 11:27:22 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "c_sort.h"
+#include "ranking.h"
 
 t_count_props	get_props(int *arr, int length)
 {

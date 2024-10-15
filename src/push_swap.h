@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 13:41:39 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/14 13:45:41 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/15 11:41:32 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,7 @@
 
 # include <limits.h>
 # include <stdlib.h>
-// # include <stdbool.h>
 # include "./libft/libft.h"
-// # include "./ranking/c_sort.h"
 
 typedef struct s_node
 {
@@ -53,17 +51,7 @@ int		is_valid_integer(const char *str);
  */
 int		ft_atoi(const char *str);
 
-// Stack Operations
-// void	swap(t_stack *stack);
-// void	rotate(t_stack *stack);
-// void	reverse_rotate(t_stack *stack);
-// void	ss(t_stack *a, t_stack *b);
-// void	rr(t_stack *a, t_stack *b);
-// void	rrr(t_stack *a, t_stack *b);
-
-
-
 // TODO: This one wil have to change
-int	push_swap(int *arr, int length);
+int		push_swap(int *arr, int length);
 
 #endif

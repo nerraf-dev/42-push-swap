@@ -6,11 +6,15 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 20:06:04 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/13 15:41:13 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/15 11:40:25 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "push_swap.h"
+/* ****************************************************************************** */
+// *** FUNCTIONS MOVED TO INDIVIDUAL FILES WHICH INCLUDE THE PUSH_SWAP COMMANDS ***
+/* ******************************************************************************* */
+
+// #include "../push_swap.h"
 
 // void	ss(t_stack *a, t_stack *b)
 // {

@@ -8,7 +8,7 @@ generate_random_numbers() {
 # Run tests
 for i in {1..100}; do
     input=$(generate_random_numbers 100)
-    ./push_swap $input > /dev/null
+    ../push_swap $input > /dev/null
     if [ $? -ne 0 ]; then
         echo "Test failed with input: $input"
         exit 1
