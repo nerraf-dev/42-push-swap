@@ -6,13 +6,13 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 21:00:45 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/15 16:01:05 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/15 20:34:19 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "./ranking/ranking.h"
-#include "./sort/sort_ops.h"
+// #include "./sort/sort_ops.h"
 
 t_node	*create_node(int value, int rank)
 {
@@ -57,24 +57,16 @@ int	push_swap(int *arr, int length)
 	int		*ranks;
 	int		i;
 	t_stack	*stack_a;
-	// t_node	*stack_b;
+	t_stack	*stack_b;
 	t_node	*current;
 	t_node	*temp;
 
 	ranks = get_ranks(arr, length);
 	if (!ranks)
 		exit(EXIT_FAILURE);
-		// return (-1);
-	// Print ranks
-	i = 0;
-	while (i < length)
-	{
-		ft_printf("arr: %d - rank[%d] = %d\n",arr[i], i, ranks[i]);
-		i++;
-	}
-	 // Create stack a
 	stack_a = (t_stack *)malloc(sizeof(t_stack));
-	if (!stack_a) {
+	if (!stack_a)
+	{
 		free(ranks);
 		return (-1);
 	}
@@ -86,28 +78,27 @@ int	push_swap(int *arr, int length)
 		i--;
 	}
 	print_stack(stack_a);
-
-	if (length ==  2)
+	stack_b = (t_stack *)malloc(sizeof(t_stack));
+	if (!stack_b)
 	{
-		ft_printf("SORT 2\n");
+		free(stack_a);
+		free(ranks);
+		return (-1);
+	}
+	stack_b->top = NULL;
+	if (length == 2)
 		sort_two(stack_a, ranks);
-		print_stack(stack_a);
-	}
 	else if (length == 3)
-	{
-		ft_printf("SORT 3\n");
 		sort_three(stack_a, ranks, 0, 2);
-		print_stack(stack_a);
-	}
 	else if (length <= 5)
-	{
 		ft_printf("SORT 4/5\n");
-	}
 	else
-	{
 		ft_printf("SORT BIG\n");
-	}
-
+	// Print the stacks for checking - remove this later
+	ft_printf("STACK A\n");
+	print_stack(stack_a);
+	ft_printf("STACK B\n");
+	print_stack(stack_b);
 	// Free the stack
 	current = stack_a->top;
 	while (current != NULL)
@@ -117,6 +108,7 @@ int	push_swap(int *arr, int length)
 		free(temp);
 	}
 	free(stack_a);
+	free(stack_b);
 	free(ranks);
 	return (0);
 }

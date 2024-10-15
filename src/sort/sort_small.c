@@ -6,14 +6,11 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 19:40:20 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/15 15:41:11 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/15 19:30:17 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
-
-// 	if input is 0 1 2, then return
 
 char	*sort_two(t_stack *stack, int *arr)
 {

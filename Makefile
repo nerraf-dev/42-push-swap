@@ -6,7 +6,7 @@
 #    By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/20 13:36:23 by sfarren           #+#    #+#              #
-#    Updated: 2024/10/15 13:51:47 by sfarren          ###   ########.fr        #
+#    Updated: 2024/10/15 19:45:49 by sfarren          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ LIBFT = $(LIBFT_DIR)/libft.a
 COUNT_SORT = src/ranking
 
 SRCS =  src/ranking/ranking.c src/ranking/ranking_utils.c \
-		src/stack_ops/swap.c src/stack_ops/rotate.c src/stack_ops/reverse_rotate.c \
+		src/stack_ops//push.c src/stack_ops/rotate.c src/stack_ops/reverse_rotate.c src/stack_ops/swap.c \
 		src/sort/sort_small.c \
 		src/push_swap.c \
 		src/push_swap_utils.c \
