@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 13:18:12 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/15 11:27:22 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/15 21:25:25 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_count_props	get_props(int *arr, int length)
 
 void	run_count_sort(int *sorted_arr, t_count_node *count, int offset)
 {
-	int		i;
+	int				i;
 	t_count_node	*current;
 
 	i = 0;
