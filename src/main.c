@@ -6,69 +6,42 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 13:39:44 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/15 11:41:45 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/17 13:54:08 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	check_duplicates(int *arr, int size)
-{
-	int	i;
-	int	j;
+// static void	print_error_and_exit(const char *message, int *arr)
+// {
+// 	ft_printf("%s\n", message);
+// 	if (arr)
+// 		free(arr);
+// 	exit(1);
+// }
 
-	i = 0;
-	while (i < size - 1)
-	{
-		j = i + 1;
-		while (j < size)
-		{
-			if (arr[i] == arr[j])
-				return (-1);
-			j++;
-		}
-		i++;
-	}
-	return (0);
-}
 
-static void	print_error_and_exit(const char *message, int *arr)
-{
-	ft_printf("%s\n", message);
-	if (arr)
-		free(arr);
-	exit(1);
-}
-
-static int	*parse_arguments(int argc, char **argv)
-{
-	int	*arr;
-	int	i;
-
-	arr = (int *)malloc((argc - 1) * sizeof(int));
-	if (!arr)
-		print_error_and_exit("Memory allocation failed", NULL);
-	i = 0;
-	while (i < argc - 1)
-	{
-		if (!is_valid_integer(argv[i + 1]))
-			print_error_and_exit("Invalid integer", arr);
-		arr[i] = ft_atoi(argv[i + 1]);
-		i++;
-	}
-	return (arr);
-}
 
 int	main(int argc, char **argv)
 {
-	int	*arr;
+	t_stack_node *stack_a;
+	// t_stack_node *stack_b;
 
-	if (argc <= 1)
-		print_error_and_exit("No arguments provided", NULL);
-	arr = parse_arguments(argc, argv);
-	if (check_duplicates(arr, argc - 1))
-		print_error_and_exit("Error: Duplicate number", arr);
-	push_swap(arr, argc - 1);
-	free(arr);
+	stack_a = NULL;
+	// stack_b = NULL;
+	if (argc == 1 || (argc == 2 && !argv[1][0]))
+		return (1);
+	init_stack_a(&stack_a,argc, argv);
+	if (!stack_sorted(stack_a))
+	{
+		if (stack_len(stack_a) == 2)
+			ft_printf("sa\n");
+		else if (stack_len(stack_a) == 3)
+			ft_printf("sort_three\n");
+		else
+			ft_printf("sort_big\n");
+
+	}
+	free_stack(stack_a);
 	return (0);
 }

@@ -1,38 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/15 12:49:24 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/15 15:20:24 by sfarren          ###   ########.fr       */
+/*   Created: 2024/10/17 13:07:35 by sfarren           #+#    #+#             */
+/*   Updated: 2024/10/17 13:09:19 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../stack.h"
-#include "../libft/libft.h"
+#include "../push_swap.h"
 
-static void	push(t_stack *dst, t_stack *src)
+int	*parse_arguments(int argc, char **argv)
 {
-	t_node	*top;
+	int	*arr;
+	int	i;
 
-	if (!src->top)
-		return ;
-	top = src->top;
-	src->top = src->top->next;
-	top->next = dst->top;
-	dst->top = top;
-}
-
-void	pa(t_stack *a, t_stack *b)
-{
-	push(a, b);
-	ft_printf("pa\n");
-}
-
-void	pb(t_stack *a, t_stack *b)
-{
-	push(b, a);
-	ft_printf("pb\n");
+	arr = (int *)malloc((argc - 1) * sizeof(int));
+	if (!arr)
+	{
+		ft_printf("Memory allocation failed");
+		return (NULL);
+	}
+	i = 0;
+	while (i < argc - 1)
+	{
+		if (!is_valid_integer(argv[i + 1]))
+		{
+			ft_printf("Invalid integer");
+			return (NULL);
+		}
+		arr[i] = ft_atoi(argv[i + 1]);
+		i++;
+	}
+	return (arr);
 }

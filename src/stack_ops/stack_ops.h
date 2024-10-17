@@ -5,27 +5,30 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/15 13:02:25 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/15 15:19:21 by sfarren          ###   ########.fr       */
+/*   Created: 2024/10/17 13:13:50 by sfarren           #+#    #+#             */
+/*   Updated: 2024/10/17 13:51:52 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STACK_OPS_H
 # define STACK_OPS_H
 
-// # include "../push_swap.h"
-# include "../stack.h"
-# include "../libft/libft.h"
+// # include "../stack.h"
+# include "../push_swap.h"
 
-void	pa(t_stack *a, t_stack *b);
-void	pb(t_stack *a, t_stack *b);
-void	sa(t_stack *stack);
-void	sb(t_stack *stack);
-void	ss(t_stack *a, t_stack *b);
-void	ra(t_stack *stack);
-void	rb(t_stack *stack);
-void	rr(t_stack *a, t_stack *b);
-void	rra(t_stack *stack);
-void	rrb(t_stack *stack);
-void	rrr(t_stack *a, t_stack *b);
+
+void			append_node(t_stack_node **stack, int value);
+t_stack_node	*get_last_node(t_stack_node *stack);
+void			free_stack(t_stack_node *stack);
+void			print_stack(t_stack_node *stack);
+int				stack_len(t_stack_node *stack);
+t_stack_node	*find_min(t_stack_node *stack);
+// Validation
+int				check_duplicates(int *arr, int size);
+bool			is_valid_integer(const char *str);
+bool			stack_sorted(t_stack_node *stack);
+// Parsing
+int				*parse_arguments(int argc, char **argv);
+
+
 #endif

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_utils.c                                  :+:      :+:    :+:   */
+/*   validation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/21 20:11:25 by sfarren           #+#    #+#             */
-/*   Updated: 2024/09/22 13:17:45 by sfarren          ###   ########.fr       */
+/*   Created: 2024/10/17 13:06:12 by sfarren           #+#    #+#             */
+/*   Updated: 2024/10/17 13:45:42 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-int	is_valid_integer(const char *str)
+bool	is_valid_integer(const char *str)
 {
 	int	i;
 
@@ -22,12 +22,45 @@ int	is_valid_integer(const char *str)
 		i++;
 	}
 	if (str[i] == '\0')
-		return (0);
+		return (false);
 	while (str[i])
 	{
 		if (str[i] < '0' || str[i] > '9')
-			return (0);
+			return (false);
 		i++;
 	}
-	return (1);
+	return (true);
+}
+
+int	check_duplicates(int *arr, int size)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < size - 1)
+	{
+		j = i + 1;
+		while (j < size)
+		{
+			if (arr[i] == arr[j])
+				return (-1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
+
+bool	stack_sorted(t_stack_node *stack)
+{
+	if (!stack)
+		return (1);
+	while (stack->next)
+	{
+		if (stack->value > stack->next->value)
+			return (false);
+		stack = stack->next;
+	}
+	return (true);
 }
