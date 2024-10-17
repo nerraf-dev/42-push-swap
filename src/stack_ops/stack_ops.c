@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 13:17:16 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/17 13:50:05 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/17 14:34:37 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,26 +60,6 @@ void	free_stack(t_stack_node *stack)
 		stack = stack->next;
 		free(temp);
 	}
-}
-
-t_stack_node	*find_min(t_stack_node *stack)
-{
-	int				min;
-	t_stack_node	*min_node;
-
-	if (!stack)
-		return (NULL);
-	min = INT_MAX;
-	while (stack)
-	{
-		if (stack->value < min)
-		{
-			min = stack->value;
-			min_node = stack;
-		}
-		stack = stack->next;
-	}
-	return (min_node);
 }
 
 int	stack_len(t_stack_node *stack)

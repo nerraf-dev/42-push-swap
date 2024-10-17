@@ -6,45 +6,57 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 19:40:20 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/17 14:00:09 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/17 20:06:46 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../stack.h"
+#include "sort.h"
+#include "../libft/libft.h"
 
-char	*sort_two(t_stack_node *stack, int *arr, int min, int max)
+int	sort_two(t_stack_node **stack)
 {
-	static char	*instructions;
-
-	if (arr[0] == max && arr[1] == min)
+	if ((*stack)->value > (*stack)->next->value)
 	{
-		swap(stack);
-		return (instructions = "sa\n");
+		sa(stack);
+		return (1);
 	}
-	return (instructions = "none required\n");
+	return (0);
 }
 
-char	*sort_three(t_stack_node *stack, int *arr, int min, int max)
+int	sort_three(t_stack_node **stack)
 {
-	char	*instructions;
+	int			min;
+	int			max;
 
-	if (arr[0] == min && arr[1] == max)
-	{
-		swap(stack);
-		rotate(stack);
-		return (instructions = "sa,ra\n");
-	}
-	if (arr[0] == max && arr[1] == min)
-	{
-		rotate(stack);
-		return (instructions = "ra\n");
-	}
-	if (arr[0] == max && arr[2] == min)
-	{
-		swap(stack);
-		reverse_rotate(stack);
-		return (instructions = "sa,rra\n");
-	}
+	min = find_min(*stack)->value;
+	max = find_max(*stack)->value;
 
-	return (instructions = "");
+	ft_printf("MIN: %d, MAX: %d\n", min, max);
+	ft_printf("Stack A: top: %d, next: %d\n", (*stack)->value, (*stack)->next->value);
+	
+	if ((*stack)->value == max && (*stack)->next->value == min)
+	{
+		ra(stack);
+		return (1);
+	}
+	else if ((*stack)->value == min && (*stack)->next->value == max)
+	{
+		sa(stack);
+		ra(stack);
+		return (2);
+	}
+	else if ((*stack)->value == min)
+		sa(stack);
+	else if ((*stack)->next->value == max)
+		rra(stack);
+	else if ((*stack)->value == max && (*stack)->next->value == min)
+		ra(stack);
+	else
+	{
+		sa(stack);
+		ra(stack);
+		return (2);
+	}
+	return (0);
 }

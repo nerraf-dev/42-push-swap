@@ -3,6 +3,15 @@
 	"files.associations": {
 		"queue": "c",
 		"stack": "c",
-		"random": "c"
+		"random": "c",
+		"deque": "c",
+		"string": "c",
+		"unordered_map": "c",
+		"vector": "c",
+		"tuple": "c",
+		"type_traits": "c",
+		"__hash_table": "c",
+		"variant": "c",
+		"functional": "c"
 	}
 }
