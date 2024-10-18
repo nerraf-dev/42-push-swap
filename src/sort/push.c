@@ -6,13 +6,11 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 12:49:24 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/17 19:30:28 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/17 21:25:13 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../stack.h"
-#include <stddef.h>
-#include "../libft/libft.h"
+#include "../includes/push_swap.h"
 
 void	push(t_stack_node **stack_a, t_stack_node **stack_b)
 {

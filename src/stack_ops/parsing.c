@@ -6,11 +6,11 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 13:07:35 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/17 13:09:19 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/17 21:29:59 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../../includes/push_swap.h"
 
 int	*parse_arguments(int argc, char **argv)
 {

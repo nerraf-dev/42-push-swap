@@ -6,13 +6,11 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 11:37:56 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/17 19:34:04 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/17 21:25:52 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../stack.h"
-#include "../libft/libft.h"
-#include "../stack_ops/stack_ops.h"
+#include "../includes/push_swap.h"
 
 static void	reverse_rotate(t_stack_node **stack)
 {

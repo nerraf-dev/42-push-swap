@@ -1,20 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.h                                             :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/17 13:58:17 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/17 19:33:12 by sfarren          ###   ########.fr       */
+/*   Created: 2024/09/20 13:41:39 by sfarren           #+#    #+#             */
+/*   Updated: 2024/10/17 21:29:32 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SORT_H
-# define SORT_H
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
-int				sort_two(t_stack_node **stack);
-int				sort_three(t_stack_node **stack);
+# include <limits.h>
+# include <stdbool.h>
+# include <stddef.h>
+# include "../src/libft/libft.h"
+# include "stack.h"
+// # include "./stack_ops/stack_ops.h"
+// # include "./sort/sort.h"
+
+// Stack Ops
+void			append_node(t_stack_node **stack, int value);
+t_stack_node	*get_last_node(t_stack_node *stack);
+void			free_stack(t_stack_node *stack);
+void			print_stack(t_stack_node *stack);
+int				stack_len(t_stack_node *stack);
+// Validation
+int				check_duplicates(int *arr, int size);
+bool			is_valid_integer(const char *str);
+bool			stack_sorted(t_stack_node *stack);
+// Parsing
+int				*parse_arguments(int argc, char **argv);
+
+
+// Stack init
+void			init_stack_a(t_stack_node **a, int argc, char **argv);
+
+void			sort_two(t_stack_node **stack);
+void			sort_three(t_stack_node **stack);
+void			sort_big(t_stack_node **stack_a, t_stack_node **stack_b);
 
 // Max Min
 t_stack_node	*find_min(t_stack_node *stack);
@@ -31,5 +57,6 @@ void			rr(t_stack_node **stack_a, t_stack_node **stack_b);
 void			rra(t_stack_node **stack);
 void			rrb(t_stack_node **stack);
 void			rrr(t_stack_node **stack_a, t_stack_node **stack_b);
+
 
 #endif

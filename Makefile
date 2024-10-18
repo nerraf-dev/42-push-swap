@@ -6,7 +6,7 @@
 #    By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/20 13:36:23 by sfarren           #+#    #+#              #
-#    Updated: 2024/10/17 19:37:03 by sfarren          ###   ########.fr        #
+#    Updated: 2024/10/17 21:18:17 by sfarren          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ LIBFT = $(LIBFT_DIR)/libft.a
 
 
 SRCS =  src/main.c \
+		src/init_a_b.c \
 		src/stack_ops/parsing.c \
 		src/stack_ops/stack_init.c \
 		src/stack_ops/stack_ops.c \
@@ -36,6 +37,7 @@ SRCS =  src/main.c \
 		src/sort/reverse_rotate.c \
 		src/sort/swap.c \
 		src/sort/sort_small.c \
+		src/sort/sort_big.c \
 		src/sort/sort_utils.c \
 
 OBJS = $(SRCS:.c=.o)

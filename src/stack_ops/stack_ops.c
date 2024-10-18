@@ -6,11 +6,11 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 13:17:16 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/17 14:34:37 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/17 21:24:33 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stack_ops.h"
+#include "../includes/push_swap.h"
 
 t_stack_node	*get_last_node(t_stack_node *stack)
 {
