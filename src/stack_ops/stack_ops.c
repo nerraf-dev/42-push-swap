@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 13:17:16 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/19 11:05:49 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/19 12:17:21 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,6 @@ void	append_node(t_stack_node **stack, int value)
 		last->next = new_node;
 		new_node->prev = last;
 	}
-	ft_printf("check stack\n");
-	print_stack(*stack);
-
 }
 
 void	free_stack(t_stack_node *stack)

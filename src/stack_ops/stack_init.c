@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 12:12:43 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/19 11:03:18 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/19 12:38:59 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,15 +52,11 @@ void	init_stack_a(t_stack_node **a, int argc, char **argv)
 {
 	int	*arr;
 	int	i;
+	// int	arr_len;
 
 	arr = parse_arguments(argc, argv);
-	i = 0;
-	//output array to check
-	while (i < argc - 1)
-	{
-		ft_printf("arr[%d]: %d\n", i, arr[i]);
-		i++;
-	}
+	if (!arr)
+		return ;
 	if (check_duplicates(arr, argc - 1))
 	{
 		ft_printf("Error: Duplicate number");
@@ -68,7 +64,7 @@ void	init_stack_a(t_stack_node **a, int argc, char **argv)
 		return ;
 	}
 	i = 0;
-	while (i < argc - 1)
+	while (arr[i] != '\0')
 	{
 		append_node(a, arr[i]);
 		i++;
