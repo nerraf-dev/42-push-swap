@@ -6,33 +6,11 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 21:04:20 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/18 14:37:07 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/18 19:53:01 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
-
-static void	rotate_both(t_stack_node **stack_a,
-						t_stack_node **stack_b,
-						t_stack_node *lowest_cost_node)
-{
-	while (*stack_b != lowest_cost_node->target
-		&& *stack_a != lowest_cost_node)
-		rr(stack_a, stack_b);
-	current_index(*stack_a);
-	current_index(*stack_b);
-}
-
-static void	rev_rotate_both(t_stack_node **stack_a,
-								t_stack_node **stack_b,
-								t_stack_node *lowest_cost_node)
-{
-	while (*stack_b != lowest_cost_node->target
-		&& *stack_a != lowest_cost_node)
-		rrr(stack_a, stack_b);
-	current_index(*stack_a);
-	current_index(*stack_b);
-}
+#include "../../includes/push_swap.h"
 
 static void	move_a_to_b(t_stack_node **stack_a, t_stack_node **stack_b)
 {
@@ -47,6 +25,23 @@ static void	move_a_to_b(t_stack_node **stack_a, t_stack_node **stack_b)
 	set_push(stack_a, low_cost_node, 'a');
 	set_push(stack_b, low_cost_node->target, 'b');
 	pb(stack_a, stack_b);
+}
+
+static void	move_b_to_a(t_stack_node **stack_a, t_stack_node **stack_b)
+{
+	set_push(stack_a, (*stack_b)->target, 'a');
+	pa(stack_a, stack_b);
+}
+
+static void	min_to_top(t_stack_node **stack_a)
+{
+	while ((*stack_a)->value != find_min(*stack_a)->value)
+	{
+		if (find_min(*stack_a)->above_median)
+			ra(stack_a);
+		else
+			rra(stack_a);
+	}
 }
 
 void	sort_big(t_stack_node **stack_a, t_stack_node **stack_b)

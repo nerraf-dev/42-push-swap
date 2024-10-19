@@ -6,11 +6,11 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 11:36:51 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/17 21:26:00 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/18 19:43:39 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 static void	rotate(t_stack_node **stack)
 {

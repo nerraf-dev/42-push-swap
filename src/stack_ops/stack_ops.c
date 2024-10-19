@@ -6,17 +6,17 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 13:17:16 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/17 21:24:33 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/19 11:05:49 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 t_stack_node	*get_last_node(t_stack_node *stack)
 {
-	if (stack == NULL)
+	if (!stack)
 		return (NULL);
-	while (stack->next != NULL)
+	while (stack->next)
 		stack = stack->next;
 	return (stack);
 }
@@ -47,6 +47,8 @@ void	append_node(t_stack_node **stack, int value)
 		last->next = new_node;
 		new_node->prev = last;
 	}
+	ft_printf("check stack\n");
+	print_stack(*stack);
 
 }
 
