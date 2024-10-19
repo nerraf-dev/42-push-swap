@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 21:20:12 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/18 14:20:04 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/19 15:16:04 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@ static void	set_target_a(t_stack_node *stack_a, t_stack_node *stack_b)
 {
 	t_stack_node	*current_b;
 	t_stack_node	*target_node;
-	long			target_index;
+	int				target_index;
 
 	while (stack_a)
 	{
-		target_index = LONG_MIN;
+		target_index = INT_MIN;
 		current_b = stack_b;
 		while (current_b)
 		{
@@ -53,7 +53,7 @@ static void	set_target_a(t_stack_node *stack_a, t_stack_node *stack_b)
 			}
 			current_b = current_b ->next;
 		}
-		if (target_index == LONG_MIN)
+		if (target_index == INT_MIN)
 			stack_a->target = find_max(stack_b);
 		else
 			stack_a->target = target_node;
@@ -83,12 +83,12 @@ static void	calculate_cost_a(t_stack_node *stack_a, t_stack_node *stack_b)
 
 void	set_lowest_cost(t_stack_node *stack)
 {
-	long			lowest_cost;
+	int				lowest_cost;
 	t_stack_node	*lowest_cost_node;
 
 	if (!stack)
 		return ;
-	lowest_cost = LONG_MAX;
+	lowest_cost = INT_MAX;
 	while (stack)
 	{
 		if (stack->cost < lowest_cost)
