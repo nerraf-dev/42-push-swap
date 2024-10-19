@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 13:07:35 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/19 12:34:30 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/19 12:46:46 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	*parse_arguments(int argc, char **argv)
 	int		j;
 	char	**split;
 
-	ft_printf("argc: %d\n", argc);
 	if (argc == 2)
 	{
 		split = ft_split(argv[1], ' ');
@@ -56,12 +55,12 @@ int	*parse_arguments(int argc, char **argv)
 			i++;
 		}
 	}
-	i = 0;
-	while (i < argc -1)
-	{
-		ft_printf("Arr[%d]: %d\n", i, arr[i]);
-		i++;
-	}
+	// i = 0;
+	// while (i < argc -1)
+	// {
+	// 	ft_printf("Arr[%d]: %d\n", i, arr[i]);
+	// 	i++;
+	// }
 
 	return (arr);
 }
