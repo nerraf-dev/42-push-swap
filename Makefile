@@ -6,17 +6,16 @@
 #    By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/20 13:36:23 by sfarren           #+#    #+#              #
-#    Updated: 2024/10/18 19:36:03 by sfarren          ###   ########.fr        #
+#    Updated: 2024/10/20 11:23:14 by sfarren          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 UNAME_S := $(shell uname -s)
-# ifeq ($(UNAME_S), Darwin) # macOS
-# 	CC = gcc
-# else
-# 	CC = clang # Default to clang for other systems, including 42's
-# endif
-CC = gcc
+ifeq ($(UNAME_S), Darwin) # macOS
+	CC = gcc
+else
+	CC = clang # Default to clang for other systems, including 42's
+endif
 # TODO: remove -g flag
 CFLAGS = -Wall -Wextra -Werror -g
 LDFLAGS += -Wl,--preload=/usr/lib/valgrind/libasan.so
