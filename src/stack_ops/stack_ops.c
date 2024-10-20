@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 13:17:16 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/19 12:17:21 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/19 19:01:45 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_stack_node	*get_last_node(t_stack_node *stack)
 {
 	if (!stack)
 		return (NULL);
-	while (stack->next)
+	while (stack && stack->next)
 		stack = stack->next;
 	return (stack);
 }
