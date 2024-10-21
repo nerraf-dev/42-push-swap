@@ -27,6 +27,7 @@ bool	is_valid_integer(const char *str);
 int		check_duplicates(int *arr, int size);
 bool	stack_sorted(t_stack_node	*stack);
 int		array_length(int *arr);
+void 	free_split(char **words);
 
 
 
