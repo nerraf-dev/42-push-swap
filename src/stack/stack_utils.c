@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 13:17:16 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/21 15:01:14 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/21 15:33:55 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	free_stack(t_stack_node	**stack)
 		free(current);
 		current = next;
 	}
-	free(stack);
+	*stack = NULL;
 }
 
 int	stack_len(t_stack_node *stack)

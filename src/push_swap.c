@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 21:00:45 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/21 14:42:13 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/21 15:32:14 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	main(int argc, char **argv)
 	}
 
 	print_stack(stack_a, 'a');
-	free_stack(stack_a);
+	free_stack(&stack_a);
 	// free_stack(stack_b);
 	return (0);
 }
