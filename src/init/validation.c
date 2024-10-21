@@ -6,11 +6,11 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 13:06:12 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/18 19:55:25 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/21 15:04:15 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "../../includes/init.h"
 
 bool	is_valid_integer(const char *str)
 {
@@ -52,15 +52,18 @@ int	check_duplicates(int *arr, int size)
 	return (0);
 }
 
-bool	stack_sorted(t_stack_node *stack)
+bool	stack_sorted(t_stack_node	*stack)
 {
+	t_stack_node	*current;
+
 	if (!stack)
-		return (1);
-	while (stack->next)
+		return (true);
+	current = stack;
+	while (current->next)
 	{
-		if (stack->value > stack->next->value)
+		if (current->value > current->next->value)
 			return (false);
-		stack = stack->next;
+		current = current->next;
 	}
 	return (true);
 }

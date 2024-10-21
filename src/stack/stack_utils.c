@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_ops.c                                        :+:      :+:    :+:   */
+/*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 13:17:16 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/19 19:01:45 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/21 15:01:14 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,16 +49,20 @@ void	append_node(t_stack_node **stack, int value)
 	}
 }
 
-void	free_stack(t_stack_node *stack)
+void	free_stack(t_stack_node	**stack)
 {
-	t_stack_node	*temp;
-
-	while (stack != NULL)
+	t_stack_node	*current;
+	t_stack_node	*next;
+	if (!stack || !*stack)
+		return ;
+	current = *stack;
+	while (current != NULL)
 	{
-		temp = stack;
-		stack = stack->next;
-		free(temp);
+		next = current->next;
+		free(current);
+		current = next;
 	}
+	free(stack);
 }
 
 int	stack_len(t_stack_node *stack)
@@ -76,4 +80,15 @@ int	stack_len(t_stack_node *stack)
 	return (len);
 }
 
+void	print_stack(t_stack_node *stack, char stack_name)
+{
+	t_stack_node	*current;
 
+	current = stack;
+	ft_printf("Stack %c\n", stack_name);
+	while (current != NULL)
+	{
+		ft_printf("Value: %d\n", current->value);
+		current = current->next;
+	}
+}
