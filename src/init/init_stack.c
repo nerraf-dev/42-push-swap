@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 17:07:11 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/21 15:54:27 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/22 12:11:22 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,6 @@ void	initialise_stack(t_stack_node **top, int argc, char **argv)
 		return ;
 	arr_len = array_length(arr);
 	find_dupes(arr, arr_len);
-	populate_stack(top, *arr);
+	// populate_stack(top, *arr);
 	free(arr);
 }

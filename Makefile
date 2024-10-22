@@ -6,7 +6,7 @@
 #    By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/20 13:36:23 by sfarren           #+#    #+#              #
-#    Updated: 2024/10/21 15:53:19 by sfarren          ###   ########.fr        #
+#    Updated: 2024/10/22 12:11:56 by sfarren          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,6 @@ SRCS =  src/push_swap.c \
         src/init/parsing.c \
         src/init/validation.c \
         src/init/validate_args.c \
-        src/stack/stack_utils.c \
         src/stack/push.c \
         src/stack/reverse_rotate.c \
         src/stack/rotate.c \
