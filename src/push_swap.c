@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 21:00:45 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/22 12:21:13 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/22 12:35:48 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ int	main(int argc, char **argv)
 			ft_printf("%s\n", values[i]);
 			i++;
 		}
-
 	}
+	free_split(values);
 	//If argc == 2 the argument could be a single number, e.g. 17, or a string of numbers, "3 14 2"
 
 	// initialise_stack(&stack_a, argc, argv);
