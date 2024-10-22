@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 21:00:45 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/22 12:36:56 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/22 12:52:20 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,33 @@
 // 	print_stack(stack_b);
 // }
 
+static int	check_integers(char **values)
+{
+	int	i;
+
+	i = 0;
+	while (values[i])
+	{
+		if (!is_valid_integer(values[i]))
+		{
+			ft_printf("Error\n");
+			free_split(values);
+			return (1);
+		}
+
+		ft_printf("%s\n", values[i]);
+		i++;
+	}
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	// t_stack_node		*stack_a;
 	//t_stack_node	*stack_b;
 	// int			len;
 	char			**values;
-	int				i;
+	// int				i;
 
 	// stack_a = NULL;
 	// stack_b = NULL;
@@ -52,20 +72,13 @@ int	main(int argc, char **argv)
 	{
 		values = ft_split(argv[1], ' ');
 		// Check if the arguments are valid integers
-
-		i = 0;
-		while (values[i])
-		{
-			if (!is_valid_integer(values[i]))
-			{
-				ft_printf("Error\n");
-				free_split(values);
-				return (1);
-			}
-			ft_printf("%s\n", values[i]);
-			i++;
-		}
+		if (check_integers(values))
+			ft_printf("valid ints");
 	}
+	// else
+	// {
+
+	// }
 	free_split(values);
 	//If argc == 2 the argument could be a single number, e.g. 17, or a string of numbers, "3 14 2"
 
