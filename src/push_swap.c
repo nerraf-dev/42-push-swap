@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 21:00:45 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/22 12:35:48 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/22 12:36:56 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	main(int argc, char **argv)
 	// 8. Sort the stack
 	// 9. Free the stack
 	// 10. Return 0
-
+	values = NULL;
 	// No arguments
 	if (argc == 1)
 		return (1);
