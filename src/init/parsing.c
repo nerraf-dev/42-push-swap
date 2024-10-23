@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 13:07:35 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/23 13:07:14 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/23 13:57:22 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,11 +110,11 @@ int	*parse_string(char **argv)
 
 int	*parse_arguments(int argc, char **argv, int *size)
 {
-	int		i;
+	// int		i;
 	int		*arr;
 	// char	**split;
 
-	i = 0;
+	// i = 0;
 	arr = NULL;
 	if (argc == 2)
 	{
