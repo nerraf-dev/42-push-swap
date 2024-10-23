@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 13:07:35 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/23 14:35:36 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/23 15:54:08 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,23 +73,24 @@ void	free_split(char **words)
 	while (words[i])
 	{
 		free(words[i]);
-		words[i] = NULL; // Set to NULL after freeing
+		// words[i] = NULL; // Set to NULL after freeing
 		i++;
 	}
 	free(words);
-	words = NULL; // Set to NULL after freeing
+	// words = NULL; // Set to NULL after freeing
 }
 
-int	*parse_string(char **argv)
+int	*parse_string(char **argv, int *size)
 {
 	int		*arr;
 	int		i;
 	char	**split;
 
-	split = ft_split(argv[1], ' ');
+	split = ps_split(argv[1], ' ', size);
 	i = 0;
 	while (split[i] != NULL)
 		i++;
+
 	arr = (int *)malloc(i * sizeof(int));
 	if (!arr)
 	{
@@ -97,26 +98,33 @@ int	*parse_string(char **argv)
 		free_split(split);
 		return (NULL);
 	}
-	arr = validate_integers(split, arr, i, true);
-	// free_split(split);
+	ft_printf("--- SIZE: %d\n", *size);
+	arr = validate_integers(split, arr, *size, true);
+
+ 	free_split(split);
+	// free(split);
 	return (arr);
 }
 
 int	*parse_arguments(int argc, char **argv, int *size)
 {
-	// int		i;
+	int		i;
 	int		*arr;
 	// char	**split;
 
-	// i = 0;
+	i = 0;
 	arr = NULL;
 	if (argc == 2)
 	{
 		ft_printf("argc == 2\n");
-		arr = parse_string(argv);
+		arr = parse_string(argv, size);
 		if (!arr)
 			return (NULL);
-		*size = array_length(arr);
+		while (arr[i] < *size)
+		{
+			ft_printf("arr: %d\n", arr[i]);
+			i++;
+		}
 	}
 	else if (argc > 2)
 	{
@@ -125,6 +133,7 @@ int	*parse_arguments(int argc, char **argv, int *size)
 		if (!arr)
 			print_and_exit("Memory allocation failed");
 		arr = validate_integers(argv + 1, arr, argc - 1, false);
+		*size = argc - 1;
 		// while (i < argc - 1)
 		// {
 		// 	ft_printf("%d\n", arr[i]);

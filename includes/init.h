@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 17:00:15 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/23 14:39:25 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/23 15:31:28 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,10 @@ int		check_duplicates(int *arr, int size);
 bool	stack_sorted(t_stack_node	*stack);
 int		array_length(int *arr);
 void 	free_split(char **words);
+char	**ps_split(const char *s, char c, int *length);
 
 
 // int		*validate_args(int argc, char **argv);
-int		*parse_string(char **argv);
+int		*parse_string(char **argv, int *size);
 
 #endif
