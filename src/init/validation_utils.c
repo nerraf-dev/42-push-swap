@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 14:44:02 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/23 14:44:11 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/23 14:48:22 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@ int	array_length(int *arr)
 	int	i;
 
 	i = 0;
-	while (arr[i])
+	while (arr[i] != '\0')
 		i++;
 	return (i);
 }
