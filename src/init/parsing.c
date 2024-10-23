@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 13:07:35 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/21 15:55:26 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/23 13:07:14 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,47 +41,36 @@ void	print_and_exit(char *str)
 // 	exit(1);
 // }
 
-static int	*validate_integers(char **words_arr, int *int_arr, int len)
+static int	*validate_integers(char **src, int *dst, int len, bool is_split)
 {
 	int	i;
 
 	i = 0;
 	while (i < len)
 	{
-		if (is_valid_integer(words_arr[i]))
+		ft_printf("src[i]: %s\n", src[i]);
+		if (!is_valid_integer(src[i]))
 		{
-			int_arr[i] = ft_atoi(words_arr[i]);
-			free(words_arr[i]);
-			i++;
+			if (is_split)
+			{
+				while (i < len)
+					free(src[i++]);
+				free(src);
+			}
+			free(dst);
+			print_and_exit("Invalid integer");
 		}
-		else
-		{
-			while (i < len)
-				free(words_arr[i++]);
-			free(words_arr);
-			free(int_arr);
-			print_and_exit("Error: Invalid Integer\n");
-		}
+		dst[i] = ft_atoi(src[i]);
+		if (is_split)
+			free(src[i]);
+		i++;
 	}
-	return (int_arr);
+	if (is_split)
+		free(src);
+	return (dst);
 }
 
-// void	free_split(char **words)
-// {
-// 	int	i;
-
-// 	if (!words)
-// 		return ;
-// 	i = 0;
-// 	while (words[i])
-// 	{
-// 		free(words[i]);
-// 		i++;
-// 	}
-// 	free(words);
-// }
-
-void free_split(char **words)
+void	free_split(char **words)
 {
 	int i = 0;
 
@@ -114,21 +103,41 @@ int	*parse_string(char **argv)
 		free_split(split);
 		return (NULL);
 	}
-	arr = validate_integers(split, arr, i);
+	arr = validate_integers(split, arr, i, true);
 	free_split(split);
 	return (arr);
 }
 
-void	parse_arguments(int argc, char **argv, int **dst_arr)
+int	*parse_arguments(int argc, char **argv, int *size)
 {
 	int		i;
+	int		*arr;
+	// char	**split;
 
 	i = 0;
-	while (i < argc - 1)
+	arr = NULL;
+	if (argc == 2)
 	{
-		if (is_valid_integer(argv[i + 1]))
-			(*dst_arr)[i] = ft_atoi(argv[i + 1]);
-		else
-			print_and_exit("Error: Invalid Integer\n");
+		ft_printf("argc == 2\n");
+		arr = parse_string(argv);
+		if (!arr)
+			return (NULL);
+		*size = array_length(arr);
 	}
+	else if (argc > 2)
+	{
+		ft_printf("argc > 2\n");
+		arr = (int *)malloc(sizeof(int) * (argc -1));
+		if (!arr)
+			print_and_exit("Memory allocation failed");
+		arr = validate_integers(argv + 1, arr, argc - 1, false);
+		// while (i < argc - 1)
+		// {
+		// 	ft_printf("%d\n", arr[i]);
+		// 	i++;
+		// }
+	}
+	else
+		print_and_exit("No args");
+	return (arr);
 }

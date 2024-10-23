@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 21:00:45 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/22 12:52:20 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/23 12:41:31 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,39 +22,32 @@
 // 	print_stack(stack_b);
 // }
 
-static int	check_integers(char **values)
-{
-	int	i;
+// static int	check_integers(char **values)
+// {
+// 	int	i;
 
-	i = 0;
-	while (values[i])
-	{
-		if (!is_valid_integer(values[i]))
-		{
-			ft_printf("Error\n");
-			free_split(values);
-			return (1);
-		}
+// 	i = 0;
+// 	while (values[i])
+// 	{
+// 		if (!is_valid_integer(values[i]))
+// 		{
+// 			ft_printf("Error\n");
+// 			free_split(values);
+// 			return (1);
+// 		}
 
-		ft_printf("%s\n", values[i]);
-		i++;
-	}
-	return (0);
-}
+// 		ft_printf("%s\n", values[i]);
+// 		i++;
+// 	}
+// 	return (0);
+// }
 
 int	main(int argc, char **argv)
 {
-	// t_stack_node		*stack_a;
-	//t_stack_node	*stack_b;
-	// int			len;
-	char			**values;
-	// int				i;
-
-	// stack_a = NULL;
-	// stack_b = NULL;
+	int		*values;
+	int		size;
 
 	// Check Arguments:
-	// 1. Check if there are any arguments
 	// 2. Check if the arguments are valid integers
 	// 3. Check if there are any duplicates
 	// 4. Parse the arguments into an array of integers
@@ -68,18 +61,16 @@ int	main(int argc, char **argv)
 	// No arguments
 	if (argc == 1)
 		return (1);
-	if (argc == 2)
-	{
-		values = ft_split(argv[1], ' ');
-		// Check if the arguments are valid integers
-		if (check_integers(values))
-			ft_printf("valid ints");
-	}
+	// arr is allocated in parse arguments
+	values = parse_arguments(argc, argv, &size);
+	if (values == NULL)
+		return (1);
+
 	// else
 	// {
 
 	// }
-	free_split(values);
+	free(values);
 	//If argc == 2 the argument could be a single number, e.g. 17, or a string of numbers, "3 14 2"
 
 	// initialise_stack(&stack_a, argc, argv);

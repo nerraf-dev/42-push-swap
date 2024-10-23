@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 17:00:15 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/21 15:03:07 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/23 12:19:51 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,8 @@
 
 // Initialisation functions
 //  Arg validation and checking
-int		*validate_args(int argc, char **argv);
-int		*parse_string(char **argv);
-void	parse_arguments(int argc, char **argv, int **dst_arr);
+int		*parse_arguments(int argc, char **argv, int *size);
+
 bool	is_valid_integer(const char *str);
 int		check_duplicates(int *arr, int size);
 bool	stack_sorted(t_stack_node	*stack);
@@ -30,5 +29,7 @@ int		array_length(int *arr);
 void 	free_split(char **words);
 
 
+int		*validate_args(int argc, char **argv);
+int		*parse_string(char **argv);
 
 #endif

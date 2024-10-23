@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 13:06:12 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/22 12:48:06 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/23 11:49:56 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,7 @@ bool	is_valid_integer(const char *str)
 
 	i = 0;
 	if (str[i] == '-' || str[i] == '+')
-	{
 		i++;
-	}
 	if (str[i] == '\0')
 		return (false);
 	while (str[i])
