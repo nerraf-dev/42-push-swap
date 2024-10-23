@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 21:00:45 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/23 14:38:58 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/23 16:26:15 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int	main(int argc, char **argv)
 {
 	int		*values;
 	int		size;
+	int		i;
 
 	// Check Arguments:
 	// 2. Check if the arguments are valid integers
@@ -77,6 +78,17 @@ int	main(int argc, char **argv)
 	values = parse_arguments(argc, argv, &size);
 	if (values == NULL)
 		return (1);
+
+	ft_printf("Size (from main)- %d\n", size);
+	// print values
+	i = 0;
+	while (i < size)
+	{
+		ft_printf("values[%d]: %d\n", i, values[i]);
+		i++;
+	}
+
+
 
 	free(values);
 	//If argc == 2 the argument could be a single number, e.g. 17, or a string of numbers, "3 14 2"

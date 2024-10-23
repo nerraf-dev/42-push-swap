@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 14:07:03 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/23 15:49:33 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/23 19:36:35 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static char	*fill_word(const char *str, int start, int end)
 	int		i;
 
 	i = 0;
-	word = malloc((end - start + 1) * sizeof(char));
+	word = (char *)malloc((end - start + 1) * sizeof(char));
 	if (!word)
 		return (0);
 	while (i < end)
