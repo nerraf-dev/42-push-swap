@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 21:00:45 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/23 12:41:31 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/23 14:38:58 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,14 +62,22 @@ int	main(int argc, char **argv)
 	if (argc == 1)
 		return (1);
 	// arr is allocated in parse arguments
+	// arr `values` is allocated memory in parse_arguments or parse_string
+	// parse_arguments is called in main
+	// if argc is 2, parse_string is called
+	// parse_string splits argv[1] which contains the string of ints/a single int
+	// array arr is allocated memory based on the size of split (alloc'd in ft_split)
+	// arr is then validated in validate_integers
+	// no memory is allocated here. Iterate through source array and validate each element
+	// if an invalid integer is found and src came from a split operation
+	//		- src is free - created as result of ft_split, dts is free created in parse_string
+	//	if is_split (means argc == 2) free src is called which should clean up after the split
+	// dst is returned to parse_string, stored as `arr`
+
 	values = parse_arguments(argc, argv, &size);
 	if (values == NULL)
 		return (1);
 
-	// else
-	// {
-
-	// }
 	free(values);
 	//If argc == 2 the argument could be a single number, e.g. 17, or a string of numbers, "3 14 2"
 

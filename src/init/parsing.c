@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 13:07:35 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/23 13:57:22 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/23 14:35:36 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,17 +52,11 @@ static int	*validate_integers(char **src, int *dst, int len, bool is_split)
 		if (!is_valid_integer(src[i]))
 		{
 			if (is_split)
-			{
-				while (i < len)
-					free(src[i++]);
-				free(src);
-			}
+				free_split(src);
 			free(dst);
 			print_and_exit("Invalid integer");
 		}
 		dst[i] = ft_atoi(src[i]);
-		if (is_split)
-			free(src[i]);
 		i++;
 	}
 	if (is_split)
@@ -75,9 +69,9 @@ void	free_split(char **words)
 	int i = 0;
 
 	if (!words)
-		return;
-
-	while (words[i]) {
+		return ;
+	while (words[i])
+	{
 		free(words[i]);
 		words[i] = NULL; // Set to NULL after freeing
 		i++;
@@ -104,7 +98,7 @@ int	*parse_string(char **argv)
 		return (NULL);
 	}
 	arr = validate_integers(split, arr, i, true);
-	free_split(split);
+	// free_split(split);
 	return (arr);
 }
 

@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 17:00:15 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/23 12:19:51 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/23 14:39:25 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int		array_length(int *arr);
 void 	free_split(char **words);
 
 
-int		*validate_args(int argc, char **argv);
+// int		*validate_args(int argc, char **argv);
 int		*parse_string(char **argv);
 
 #endif
