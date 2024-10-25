@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 13:18:12 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/25 12:36:01 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/25 13:33:11 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,17 @@ typedef struct s_stack_node
 	struct s_stack_node	*target;
 }	t_stack_node;
 
-// typedef struct s_stack
-// {
-// 	t_stack_node	*top;
-// }	t_stack;
+// Push_Swap Commands
+void			pa(t_stack_node **stack_a, t_stack_node **stack_b);
+void			pb(t_stack_node **stack_a, t_stack_node **stack_b);
+void			sa(t_stack_node **stack);
+void			sb(t_stack_node **stack);
+void			ss(t_stack_node **stack_a, t_stack_node **stack_b);
+void			ra(t_stack_node **stack);
+void			rb(t_stack_node **stack);
+void			rr(t_stack_node **stack_a, t_stack_node **stack_b);
+void			rra(t_stack_node **stack);
+void			rrb(t_stack_node **stack);
+void			rrr(t_stack_node **stack_a, t_stack_node **stack_b);
 
 #endif

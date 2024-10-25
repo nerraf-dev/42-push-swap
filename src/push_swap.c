@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 21:00:45 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/25 12:49:52 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/25 13:43:27 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ bool	is_sorted(int *int_array, int arr_size)
 	}
 	return (true);
 }
-
+// TODO: delete this function
 void print_stack(t_stack_node *head, char *name)
 {
 	t_stack_node *current = head;
@@ -73,7 +73,7 @@ int	main(int argc, char **argv)
 	int				*int_array;
 	int				arr_size;
 	t_stack_node	*stack_a;
-	// t_stack_node	*stack_b;
+	t_stack_node	*stack_b;
 
 	arr_size = 0;
 	int_array = argument_parser(argc, argv, &arr_size);
@@ -82,13 +82,17 @@ int	main(int argc, char **argv)
 	if (is_sorted(int_array, arr_size))
 		return (0);
 	// If not sorted:
-	//  initialise stack_a
+	//  initialise & populate stack_a
 	stack_a = initialise_stack(int_array, arr_size);
+	stack_b = NULL;
 	if(!stack_a)
 		handle_error("Memory allocation failed", NULL, int_array);
 	print_stack(stack_a, "a");
-	// populate stack_a
-	// if arr_size 3 or less - sort small
+	// if arr_size 5 or less - sort small
+	if (arr_size <= 5)
+	{
+		sort_small(&stack_a, &stack_b);
+	}
 	// else:
 	//		initialise stack_b
 	//		sort big
@@ -99,6 +103,8 @@ int	main(int argc, char **argv)
 
 	// free(int_array);
 	free(int_array);
+	free_stack(&stack_a);
+	free_stack(&stack_b);
 	// END OF MAIN
 	return (0);
 }

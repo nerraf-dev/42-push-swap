@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 13:17:16 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/21 15:33:55 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/25 13:42:38 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,20 +49,22 @@ void	append_node(t_stack_node **stack, int value)
 	}
 }
 
-void	free_stack(t_stack_node	**stack)
+void	free_stack(t_stack_node **stack)
 {
-	t_stack_node	*current;
-	t_stack_node	*next;
+	t_stack_node *current;
+	t_stack_node *next;
+
 	if (!stack || !*stack)
-		return ;
+		return;
+
 	current = *stack;
-	while (current != NULL)
+	while (current)
 	{
 		next = current->next;
 		free(current);
 		current = next;
 	}
-	*stack = NULL;
+	*stack = NULL; // Set the stack pointer to NULL after freeing
 }
 
 int	stack_len(t_stack_node *stack)

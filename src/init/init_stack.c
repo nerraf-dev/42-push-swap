@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 17:07:11 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/25 12:46:59 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/25 13:39:39 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ t_stack_node	*initialise_stack(int *arr, int size)
 
 	head = NULL;
 	new_node = NULL;
+	if (arr == NULL)
+		return (head);
 	i = size - 1;
 	while (i >= 0)
 	{

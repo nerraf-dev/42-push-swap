@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 19:48:33 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/25 12:44:22 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/25 13:42:55 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,13 @@
 
 // Initialization Functions
 
+// TODO: delete this function
+void			print_stack(t_stack_node *head, char *name);
+
 t_stack_node	*initialise_stack(int *arr, int size);
 void			handle_error(const char *message, char **split, int *int_array);
+void			free_stack(t_stack_node **stack);
+void			sort_small(t_stack_node	**stack_a, t_stack_node	**stack_b);
 // // Argument Parser Functions (arg_parser.h)
 // int		*argument_parser(int argc, char **argv, int *arr_size);
 // int		*parse_arguments(int argc, char **argv, int *arr_size);
