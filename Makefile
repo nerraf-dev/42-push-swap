@@ -6,7 +6,7 @@
 #    By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/20 13:36:23 by sfarren           #+#    #+#              #
-#    Updated: 2024/10/25 13:27:31 by sfarren          ###   ########.fr        #
+#    Updated: 2024/10/25 13:52:46 by sfarren          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,23 +30,12 @@ SRCS =  src/push_swap.c \
         src/init/parser_utils.c \
         src/init/init_stack.c \
         src/sort/sort_small.c \
-        # src/init/validate_args.c \
-        # src/init_a_b.c \
-        # src/init_b_a.c \
-        # src/push_swap.c \
-        # src/sort/move_a_to_b.c \
-        # src/sort/push.c \
-        # src/sort/rotate.c \
+        src/stack/stack_utils.c \
+        src/stack/push.c \
+        src/stack/rotate.c \
+        src/stack/swap.c \
+        src/stack/reverse_rotate.c \
 
-        # src/sort/swap.c \
-        # src/sort/move_utils.c \
-        # src/sort/reverse_rotate.c \
-        # src/sort/sort_big.c \
-        # src/sort/sort_utils.c \
-        # src/stack_ops/parsing.c \
-        # src/stack_ops/stack_init.c \
-        # src/stack_ops/stack_ops.c \
-        # src/stack_ops/validation.c
 
 OBJS = $(SRCS:.c=.o)
 

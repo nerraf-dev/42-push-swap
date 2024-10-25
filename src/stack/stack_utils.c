@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 13:17:16 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/25 13:42:38 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/25 13:51:18 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,15 +82,3 @@ int	stack_len(t_stack_node *stack)
 	return (len);
 }
 
-void	print_stack(t_stack_node *stack, char stack_name)
-{
-	t_stack_node	*current;
-
-	current = stack;
-	ft_printf("Stack %c\n", stack_name);
-	while (current != NULL)
-	{
-		ft_printf("Value: %d\n", current->value);
-		current = current->next;
-	}
-}

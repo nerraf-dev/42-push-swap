@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 19:48:33 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/25 13:42:55 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/25 13:51:28 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 // Initialization Functions
 
 // TODO: delete this function
-void			print_stack(t_stack_node *head, char *name);
+ void			print_stack(t_stack_node *head, char *name);
 
 t_stack_node	*initialise_stack(int *arr, int size);
 void			handle_error(const char *message, char **split, int *int_array);

@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 21:00:45 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/25 13:43:27 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/25 13:54:45 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int	main(int argc, char **argv)
 	// If not sorted:
 	//  initialise & populate stack_a
 	stack_a = initialise_stack(int_array, arr_size);
-	stack_b = NULL;
+	stack_b = initialise_stack(NULL, 0);
 	if(!stack_a)
 		handle_error("Memory allocation failed", NULL, int_array);
 	print_stack(stack_a, "a");
@@ -100,6 +100,8 @@ int	main(int argc, char **argv)
 	// free stack_b
 	// free int_array
 
+
+	print_stack(stack_a, "a");
 
 	// free(int_array);
 	free(int_array);
