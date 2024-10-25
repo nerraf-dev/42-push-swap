@@ -6,7 +6,7 @@
 #    By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/20 13:36:23 by sfarren           #+#    #+#              #
-#    Updated: 2024/10/23 15:02:46 by sfarren          ###   ########.fr        #
+#    Updated: 2024/10/25 12:41:22 by sfarren          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,17 +27,8 @@ LIBFT = $(LIBFT_DIR)/libft.a
 
 SRCS =  src/push_swap.c \
         src/init/parsing.c \
-        src/init/validation.c \
-        src/init/validation_utils.c \
-        src/init/split.c \
-        src/stack/push.c \
-        src/stack/reverse_rotate.c \
-        src/stack/rotate.c \
-        src/stack/swap.c \
-        src/sort/sort_small.c \
-        src/stack/stack_utils.c \
-
-        # src/init/init_stack.c \
+        src/init/parser_utils.c \
+        src/init/init_stack.c \
 
         # src/init/validate_args.c \
         # src/init_a_b.c \

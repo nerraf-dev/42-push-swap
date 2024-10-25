@@ -6,11 +6,24 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 11:14:36 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/25 12:06:55 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/25 12:45:49 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/arg_parser.h"
+
+void	free_split(char **split)
+{
+	int i;
+
+	i = 0;
+	while (split[i])
+	{
+		free(split[i]);
+		i++;
+	}
+	free(split);
+}
 
 int	*parse_single_arg(char **argv, int *arr_size)
 {
