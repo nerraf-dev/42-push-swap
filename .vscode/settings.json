@@ -12,6 +12,8 @@
 		"type_traits": "c",
 		"__hash_table": "c",
 		"variant": "c",
-		"functional": "c"
+		"functional": "c",
+		"push_swap.h": "c",
+		"arg_parser.h": "c"
 	}
 }

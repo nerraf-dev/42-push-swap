@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 19:48:33 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/21 15:54:46 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/25 11:59:40 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "../src/libft/libft.h"
 # include "stack.h"
+# include "arg_parser.h"
 # include <limits.h>
 # include <stdbool.h>
 # include <stddef.h>
@@ -38,11 +39,6 @@ int				stack_len(t_stack_node *stack);
 void			print_stack(t_stack_node	*stack, char stack_name);
 // int				stack_len(t_stack_node *stack);
 // void			current_index(t_stack_node *stack);
-
-// // Validation Functions
-// int				check_duplicates(int *arr, int size);
-// bool			is_valid_integer(const char *str);
-// bool			stack_sorted(t_stack_node *stack);
 
 // // Parsing Functions
 // int				*parse_arguments(int argc, char **argv);
