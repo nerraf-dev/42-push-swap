@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 11:14:18 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/25 11:58:59 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/25 12:08:04 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ int	int_array_length(int *int_array)
 	return (i);
 }
 
-int		is_valid_int(const char *str)
+int	is_valid_int(const char *str)
 {
 	if (!ft_isdigit(str[0]) && str[0] != '-')
 		return (0);
 	return (1);
 }
 
-int *convert_to_int_array(char **split, int size)
+int	*convert_to_int_array(char **split, int size)
 {
 	int	*int_array;
 	int	i;
@@ -40,12 +40,12 @@ int *convert_to_int_array(char **split, int size)
 	i = 0;
 	while (i < size)
 	{
-		if(!is_valid_int(split[i]))
+		if (!is_valid_int(split[i]))
 			handle_error("Invalid integer found", split, int_array);
 		int_array[i] = ft_atoi(split[i]);
 		i++;
 	}
-	return int_array;
+	return (int_array);
 }
 
 int	has_duplicates(int *arr, int size)

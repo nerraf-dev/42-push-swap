@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 13:34:33 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/25 12:01:12 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/25 12:11:35 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
  *
  * @param argc The number of command-line arguments.
  * @param argv The array of command-line arguments.
- * @param arr_size Pointer to an integer where the size of the resulting array will be stored.
+ * @param arr_size Pointer to integer where the size of the array will be stored.
  * @return Pointer to the integer array containing parsed arguments.
  */
 int		*argument_parser(int argc, char **argv, int *arr_size);
@@ -30,7 +30,7 @@ int		*argument_parser(int argc, char **argv, int *arr_size);
  *
  * @param argc The number of command-line arguments.
  * @param argv The array of command-line arguments.
- * @param arr_size Pointer to an integer where the size of the resulting array will be stored.
+ * @param arr_size Pointer to integer where the size of the array will be stored.
  * @return Pointer to the integer array containing parsed arguments.
  */
 int		*parse_arguments(int argc, char **argv, int *arr_size);
@@ -39,7 +39,7 @@ int		*parse_arguments(int argc, char **argv, int *arr_size);
  * @brief Parses a single command-line argument into an integer array.
  *
  * @param argv The array of command-line arguments.
- * @param arr_size Pointer to an integer where the size of the resulting array will be stored.
+ * @param arr_size Pointer to integer where the size of the array will be stored.
  * @return Pointer to the integer array containing parsed arguments.
  */
 int		*parse_single_arg(char **argv, int *arr_size);
@@ -51,14 +51,14 @@ int		*parse_single_arg(char **argv, int *arr_size);
  * @param split The array of strings to be freed.
  * @param int_array The integer array to be freed.
  */
-void		handle_error(const char *message, char **split, int *int_array);
+void	handle_error(const char *message, char **split, int *int_array);
 
 /**
  * @brief Frees a split array of strings.
  *
  * @param split The array of strings to be freed.
  */
-void		free_split(char **split);
+void	free_split(char **split);
 
 /**
  * @brief Calculates the length of an integer array.
@@ -93,6 +93,5 @@ int		*convert_to_int_array(char **split, int size);
  * @return 1 if duplicates are found, 0 otherwise.
  */
 int		has_duplicates(int *arr, int size);
-
 
 #endif

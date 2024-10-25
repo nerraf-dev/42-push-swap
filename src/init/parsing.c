@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 11:14:36 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/25 11:59:06 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/25 12:06:55 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ int	*parse_single_arg(char **argv, int *arr_size)
 	int_array = convert_to_int_array(split, *arr_size);
 	free_split(split);
 	duplicates = has_duplicates(int_array, *arr_size);
-		if (duplicates)
-			handle_error("Duplicate values found", NULL, int_array);
+	if (duplicates)
+		handle_error("Duplicate values found", NULL, int_array);
 	return (int_array);
 }
 
@@ -71,6 +71,6 @@ int	*argument_parser(int argc, char **argv, int *arr_size)
 	else
 		int_array = parse_arguments(argc, argv, arr_size);
 	if (!int_array)
-			handle_error("Memory allocation failed", NULL, NULL);
+		handle_error("Memory allocation failed", NULL, NULL);
 	return (int_array);
 }
