@@ -6,7 +6,7 @@
 #    By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/20 13:36:23 by sfarren           #+#    #+#              #
-#    Updated: 2024/10/25 13:52:46 by sfarren          ###   ########.fr        #
+#    Updated: 2024/10/25 14:34:53 by sfarren          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,12 +29,15 @@ SRCS =  src/push_swap.c \
         src/init/parsing.c \
         src/init/parser_utils.c \
         src/init/init_stack.c \
-        src/sort/sort_small.c \
+        src/sort/sort_utils.c \
+		src/sort/sort_small.c \
         src/stack/stack_utils.c \
         src/stack/push.c \
         src/stack/rotate.c \
         src/stack/swap.c \
         src/stack/reverse_rotate.c \
+		src/stack/init_a_b.c \
+		src/stack/init_b_a.c \
 
 
 OBJS = $(SRCS:.c=.o)
