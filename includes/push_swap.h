@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 19:48:33 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/25 14:48:08 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/25 21:43:10 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,9 @@ void			push_prep(t_stack_node **stack,	t_stack_node *top_node,
 t_stack_node	*get_cost(t_stack_node *stack);
 void			current_index(t_stack_node *stack);
 t_stack_node	*find_min(t_stack_node *stack);
+int				get_max(t_stack_node *stack);
+t_stack_node	*find_max(t_stack_node *stack);
+int				stack_size(t_stack_node *stack);
 // // Argument Parser Functions (arg_parser.h)
 // int		*argument_parser(int argc, char **argv, int *arr_size);
 // int		*parse_arguments(int argc, char **argv, int *arr_size);

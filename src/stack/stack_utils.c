@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 13:17:16 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/25 14:47:24 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/25 19:39:07 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,34 +19,6 @@ t_stack_node	*get_last_node(t_stack_node *stack)
 	while (stack && stack->next)
 		stack = stack->next;
 	return (stack);
-}
-
-void	append_node(t_stack_node **stack, int value)
-{
-	t_stack_node	*new_node;
-	t_stack_node	*last;
-
-	if (!stack)
-		return ;
-	new_node = (t_stack_node *)malloc(sizeof(t_stack_node));
-	if (!new_node)
-	{
-		ft_printf("Memory allocation failed");
-		return ;
-	}
-	new_node->value = value;
-	new_node->next = NULL;
-	if (!*stack)
-	{
-		*stack = new_node;
-		new_node->prev = NULL;
-	}
-	else
-	{
-		last = get_last_node(*stack);
-		last->next = new_node;
-		new_node->prev = last;
-	}
 }
 
 void	free_stack(t_stack_node **stack)
@@ -100,4 +72,24 @@ t_stack_node	*find_min(t_stack_node *stack)
 		stack = stack->next;
 	}
 	return (min_node);
+}
+
+t_stack_node	*find_max(t_stack_node *stack)
+{
+	long			max;
+	t_stack_node	*max_node;
+
+	if (!stack)
+		return (NULL);
+	max = LONG_MIN;
+	while (stack)
+	{
+		if (stack->value > max)
+		{
+			max = stack->value;
+			max_node = stack;
+		}
+		stack = stack->next;
+	}
+	return (max_node);
 }

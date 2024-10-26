@@ -6,11 +6,11 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 21:20:12 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/25 14:16:58 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/25 19:36:53 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 void	current_index(t_stack_node *stack)
 {

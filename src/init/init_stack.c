@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 17:07:11 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/25 14:40:19 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/25 19:30:31 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,33 +41,6 @@ t_stack_node	*initialise_stack(int *arr, int size)
 	return (head);
 }
 
-static void	append_node(t_stack_node **stack, int n)
-{
-	t_stack_node	*node;
-	t_stack_node	*last_node;
-
-	if (!stack)
-		return ;
-	node = malloc(sizeof(t_stack_node));
-	if (!node)
-		return ;
-	node->next = NULL;
-	node->value = n;
-	node->cost = 0;
-
-	if (!(*stack))
-	{
-		*stack = node;
-		node->prev = NULL;
-	}
-	else
-	{
-		last_node = find_last(*stack);
-		last_node->next = node;
-		node->prev = last_node;
-	}
-}
-
 t_stack_node	*get_cost(t_stack_node *stack)
 {
 	if (!stack)
@@ -82,7 +55,7 @@ t_stack_node	*get_cost(t_stack_node *stack)
 }
 
 void	push_prep(t_stack_node **stack,	t_stack_node *top_node,
-						char stack_name) 
+						char stack_name)
 {
 	while (*stack != top_node) //Check if the required node is not already the first node
 	{

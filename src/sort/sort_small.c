@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 19:40:20 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/25 14:49:31 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/25 21:50:44 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,19 +56,12 @@ void	sort_three(t_stack_node	**stack)
 
 void	sort_small(t_stack_node	**stack_a, t_stack_node	**stack_b)
 {
-
 	if (stack_size(*stack_a) == 2)
 		sort_two(stack_a);
 	else if (stack_size(*stack_a) == 3)
 		sort_three(stack_a);
 	else
-		// for 4 or 5 elements push top 1 or 2 elements to stack b
-		// sort the remaining 3 elements in stack a (sort_three)
-		// push the 1 or 2 elements back to stack a in correct place
-
-		//init stack b as empty stack
-		// push from stack a to stack b until stack a has 3 elements
-
+	{
 		while (stack_size(*stack_a) > 3)
 			pb(stack_a, stack_b);
 		sort_three(stack_a);
@@ -81,11 +74,6 @@ void	sort_small(t_stack_node	**stack_a, t_stack_node	**stack_b)
 		}
 		current_index(*stack_a);
 		min_on_top(stack_a);
-
-
-		// print_stack(*stack_b, "b");
-		//free stacks
-
-
+	}
 
 }

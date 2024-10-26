@@ -6,11 +6,11 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 18:57:16 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/19 17:51:12 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/25 21:43:20 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 static void	set_target_b(t_stack_node *stack_a, t_stack_node *stack_b)
 {
