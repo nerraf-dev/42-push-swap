@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 14:34:31 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/25 19:35:02 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/26 13:09:26 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,29 @@ int	get_max(t_stack_node *stack)
 	return (max);
 }
 
-int	stack_size(t_stack_node *stack)
+bool	stack_sorted(t_stack_node	*stack)
 {
 	t_stack_node	*current;
-	int				size;
 
+	if (!stack)
+		return (true);
 	current = stack;
-	size = 0;
-	while (current)
+	while (current->next)
 	{
-		size++;
+		if (current->value > current->next->value)
+			return (false);
 		current = current->next;
 	}
-	return (size);
+	return (true);
+}
+
+void	min_to_top(t_stack_node **stack_a)
+{
+	while ((*stack_a)->value != find_min(*stack_a)->value)
+	{
+		if (find_min(*stack_a)->above_median)
+			ra(stack_a);
+		else
+			rra(stack_a);
+	}
 }

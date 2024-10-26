@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 13:17:16 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/25 19:39:07 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/26 14:39:24 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,19 +39,44 @@ void	free_stack(t_stack_node **stack)
 	*stack = NULL; // Set the stack pointer to NULL after freeing
 }
 
-int	stack_len(t_stack_node *stack)
-{
-	int				len;
-	t_stack_node	*current;
+// int	stack_size(t_stack_node *stack)
+// {
+// 	t_stack_node	*current;
+// 	int				size;
 
-	len = 0;
-	current = stack;
-	while (current != NULL)
+// 	current = stack;
+// 	size = 0;
+// 	while (current)
+// 	{
+// 		size++;
+// 		current = current->next;
+// 	}
+// 	return (size);
+// }
+
+int stack_size(t_stack_node *stack)
+{
+	t_stack_node *slow;
+	t_stack_node *fast;
+	int size;
+
+	slow = stack;
+	fast = stack;
+	size = 0;
+	while (slow && fast && fast->next)
 	{
-		len++;
-		current = current->next;
+		size++;
+		slow = slow->next;
+		fast = fast->next->next;
+		if (slow == fast)
+			return (-1);
 	}
-	return (len);
+	while (slow)
+	{
+		size++;
+		slow = slow->next;
+	}
+	return size;
 }
 
 t_stack_node	*find_min(t_stack_node *stack)

@@ -14,6 +14,9 @@
 		"variant": "c",
 		"functional": "c",
 		"push_swap.h": "c",
-		"arg_parser.h": "c"
+		"arg_parser.h": "c",
+		"stddef.h": "c",
+		"limits.h": "c",
+		"stack.h": "c"
 	}
 }

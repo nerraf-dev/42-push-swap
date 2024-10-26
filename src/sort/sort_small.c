@@ -6,26 +6,18 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 19:40:20 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/25 21:50:44 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/26 14:22:48 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-static void move_b_to_a(t_stack_node **stack_a, t_stack_node **stack_b)
+void	push_b_to_a(t_stack_node **stack_a, t_stack_node **stack_b)
 {
-	push_prep(stack_a, (*stack_b)->target, 'a');
-	pa(stack_a, stack_b);
-}
-
-void min_on_top(t_stack_node **stack_a)
-{
-	while ((*stack_a)->value != find_min(*stack_a)->value)
+	if (*stack_b)
 	{
-		if (find_min(*stack_a)->above_median)
-			ra(stack_a);
-		else
-			rra(stack_a);
+		push_prep(stack_a, (*stack_b)->target, 'a');
+		pa(stack_a, stack_b);
 	}
 }
 
@@ -68,12 +60,12 @@ void	sort_small(t_stack_node	**stack_a, t_stack_node	**stack_b)
 		while (*stack_b)
 		{
 			// init stack_b nodes
-			initialise_nodes_b(*stack_a, *stack_b);
+			initialise_b_nodes(*stack_a, *stack_b);
 			//move b to a
-			move_b_to_a(stack_a, stack_b);
+			push_b_to_a(stack_a, stack_b);
 		}
 		current_index(*stack_a);
-		min_on_top(stack_a);
+		min_to_top(stack_a);
 	}
 
 }

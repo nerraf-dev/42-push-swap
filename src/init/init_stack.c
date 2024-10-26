@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 17:07:11 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/25 19:30:31 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/26 12:55:33 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,24 @@ t_stack_node	*initialise_stack(int *arr, int size)
 	return (head);
 }
 
-t_stack_node	*get_cost(t_stack_node *stack)
+
+/**
+ * @brief Retrieves the node with the lowest cost from the stack.
+ *
+ * This function traverses the given stack and returns the first node
+ * that has the `lowest_cost` flag set to true. If no such node is found,
+ * or if the stack is empty, the function returns NULL.
+ *
+ * @param stack A pointer to the head of the stack.
+ * @return A pointer to the node with the lowest cost, or NULL if no such node exists.
+ */
+t_stack_node	*get_lc_node(t_stack_node *stack)
 {
 	if (!stack)
 		return (NULL);
 	while (stack)
 	{
-		if (stack->cost)
+		if (stack->lowest_cost)
 			return (stack);
 		stack = stack->next;
 	}

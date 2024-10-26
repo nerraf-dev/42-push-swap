@@ -6,27 +6,11 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 21:00:45 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/25 14:01:36 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/26 15:17:47 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-bool	stack_sorted(t_stack_node	*stack)
-{
-	t_stack_node	*current;
-
-	if (!stack)
-		return (true);
-	current = stack;
-	while (current->next)
-	{
-		if (current->value > current->next->value)
-			return (false);
-		current = current->next;
-	}
-	return (true);
-}
 
 bool	is_sorted(int *int_array, int arr_size)
 {
@@ -50,6 +34,11 @@ void print_stack(t_stack_node *head, char *name)
 	while (current != NULL)
 	{
 		ft_printf("Value: %d\n", current->value);
+		ft_printf("Index: %d\n", current->index);
+		ft_printf("Cost: %d\n", current->cost);
+		ft_printf("Lowest Cost: %d\n", current->lowest_cost);
+		ft_printf("Above Median: %d\n", current->above_median);
+		ft_printf("\n");
 		current = current->next;
 	}
 }
@@ -77,32 +66,18 @@ int	main(int argc, char **argv)
 
 	arr_size = 0;
 	int_array = argument_parser(argc, argv, &arr_size);
-	// Check if array is sorted
-	//  If sorted -> end
 	if (is_sorted(int_array, arr_size))
 		return (0);
-	// If not sorted:
-	//  initialise & populate stack_a
 	stack_a = initialise_stack(int_array, arr_size);
 	stack_b = initialise_stack(NULL, 0);
 	if(!stack_a)
 		handle_error("Memory allocation failed", NULL, int_array);
-	// print_stack(stack_a, "a");
-	// if arr_size 5 or less - sort small
 	if (arr_size <= 5)
-	{
 		sort_small(&stack_a, &stack_b);
-	}
-	// else:
-	//		initialise stack_b
-	//		sort big
-	// free stack_a
-	// free stack_b
-	// free int_array
+	else
+		sort_big(&stack_a, &stack_b);
 
-
-	// print_stack(stack_a, "a");
-
+	
 	// free(int_array);
 	free(int_array);
 	free_stack(&stack_a);

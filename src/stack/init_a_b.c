@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 21:20:12 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/25 19:36:53 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/26 15:15:59 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	current_index(t_stack_node *stack)
 	i = 0;
 	if (!stack)
 		return ;
-	median = stack_len(stack) / 2;
+	median = stack_size(stack) / 2;
 	while (stack)
 	{
 		stack->index = i;
@@ -66,8 +66,8 @@ static void	calculate_cost_a(t_stack_node *stack_a, t_stack_node *stack_b)
 	int	len_a;
 	int	len_b;
 
-	len_a = stack_len(stack_a);
-	len_b = stack_len(stack_b);
+	len_a = stack_size(stack_a);
+	len_b = stack_size(stack_b);
 	while (stack_a)
 	{
 		stack_a->cost = stack_a->index;
@@ -104,6 +104,8 @@ void	set_lowest_cost(t_stack_node *stack)
 void	initialise_nodes_a(t_stack_node *stack_a, t_stack_node *stack_b)
 {
 	current_index(stack_a);
+	// ft_printf("---STACK A INDEXED---\n");
+	// print_stack(stack_a, "A");
 	current_index(stack_b);
 	set_target_a(stack_a, stack_b);
 	calculate_cost_a(stack_a, stack_b);
