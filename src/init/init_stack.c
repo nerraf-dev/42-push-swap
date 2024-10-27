@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 17:07:11 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/26 12:55:33 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/26 19:37:32 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,3 +86,4 @@ void	push_prep(t_stack_node **stack,	t_stack_node *top_node,
 		}
 	}
 }
+

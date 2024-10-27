@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 12:28:29 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/26 15:16:40 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/26 19:40:15 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,19 @@ void	sort_big(t_stack_node **stack_a, t_stack_node **stack_b)
 	ft_printf("---STACK B - AFTER INITIAL PUSH---\n");
 	print_stack(*stack_b, "B");
 	sort_small(stack_a, stack_b);
-	// while(stack_b)
-	// {
-	// 	initialise_b_nodes(*stack_a, *stack_b);
-	// 	push_b_to_a(stack_a, stack_b);
-	// }
+	while (stack_b)
+	{
+		// Debugging: Print the current state of stack_b before initialise_b_nodes and push_b_to_a
+		ft_printf("Before initialise_b_nodes and push_b_to_a:\n");
+		print_stack(*stack_b, "B");
+
+		initialise_b_nodes(*stack_a, *stack_b);
+		push_b_to_a(stack_a, stack_b);
+
+		// Debugging: Print the current state of stack_b after push_b_to_a
+		ft_printf("After initialise_b_nodes and push_b_to_a:\n");
+		print_stack(*stack_b, "B");
+	}
 	ft_printf("-----------------------------------\n");
 	ft_printf("---STACK A - AFTER SORTING---\n");
 	print_stack(*stack_a, "A");

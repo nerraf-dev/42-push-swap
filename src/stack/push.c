@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 13:25:15 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/25 13:26:10 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/26 19:45:53 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	push(t_stack_node **dst, t_stack_node **src)
 {
 	t_stack_node	*tmp;
 
-	if (!*src)
+	if (*src == NULL)
 		return ;
 	tmp = *src;
 	*src = (*src)->next;
