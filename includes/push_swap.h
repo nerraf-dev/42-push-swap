@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 19:48:33 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/26 13:10:56 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/27 12:34:43 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void			push_b_to_a(t_stack_node **stack_a, t_stack_node **stack_b);
 // Sorting Functions
 void			sort_small(t_stack_node	**stack_a, t_stack_node	**stack_b);
 void			sort_big(t_stack_node **stack_a, t_stack_node **stack_b);
+
 // Sort utils
 void			min_to_top(t_stack_node **stack_a);
 t_stack_node	*get_lc_node(t_stack_node *stack);

@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 21:20:12 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/26 15:15:59 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/27 13:34:07 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,9 +104,12 @@ void	set_lowest_cost(t_stack_node *stack)
 void	initialise_nodes_a(t_stack_node *stack_a, t_stack_node *stack_b)
 {
 	current_index(stack_a);
+	//TODO: delete this
 	// ft_printf("---STACK A INDEXED---\n");
 	// print_stack(stack_a, "A");
 	current_index(stack_b);
+	// ft_printf("---STACK B INDEXED---\n");
+	// print_stack(stack_b, "B");
 	set_target_a(stack_a, stack_b);
 	calculate_cost_a(stack_a, stack_b);
 	set_lowest_cost(stack_a);

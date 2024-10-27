@@ -17,6 +17,7 @@
 		"arg_parser.h": "c",
 		"stddef.h": "c",
 		"limits.h": "c",
-		"stack.h": "c"
+		"stack.h": "c",
+		"concepts": "c"
 	}
 }

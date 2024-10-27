@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 21:00:45 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/26 19:13:08 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/27 13:33:09 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,12 @@ void print_stack(t_stack_node *head, char *name)
 		ft_printf("Cost: %d\n", current->cost);
 		ft_printf("Lowest Cost: %d\n", current->lowest_cost);
 		ft_printf("Above Median: %d\n", current->above_median);
+		ft_printf("Next Node: %p\n", (void *)current->next);
+		ft_printf("Next Node Value: %d\n", current->next ? current->next->value : -99999);
+		ft_printf("Prev Node: %p\n", (void *)current->prev);
+		// ft_printf("Prev Node Value: %d\n", current->prev ? current->prev->value : -99999);
+		// ft_printf("Target Node: %p\n", (void *)current->target);
+		ft_printf("Target Node Value: %d\n", current->target ? current->target->value : -99999);
 		ft_printf("\n");
 		current = current->next;
 	}
@@ -76,8 +82,9 @@ int	main(int argc, char **argv)
 		sort_small(&stack_a, &stack_b);
 	else
 		sort_big(&stack_a, &stack_b);
-
-	print_stack(stack_a, "A");
+	//TODO: delete this
+	// ft_printf("\n\n--===Final state of stack A:===--\n");
+	// print_stack(stack_a, "A");
 	// free(int_array);
 	free(int_array);
 	free_stack(&stack_a);
