@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 13:17:16 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/26 14:39:24 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/28 11:17:57 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,11 @@ t_stack_node	*get_last_node(t_stack_node *stack)
 
 void	free_stack(t_stack_node **stack)
 {
-	t_stack_node *current;
-	t_stack_node *next;
+	t_stack_node	*current;
+	t_stack_node	*next;
 
 	if (!stack || !*stack)
-		return;
-
+		return ;
 	current = *stack;
 	while (current)
 	{
@@ -36,29 +35,14 @@ void	free_stack(t_stack_node **stack)
 		free(current);
 		current = next;
 	}
-	*stack = NULL; // Set the stack pointer to NULL after freeing
+	*stack = NULL;
 }
 
-// int	stack_size(t_stack_node *stack)
-// {
-// 	t_stack_node	*current;
-// 	int				size;
-
-// 	current = stack;
-// 	size = 0;
-// 	while (current)
-// 	{
-// 		size++;
-// 		current = current->next;
-// 	}
-// 	return (size);
-// }
-
-int stack_size(t_stack_node *stack)
+int	stack_size(t_stack_node *stack)
 {
-	t_stack_node *slow;
-	t_stack_node *fast;
-	int size;
+	t_stack_node	*slow;
+	t_stack_node	*fast;
+	int				size;
 
 	slow = stack;
 	fast = stack;
@@ -76,7 +60,7 @@ int stack_size(t_stack_node *stack)
 		size++;
 		slow = slow->next;
 	}
-	return size;
+	return (size);
 }
 
 t_stack_node	*find_min(t_stack_node *stack)

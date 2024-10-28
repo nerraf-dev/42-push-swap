@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 17:36:03 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/21 15:16:56 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/28 11:18:15 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,11 @@ static void	swap(t_stack_node **stack)
 	current = *stack;
 	next = current->next;
 	prev = current->prev;
-
 	(*stack) = next;
 	current->prev = next;
 	current->next = next->next;
 	next->prev = prev;
 	next->next = current;
-
 }
 
 void	sa(t_stack_node **a)

@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 11:14:18 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/25 12:18:46 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/28 11:12:30 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,3 @@ int	has_duplicates(int *arr, int size)
 	}
 	return (0);
 }
-

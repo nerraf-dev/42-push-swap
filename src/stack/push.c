@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 13:25:15 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/26 19:45:53 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/28 11:15:15 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,3 @@ void	pb(t_stack_node **stack_a, t_stack_node **stack_b)
 	push(stack_b, stack_a);
 	ft_printf("pb\n");
 }
-
-

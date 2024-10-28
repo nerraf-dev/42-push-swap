@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 18:57:16 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/26 15:15:03 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/28 11:15:06 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,6 @@ static void	set_target_b(t_stack_node *stack_a, t_stack_node *stack_b)
 void	initialise_b_nodes(t_stack_node *stack_a, t_stack_node *stack_b)
 {
 	current_index(stack_a);
-	// ft_printf("---init_nodes_b: STACK A indexed---\n");
-	// print_stack(stack_a, "A");
 	current_index(stack_b);
-	// ft_printf("---init_nodes_b: STACK B indexed---\n");
-	// print_stack(stack_b, "B");
 	set_target_b(stack_a, stack_b);
 }
