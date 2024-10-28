@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 19:48:33 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/28 11:07:40 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/10/28 11:24:45 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,6 @@
 # include <limits.h>
 # include <stdbool.h>
 # include <stddef.h>
-
-// TODO: delete this function
-void			print_stack(t_stack_node *head, char *name);
 
 // Stack Initialisation Functions
 t_stack_node	*initialise_stack(int *arr, int size);
