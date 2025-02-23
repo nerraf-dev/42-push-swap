@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 12:28:29 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/28 13:08:49 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/02/23 13:45:47 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,27 +68,3 @@ void	sort_big(t_stack_node **stack_a, t_stack_node **stack_b)
 	}
 	min_to_top(stack_a);
 }
-
-// void	sort_big(t_stack_node **stack_a, t_stack_node **stack_b)
-// {
-//     int		len;
-
-//     len = stack_size(*stack_a);
-
-//     // Push elements to stack_b based on the size of stack_a
-//     while (len-- > 3)
-//         pb(stack_a, stack_b);
-
-//     // Sort the remaining small stack
-//     sort_small(stack_a, stack_b);
-
-//     // Sort stack_b and push elements back to stack_a
-//     while (*stack_b)
-//     {
-//         initialise_b_nodes(*stack_a, *stack_b);
-//         push_b_to_a(stack_a, stack_b);
-//     }
-
-//     // Move the minimum element to the top of stack_a
-//     min_to_top(stack_a);
-// }
