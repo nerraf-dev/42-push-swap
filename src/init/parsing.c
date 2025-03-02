@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 11:14:36 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/28 11:10:54 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/02 16:13:27 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	free_split(char **split)
 	free(split);
 }
 
-int	*parse_single_arg(char **argv, int *arr_size)
+static int	*parse_single_arg(char **argv, int *arr_size)
 {
 	char	**split;
 	int		*int_array;
@@ -51,7 +51,7 @@ int	*parse_single_arg(char **argv, int *arr_size)
 	return (int_array);
 }
 
-int	*parse_arguments(int argc, char **argv, int *arr_size)
+static int	*parse_arguments(int argc, char **argv, int *arr_size)
 {
 	int		*int_array;
 	int		i;

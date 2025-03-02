@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 13:34:33 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/25 12:11:35 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/02 16:13:22 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,25 +24,6 @@
  * @return Pointer to the integer array containing parsed arguments.
  */
 int		*argument_parser(int argc, char **argv, int *arr_size);
-
-/**
- * @brief Parses command-line arguments into an integer array.
- *
- * @param argc The number of command-line arguments.
- * @param argv The array of command-line arguments.
- * @param arr_size Pointer to integer where the size of the array will be stored.
- * @return Pointer to the integer array containing parsed arguments.
- */
-int		*parse_arguments(int argc, char **argv, int *arr_size);
-
-/**
- * @brief Parses a single command-line argument into an integer array.
- *
- * @param argv The array of command-line arguments.
- * @param arr_size Pointer to integer where the size of the array will be stored.
- * @return Pointer to the integer array containing parsed arguments.
- */
-int		*parse_single_arg(char **argv, int *arr_size);
 
 /**
  * @brief Handles errors by printing a message and freeing allocated memory.

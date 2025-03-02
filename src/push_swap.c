@@ -6,13 +6,13 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 21:00:45 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/28 11:10:27 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/02 16:07:50 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-bool	is_sorted(int *int_array, int arr_size)
+static bool	is_sorted(int *int_array, int arr_size)
 {
 	int	i;
 

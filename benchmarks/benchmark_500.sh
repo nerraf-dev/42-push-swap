@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Generate 500 random unique integers
-python3 ../generate_random_numbers.py 500 > random_numbers.txt
+python3 benchmarks/generate_random_numbers.py 500 > random_numbers.txt
 
 # Run the push_swap program with the generated numbers
 ./push_swap < random_numbers.txt > operations.txt
@@ -17,4 +17,4 @@ else
 fi
 
 # Clean up
-rm random_numbers.txt operations.txt
+# rm random_numbers.txt operations.txt
