@@ -6,14 +6,14 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 13:34:33 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/02 16:13:22 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/04 10:44:14 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ARG_PARSER_H
 # define ARG_PARSER_H
 
-# include "../src/libft/libft.h"
+# include "../src/libft/src/libft.h"
 
 /**
  * @brief Parses command-line arguments into an integer array.

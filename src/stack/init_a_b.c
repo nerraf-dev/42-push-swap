@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 21:20:12 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/28 11:15:49 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/04 09:53:42 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	current_index(t_stack_node *stack)
 	i = 0;
 	if (!stack)
 		return ;
-	median = stack_size(stack) / 2;
+	median = s_size(stack) / 2;
 	while (stack)
 	{
 		stack->index = i;
@@ -66,8 +66,8 @@ static void	calculate_cost_a(t_stack_node *stack_a, t_stack_node *stack_b)
 	int	len_a;
 	int	len_b;
 
-	len_a = stack_size(stack_a);
-	len_b = stack_size(stack_b);
+	len_a = s_size(stack_a);
+	len_b = s_size(stack_b);
 	while (stack_a)
 	{
 		stack_a->cost = stack_a->index;
