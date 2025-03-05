@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 21:18:15 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/05 19:23:51 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/05 19:37:49 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <limits.h>
 # include <stdlib.h>
 # include <stdarg.h>
-# include "../libft/libft.h"
+# include "../src/libft/libft.h"
 
 // # include "../push_swap.h"
 
