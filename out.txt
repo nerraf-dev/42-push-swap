@@ -1,665 +1,915 @@
----STACK A START---
-Stack A:
-Value: 5
-Index: 0
-Cost: 0
-Lowest Cost: 0
-Above Median: 0
-Next Node: 0x55555555b480
-Next Node Value: 3
-Prev Node: (nil)
-Target Node Value: -99999
-
-Value: 3
-Index: 0
-Cost: 0
-Lowest Cost: 0
-Above Median: 0
-Next Node: 0x55555555b450
-Next Node Value: 7
-Prev Node: 0x55555555b4b0
-Target Node Value: -99999
-
-Value: 7
-Index: 0
-Cost: 0
-Lowest Cost: 0
-Above Median: 0
-Next Node: 0x55555555b420
-Next Node Value: 1
-Prev Node: 0x55555555b480
-Target Node Value: -99999
-
-Value: 1
-Index: 0
-Cost: 0
-Lowest Cost: 0
-Above Median: 0
-Next Node: 0x55555555b3f0
-Next Node Value: -9
-Prev Node: 0x55555555b450
-Target Node Value: -99999
-
-Value: -9
-Index: 0
-Cost: 0
-Lowest Cost: 0
-Above Median: 0
-Next Node: 0x55555555b3c0
-Next Node Value: 42
-Prev Node: 0x55555555b420
-Target Node Value: -99999
-
-Value: 42
-Index: 0
-Cost: 0
-Lowest Cost: 0
-Above Median: 0
-Next Node: (nil)
-Next Node Value: -99999
-Prev Node: 0x55555555b3f0
-Target Node Value: -99999
-
 pb
 pb
 sb
----STACK A INDEXED---
-Stack A:
-Value: 7
-Index: 0
-Cost: 0
-Lowest Cost: 0
-Above Median: 1
-Next Node: 0x55555555b420
-Next Node Value: 1
-Prev Node: 0x55555555b480
-Target Node Value: -99999
-
-Value: 1
-Index: 1
-Cost: 0
-Lowest Cost: 0
-Above Median: 1
-Next Node: 0x55555555b3f0
-Next Node Value: -9
-Prev Node: 0x55555555b450
-Target Node Value: -99999
-
-Value: -9
-Index: 2
-Cost: 0
-Lowest Cost: 0
-Above Median: 1
-Next Node: 0x55555555b3c0
-Next Node Value: 42
-Prev Node: 0x55555555b420
-Target Node Value: -99999
-
-Value: 42
-Index: 3
-Cost: 0
-Lowest Cost: 0
-Above Median: 0
-Next Node: (nil)
-Next Node Value: -99999
-Prev Node: 0x55555555b3f0
-Target Node Value: -99999
-
----STACK B INDEXED---
-Stack B:
-Value: 5
-Index: 0
-Cost: 0
-Lowest Cost: 0
-Above Median: 1
-Next Node: 0x55555555b480
-Next Node Value: 3
-Prev Node: 0x55555555b4b0
-Target Node Value: -99999
-
-Value: 3
-Index: 1
-Cost: 0
-Lowest Cost: 0
-Above Median: 1
-Next Node: (nil)
-Next Node Value: -99999
-Prev Node: 0x55555555b4b0
-Target Node Value: -99999
-
----STACK A - AFTER INITIALISE NODES---
-Stack A:
-Value: 7
-Index: 0
-Cost: 0
-Lowest Cost: 1
-Above Median: 1
-Next Node: 0x55555555b420
-Next Node Value: 1
-Prev Node: 0x55555555b480
-Target Node Value: 5
-
-Value: 1
-Index: 1
-Cost: 1
-Lowest Cost: 0
-Above Median: 1
-Next Node: 0x55555555b3f0
-Next Node Value: -9
-Prev Node: 0x55555555b450
-Target Node Value: 5
-
-Value: -9
-Index: 2
-Cost: 2
-Lowest Cost: 0
-Above Median: 1
-Next Node: 0x55555555b3c0
-Next Node Value: 42
-Prev Node: 0x55555555b420
-Target Node Value: 5
-
-Value: 42
-Index: 3
-Cost: 1
-Lowest Cost: 0
-Above Median: 0
-Next Node: (nil)
-Next Node Value: -99999
-Prev Node: 0x55555555b3f0
-Target Node Value: 5
-
----STACK B - AFTER INITIALISE NODES---
-Stack B:
-Value: 5
-Index: 0
-Cost: 0
-Lowest Cost: 0
-Above Median: 1
-Next Node: 0x55555555b480
-Next Node Value: 3
-Prev Node: 0x55555555b4b0
-Target Node Value: -99999
-
-Value: 3
-Index: 1
-Cost: 0
-Lowest Cost: 0
-Above Median: 1
-Next Node: (nil)
-Next Node Value: -99999
-Prev Node: 0x55555555b4b0
-Target Node Value: -99999
-
+rb
 pb
----STACK A---
-Stack A:
-Value: 1
-Index: 1
-Cost: 1
-Lowest Cost: 0
-Above Median: 1
-Next Node: 0x55555555b3f0
-Next Node Value: -9
-Prev Node: 0x55555555b450
-Target Node Value: 5
-
-Value: -9
-Index: 2
-Cost: 2
-Lowest Cost: 0
-Above Median: 1
-Next Node: 0x55555555b3c0
-Next Node Value: 42
-Prev Node: 0x55555555b420
-Target Node Value: 5
-
-Value: 42
-Index: 3
-Cost: 1
-Lowest Cost: 0
-Above Median: 0
-Next Node: (nil)
-Next Node Value: -99999
-Prev Node: 0x55555555b3f0
-Target Node Value: 5
-
----STACK B - AFTER INITIAL PUSH---
-Stack B:
-Value: 7
-Index: 0
-Cost: 0
-Lowest Cost: 1
-Above Median: 1
-Next Node: 0x55555555b4b0
-Next Node Value: 5
-Prev Node: 0x55555555b480
-Target Node Value: 5
-
-Value: 5
-Index: 0
-Cost: 0
-Lowest Cost: 0
-Above Median: 1
-Next Node: 0x55555555b480
-Next Node Value: 3
-Prev Node: 0x55555555b4b0
-Target Node Value: -99999
-
-Value: 3
-Index: 1
-Cost: 0
-Lowest Cost: 0
-Above Median: 1
-Next Node: (nil)
-Next Node Value: -99999
-Prev Node: 0x55555555b4b0
-Target Node Value: -99999
-
-sa
-Before initialise_b_nodes and push_b_to_a:
-Stack B:
-Value: 7
-Index: 0
-Cost: 0
-Lowest Cost: 1
-Above Median: 1
-Next Node: 0x55555555b4b0
-Next Node Value: 5
-Prev Node: 0x55555555b480
-Target Node Value: 5
-
-Value: 5
-Index: 0
-Cost: 0
-Lowest Cost: 0
-Above Median: 1
-Next Node: 0x55555555b480
-Next Node Value: 3
-Prev Node: 0x55555555b4b0
-Target Node Value: -99999
-
-Value: 3
-Index: 1
-Cost: 0
-Lowest Cost: 0
-Above Median: 1
-Next Node: (nil)
-Next Node Value: -99999
-Prev Node: 0x55555555b4b0
-Target Node Value: -99999
-
-Before push_prep:
-Stack B:
-Value: 7
-Index: 0
-Cost: 0
-Lowest Cost: 1
-Above Median: 1
-Next Node: 0x55555555b4b0
-Next Node Value: 5
-Prev Node: 0x55555555b480
-Target Node Value: 42
-
-Value: 5
-Index: 1
-Cost: 0
-Lowest Cost: 0
-Above Median: 1
-Next Node: 0x55555555b480
-Next Node Value: 3
-Prev Node: 0x55555555b4b0
-Target Node Value: 42
-
-Value: 3
-Index: 2
-Cost: 0
-Lowest Cost: 0
-Above Median: 0
-Next Node: (nil)
-Next Node Value: -99999
-Prev Node: 0x55555555b4b0
-Target Node Value: 42
-
-rra
-Before pa:
-Stack B:
-Value: 7
-Index: 0
-Cost: 0
-Lowest Cost: 1
-Above Median: 1
-Next Node: 0x55555555b4b0
-Next Node Value: 5
-Prev Node: 0x55555555b480
-Target Node Value: 42
-
-Value: 5
-Index: 1
-Cost: 0
-Lowest Cost: 0
-Above Median: 1
-Next Node: 0x55555555b480
-Next Node Value: 3
-Prev Node: 0x55555555b4b0
-Target Node Value: 42
-
-Value: 3
-Index: 2
-Cost: 0
-Lowest Cost: 0
-Above Median: 0
-Next Node: (nil)
-Next Node Value: -99999
-Prev Node: 0x55555555b4b0
-Target Node Value: 42
-
-pa
-After pa:
-Stack B:
-Value: 5
-Index: 1
-Cost: 0
-Lowest Cost: 0
-Above Median: 1
-Next Node: 0x55555555b480
-Next Node Value: 3
-Prev Node: 0x55555555b4b0
-Target Node Value: 42
-
-Value: 3
-Index: 2
-Cost: 0
-Lowest Cost: 0
-Above Median: 0
-Next Node: (nil)
-Next Node Value: -99999
-Prev Node: 0x55555555b4b0
-Target Node Value: 42
-
-After initialise_b_nodes and push_b_to_a:
-Stack B:
-Value: 5
-Index: 1
-Cost: 0
-Lowest Cost: 0
-Above Median: 1
-Next Node: 0x55555555b480
-Next Node Value: 3
-Prev Node: 0x55555555b4b0
-Target Node Value: 42
-
-Value: 3
-Index: 2
-Cost: 0
-Lowest Cost: 0
-Above Median: 0
-Next Node: (nil)
-Next Node Value: -99999
-Prev Node: 0x55555555b4b0
-Target Node Value: 42
-
-Before initialise_b_nodes and push_b_to_a:
-Stack B:
-Value: 5
-Index: 1
-Cost: 0
-Lowest Cost: 0
-Above Median: 1
-Next Node: 0x55555555b480
-Next Node Value: 3
-Prev Node: 0x55555555b4b0
-Target Node Value: 42
-
-Value: 3
-Index: 2
-Cost: 0
-Lowest Cost: 0
-Above Median: 0
-Next Node: (nil)
-Next Node Value: -99999
-Prev Node: 0x55555555b4b0
-Target Node Value: 42
-
-Before push_prep:
-Stack B:
-Value: 5
-Index: 0
-Cost: 0
-Lowest Cost: 0
-Above Median: 1
-Next Node: 0x55555555b480
-Next Node Value: 3
-Prev Node: 0x55555555b4b0
-Target Node Value: 7
-
-Value: 3
-Index: 1
-Cost: 0
-Lowest Cost: 0
-Above Median: 1
-Next Node: (nil)
-Next Node Value: -99999
-Prev Node: 0x55555555b4b0
-Target Node Value: 7
-
-Before pa:
-Stack B:
-Value: 5
-Index: 0
-Cost: 0
-Lowest Cost: 0
-Above Median: 1
-Next Node: 0x55555555b480
-Next Node Value: 3
-Prev Node: 0x55555555b4b0
-Target Node Value: 7
-
-Value: 3
-Index: 1
-Cost: 0
-Lowest Cost: 0
-Above Median: 1
-Next Node: (nil)
-Next Node Value: -99999
-Prev Node: 0x55555555b4b0
-Target Node Value: 7
-
-pa
-After pa:
-Stack B:
-Value: 3
-Index: 1
-Cost: 0
-Lowest Cost: 0
-Above Median: 1
-Next Node: (nil)
-Next Node Value: -99999
-Prev Node: 0x55555555b4b0
-Target Node Value: 7
-
-After initialise_b_nodes and push_b_to_a:
-Stack B:
-Value: 3
-Index: 1
-Cost: 0
-Lowest Cost: 0
-Above Median: 1
-Next Node: (nil)
-Next Node Value: -99999
-Prev Node: 0x55555555b4b0
-Target Node Value: 7
-
-Before initialise_b_nodes and push_b_to_a:
-Stack B:
-Value: 3
-Index: 1
-Cost: 0
-Lowest Cost: 0
-Above Median: 1
-Next Node: (nil)
-Next Node Value: -99999
-Prev Node: 0x55555555b4b0
-Target Node Value: 7
-
-Before push_prep:
-Stack B:
-Value: 3
-Index: 0
-Cost: 0
-Lowest Cost: 0
-Above Median: 1
-Next Node: (nil)
-Next Node Value: -99999
-Prev Node: 0x55555555b4b0
-Target Node Value: 5
-
-Before pa:
-Stack B:
-Value: 3
-Index: 0
-Cost: 0
-Lowest Cost: 0
-Above Median: 1
-Next Node: (nil)
-Next Node Value: -99999
-Prev Node: 0x55555555b4b0
-Target Node Value: 5
-
-pa
-After pa:
-Stack B:
-stack_b is now NULL
-After initialise_b_nodes and push_b_to_a:
-Stack B:
------------------------------------
----STACK A - AFTER SORTING---
-Stack A:
-Value: 3
-Index: 0
-Cost: 0
-Lowest Cost: 0
-Above Median: 1
-Next Node: 0x55555555b4b0
-Next Node Value: 5
-Prev Node: 0x55555555b4b0
-Target Node Value: 5
-
-Value: 5
-Index: 0
-Cost: 0
-Lowest Cost: 0
-Above Median: 1
-Next Node: 0x55555555b450
-Next Node Value: 7
-Prev Node: 0x55555555b4b0
-Target Node Value: 7
-
-Value: 7
-Index: 1
-Cost: 0
-Lowest Cost: 1
-Above Median: 1
-Next Node: 0x55555555b3c0
-Next Node Value: 42
-Prev Node: 0x55555555b480
-Target Node Value: 42
-
-Value: 42
-Index: 2
-Cost: 1
-Lowest Cost: 0
-Above Median: 1
-Next Node: 0x55555555b3f0
-Next Node Value: -9
-Prev Node: 0x55555555b3f0
-Target Node Value: 5
-
-Value: -9
-Index: 3
-Cost: 2
-Lowest Cost: 0
-Above Median: 0
-Next Node: 0x55555555b420
-Next Node Value: 1
-Prev Node: 0x55555555b450
-Target Node Value: 5
-
-Value: 1
-Index: 4
-Cost: 1
-Lowest Cost: 0
-Above Median: 0
-Next Node: (nil)
-Next Node Value: -99999
-Prev Node: 0x55555555b3f0
-Target Node Value: 5
-
----STACK B - AFTER SORTING---
-Stack B:
+rrb
+pb
+rrb
+pb
+rb
+rb
+pb
+rrb
+pb
+rb
+rb
+pb
+rrb
+pb
+rrb
+pb
+ra
+rrb
+pb
+ra
+rrb
+rrb
+pb
+rrb
+rrb
+rrb
+pb
+pb
+rrb
+pb
+rb
+rb
+rb
+pb
+pb
+rrb
+rrb
+pb
+rrb
+pb
+ra
+ra
+ra
+rrb
+pb
+ra
+rrb
+pb
+ra
+ra
+rrb
+rrb
+pb
+ra
+rrb
+pb
+rrb
+rrb
+pb
+rb
+rb
+pb
+rr
+rrb
+pb
+rrb
+pb
 rra
 rra
-
-
---===Final state of stack A:===--
-Stack A:
-Value: -9
-Index: 4
-Cost: 2
-Lowest Cost: 0
-Above Median: 0
-Next Node: 0x55555555b420
-Next Node Value: 1
-Prev Node: 0x55555555b450
-Target Node Value: 5
-
-Value: 1
-Index: 5
-Cost: 1
-Lowest Cost: 0
-Above Median: 0
-Next Node: 0x55555555b480
-Next Node Value: 3
-Prev Node: 0x55555555b3f0
-Target Node Value: 5
-
-Value: 3
-Index: 0
-Cost: 0
-Lowest Cost: 0
-Above Median: 1
-Next Node: 0x55555555b4b0
-Next Node Value: 5
-Prev Node: 0x55555555b4b0
-Target Node Value: 5
-
-Value: 5
-Index: 1
-Cost: 0
-Lowest Cost: 0
-Above Median: 1
-Next Node: 0x55555555b450
-Next Node Value: 7
-Prev Node: 0x55555555b4b0
-Target Node Value: 7
-
-Value: 7
-Index: 2
-Cost: 0
-Lowest Cost: 1
-Above Median: 1
-Next Node: 0x55555555b3c0
-Next Node Value: 42
-Prev Node: 0x55555555b480
-Target Node Value: 42
-
-Value: 42
-Index: 3
-Cost: 1
-Lowest Cost: 0
-Above Median: 1
-Next Node: (nil)
-Next Node Value: -99999
-Prev Node: 0x55555555b3f0
-Target Node Value: 5
-
+rra
+rb
+rb
+rb
+rb
+pb
+rra
+rra
+rra
+rb
+pb
+rra
+rra
+rra
+rra
+rb
+pb
+rra
+rra
+pb
+rra
+rb
+pb
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rb
+pb
+rra
+rra
+rra
+rb
+pb
+rra
+rra
+rb
+pb
+rra
+rra
+rra
+rb
+pb
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rb
+pb
+rra
+rb
+pb
+rra
+rra
+rb
+pb
+rra
+rb
+pb
+rra
+rb
+pb
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rb
+pb
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rb
+pb
+rra
+rb
+pb
+rra
+rb
+pb
+rb
+rb
+rb
+rb
+rb
+rb
+rb
+rb
+rb
+rb
+rb
+rb
+rb
+rb
+rb
+pb
+rrb
+pb
+rrb
+pb
+rrb
+rrb
+pb
+rrb
+pb
+rrb
+pb
+rrb
+pb
+rrb
+pb
+rrb
+pb
+rrb
+pb
+rrb
+pb
+rrb
+pb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+pb
+rrb
+pb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+pb
+rr
+rr
+rrb
+rrb
+pb
+rrb
+rrb
+rrb
+pb
+rrb
+pb
+rrb
+pb
+rrr
+pb
+rrr
+pb
+ra
+ra
+rrb
+pb
+rrb
+pb
+rrb
+pb
+ra
+rrb
+pb
+ra
+rrb
+pb
+ra
+ra
+ra
+rrb
+pb
+rrb
+pb
+rrb
+pb
+rrb
+pb
+rrb
+rrb
+rrb
+rrb
+pb
+rrb
+rrb
+pb
+rrb
+pb
+ra
+rrb
+pb
+rrb
+pb
+pb
+pb
+pb
+pb
+pb
+rrb
+pb
+rr
+rb
+pb
+rrb
+pb
+rrb
+pb
+rb
+rb
+rb
+rb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+rra
+ra
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+ra
+pa
+rra
+rra
+pa
+ra
+ra
+ra
+pa
+rra
+pa
+ra
+ra
+pa
+rra
+rra
+rra
+pa
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+pa
+rra
+rra
+rra
+pa
+rra
+rra
+rra
+rra
+rra
+pa
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+pa
+pa
+ra
+pa
+ra
+ra
+ra
+pa
+rra
+rra
+rra
+pa
+rra
+rra
+rra
+rra
+rra
+pa
+rra
+rra
+pa
+ra
+ra
+ra
+pa
+rra
+rra
+rra
+rra
+rra
+rra
+pa
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+pa
+rra
+rra
+rra
+pa
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+pa
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+pa
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+pa
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+pa
+ra
+ra
+ra
+ra
+ra
+pa
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+pa
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+pa
+rra
+rra
+rra
+rra
+pa
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+pa
+rra
+rra
+rra
+rra
+rra
+pa
+ra
+ra
+ra
+ra
+ra
+ra
+pa
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+pa
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+pa
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+pa
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+pa
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+pa
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+pa
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+pa
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+pa
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+pa
+pa
+ra
+pa
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+pa
+pa
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+pa
+pa
+rra
+pa
+pa
+pa
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+pa
+ra
+ra
+ra
+pa
+ra
+ra
+ra
+ra
+pa
+rra
+rra
+rra
+pa
+ra
+ra
+ra
+ra
+pa
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+pa
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+pa
+pa
+pa
+pa
+ra
+ra
+ra
+ra
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+rra
+rra
+rra
+rra
+rra
+rra
+pa
+pa
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+pa
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+pa
+rra
+pa
+ra
+ra
+pa
+rra
+rra
+pa
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+rra
