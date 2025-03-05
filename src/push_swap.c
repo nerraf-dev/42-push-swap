@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 21:00:45 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/05 21:20:33 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/05 21:42:41 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,9 +103,9 @@ int	push_swap(int *arr, int length)
 	}
 	stack_b->top = NULL;
 	if (length == 2)
-		sort_two(stack_a, ranks);
+		ft_printf(sort_two(stack_a, ranks));
 	else if (length == 3)
-		sort_three(stack_a, ranks, 0, 2);
+		ft_printf(sort_three(stack_a, ranks, 0, 2));
 	else if (length <= 5)
 
 	{
