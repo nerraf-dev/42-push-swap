@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# File containing the test cases
+# Default file containing the test cases
 TEST_FILE="/home/simon/42-push-swap/benchmarks/tests.txt"
 
 # Output file to store the results
@@ -8,6 +8,29 @@ OUTPUT_FILE="results.txt"
 
 # Path to the push_swap executable
 PUSH_SWAP="./push_swap"
+
+# Function to display usage information
+usage() {
+    echo "Usage: $0 [-f test_file] [-o output_file]"
+    echo "  -f test_file    Specify the test file (default: $TEST_FILE)"
+    echo "  -o output_file  Specify the output file (default: $OUTPUT_FILE)"
+    exit 1
+}
+
+# Parse command-line arguments
+while getopts "f:o:" opt; do
+    case $opt in
+        f)
+            TEST_FILE="$OPTARG"
+            ;;
+        o)
+            OUTPUT_FILE="$OPTARG"
+            ;;
+        *)
+            usage
+            ;;
+    esac
+done
 
 # Check if the push_swap executable exists
 if [ ! -f "$PUSH_SWAP" ]; then
