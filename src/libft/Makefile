@@ -6,23 +6,24 @@
 #    By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/30 19:05:57 by sfarren           #+#    #+#              #
-#    Updated: 2024/10/15 11:10:26 by sfarren          ###   ########.fr        #
+#    Updated: 2025/03/01 15:45:23 by sfarren          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
-UNAME_S := $(shell uname -s)
-# ifeq ($(UNAME_S), Darwin) # macOS
-# 	CC = gcc
-# else
-# 	CC = clang # Default to clang for other systems, including 42's
-# endif
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror
-
 SRC_DIR = src
-PRINTF_DIR = ft_printf
+PRINTF_DIR = src/ft_printf
+GNL_DIR = src/gnl
+
+# Compiler and Flags
+UNAME_S := $(shell uname -s)
+ifeq ($(UNAME_S), Darwin) # macOS
+	CC = gcc
+else
+	CC = clang # Default to clang for other systems, including 42's
+endif
+CFLAGS = -Wall -Wextra -Werror -g
 
 SRC_FILES = ft_atoi.c ft_isalpha.c ft_isprint.c ft_memcpy.c ft_strchr.c ft_strlen.c \
 	ft_strrchr.c ft_bzero.c ft_isascii.c ft_memchr.c ft_memmove.c ft_strlcat.c \
@@ -36,10 +37,13 @@ SRC_FILES = ft_atoi.c ft_isalpha.c ft_isprint.c ft_memcpy.c ft_strchr.c ft_strle
 	ft_lstdelone_bonus.c ft_lstlast_bonus.c ft_lstnew_bonus.c
 
 PRINTF_FILES = ft_printchr.c ft_printf.c ft_printptr.c ft_printstr.c \
-				ft_printnbr_base.c \
+				ft_printnbr_base.c ft_printf_fd.c \
 
-SRC = $(foreach file, $(SRC_FILES), $(file)) \
-	  $(foreach file, $(PRINTF_FILES), $(PRINTF_DIR)/$(file))
+GNL_FILES = get_next_line.c get_next_line_utils.c
+
+SRC = $(foreach file, $(SRC_FILES), $(SRC_DIR)/$(file)) \
+	  $(foreach file, $(PRINTF_FILES), $(PRINTF_DIR)/$(file)) \
+	  $(foreach file, $(GNL_FILES), $(GNL_DIR)/$(file))
 
 OBJS = $(SRC:.c=.o)
 
@@ -68,8 +72,16 @@ clean:
 .PHONY: fclean
 fclean: clean
 	rm -f $(NAME)
+	rm -f $(NAME) test_libft test_libft.o
 
 .PHONY: re
 re:
 	$(MAKE) fclean
 	$(MAKE) all
+
+
+test: $(NAME) test_libft.o
+	$(CC) $(CFLAGS) -o test_libft test_libft.o -L. -lft
+
+test_libft.o: test_libft.c
+	$(CC) $(CFLAGS) -c test_libft.c -o test_libft.o

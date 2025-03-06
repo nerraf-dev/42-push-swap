@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 12:33:24 by sfarren           #+#    #+#             */
-/*   Updated: 2024/07/17 10:11:09 by sfarren          ###   ########.fr       */
+/*   Updated: 2024/12/29 18:00:33 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,29 @@ void	ft_printnbr_base(long long n, char *base, int *count)
 		}
 		else
 			ft_printchr(base[n], count);
+	}
+}
+
+void	ft_printnbr_base_fd(long long n, char *base, int *count, int fd)
+{
+	int	base_len;
+
+	if (!is_valid_base(base))
+		*count = -1;
+	base_len = ft_strlen(base);
+	if (*count != -1)
+	{
+		if (n < 0)
+		{
+			ft_printchr_fd('-', count, fd);
+			n *= -1;
+		}
+		if (n >= base_len)
+		{
+			ft_printnbr_base_fd(n / base_len, base, count, fd);
+			ft_printnbr_base_fd(n % base_len, base, count, fd);
+		}
+		else
+			ft_printchr_fd(base[n], count, fd);
 	}
 }

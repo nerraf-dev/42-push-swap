@@ -6,16 +6,17 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 19:48:33 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/28 11:24:45 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/06 11:28:18 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "../src/libft/libft.h"
+# include "../src/libft/src/libft.h"
 # include "stack.h"
 # include "arg_parser.h"
+// # include "ranking.h"
 # include <limits.h>
 # include <stdbool.h>
 # include <stddef.h>
@@ -44,7 +45,7 @@ void			current_index(t_stack_node *stack);
 t_stack_node	*find_min(t_stack_node *stack);
 int				get_max(t_stack_node *stack);
 t_stack_node	*find_max(t_stack_node *stack);
-int				stack_size(t_stack_node *stack);
+int				s_size(t_stack_node *stack);
 bool			stack_sorted(t_stack_node	*stack);
 
 #endif

@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printstr.c                                      :+:      :+:    :+:   */
+/*   ft_printchr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/11 14:42:08 by sfarren           #+#    #+#             */
-/*   Updated: 2024/07/16 18:22:02 by sfarren          ###   ########.fr       */
+/*   Created: 2024/07/02 14:18:46 by sfarren           #+#    #+#             */
+/*   Updated: 2024/12/29 17:42:56 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_printstr(char *s, int *count)
+void	ft_printchr(char c, int *count)
 {
-	int	i;
+	if (*count == -1)
+		return ;
+	if (write(1, &c, 1) == -1)
+		*count = -1;
+	else
+		*count += 1;
+}
 
-	i = 0;
-	if (s == NULL)
-		s = "(null)";
-	while (s[i])
-	{
-		ft_printchr(s[i], count);
-		i++;
-	}
+void	ft_printchr_fd(char c, int *count, int fd)
+{
+	if (*count == -1)
+		return ;
+	if (write(fd, &c, 1) == -1)
+		*count = -1;
+	else
+		*count += 1;
 }

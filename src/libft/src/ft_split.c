@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 14:07:03 by sfarren           #+#    #+#             */
-/*   Updated: 2024/06/01 19:22:19 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/01/03 20:52:52 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,14 @@ static int	word_count(const char *str, char c)
 	return (count);
 }
 
-static char	**init_words(char const *s, char c)
+static char	**initialise(char const *s, char c, t_vars *vars)
 {
 	size_t	count;
 	char	**words;
 
+	vars->i = 0;
+	vars->j = 0;
+	vars->s_word = -1;
 	count = word_count(s, c);
 	words = ft_calloc(count + 1, sizeof(char *));
 	if (!words)
@@ -91,10 +94,9 @@ char	**ft_split(const char *s, char c)
 	char	**words;
 	t_vars	vars;
 
-	vars.i = 0;
-	vars.j = 0;
-	vars.s_word = -1;
-	words = init_words(s, c);
+	if (!s)
+		return (NULL);
+	words = initialise(s, c, &vars);
 	if (!words)
 		return (0);
 	while (vars.i <= ft_strlen(s))

@@ -6,7 +6,7 @@
 #    By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/02 18:34:39 by sfarren           #+#    #+#              #
-#    Updated: 2024/09/20 11:41:41 by sfarren          ###   ########.fr        #
+#    Updated: 2025/01/16 17:25:11 by sfarren          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ else
 	CC = clang # Default to clang for other systems, including 42's
 endif
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 # Source and Object Files
 SRC = 	ft_printchr.c \
@@ -29,6 +29,7 @@ SRC = 	ft_printchr.c \
 		ft_printptr.c \
 		ft_printstr.c \
 		ft_printnbr_base.c \
+		ft_printf_fd.c \
 
 OBJS = $(SRC:.c=.o)
 

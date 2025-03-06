@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 13:17:16 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/28 11:17:57 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/04 09:53:42 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	free_stack(t_stack_node **stack)
 	*stack = NULL;
 }
 
-int	stack_size(t_stack_node *stack)
+int	s_size(t_stack_node *stack)
 {
 	t_stack_node	*slow;
 	t_stack_node	*fast;
