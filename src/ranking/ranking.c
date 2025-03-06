@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 13:18:12 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/15 21:25:25 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/06 12:39:24 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ int	*get_ranks(int *arr, int length)
 		j = 0;
 		while (arr[i] != sorted_arr[j])
 			j++;
-		rank_arr[i] = j;
+		rank_arr[i] = bin_int(j);
 		i++;
 	}
 	free(sorted_arr);

@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 21:48:50 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/15 11:55:01 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/06 12:39:36 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,23 @@ void	free_list(t_count_node *count)
 		count = count->next;
 		free(temp);
 	}
+}
+
+int	bin_int(int n)
+{
+	int	i;
+	int	rem;
+	int	bin;
+	// int	dec;
+
+	bin = 0;
+	i = 1;
+	while (n != 0)
+	{
+		rem = n % 2;
+		n = n / 2;
+		bin = bin + (i * rem);
+		i = i * 10;
+	}
+	return (bin);
 }
