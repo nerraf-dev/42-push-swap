@@ -1,4 +1,4 @@
-def generate_random_numbers(count, min_value=-1000, max_value=1000):
+def generate_random_numbers(count, min_value=-10000, max_value=10000):
     import random
 
     if count > (max_value - min_value + 1):

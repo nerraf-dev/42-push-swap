@@ -1,23 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printchr.c                                      :+:      :+:    :+:   */
+/*   sort_big.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/02 14:18:46 by sfarren           #+#    #+#             */
-/*   Updated: 2024/07/17 09:49:52 by sfarren          ###   ########.fr       */
+/*   Created: 2025/03/06 13:11:03 by sfarren           #+#    #+#             */
+/*   Updated: 2025/03/06 13:11:42 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../push_swap.h"
 
-void	ft_printchr(char c, int *count)
-{
-	if (*count == -1)
-		return ;
-	if (write(1, &c, 1) == -1)
-		*count = -1;
-	else
-		*count += 1;
-}

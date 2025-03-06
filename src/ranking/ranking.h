@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 21:18:15 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/15 11:26:28 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/06 12:39:00 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ void	populate_count_list(int *arr, int length, t_count_node *head, int offset);
  * @param count A pointer to the first node of the linked list to be freed.
  */
 void	free_list(t_count_node *count);
+
+int	bin_int(int n);
 
 
 #endif
