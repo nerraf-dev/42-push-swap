@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Default file containing the test cases
-TEST_FILE="benchmarks/tests.txt"
+TEST_FILE="benchmarks/test-100.txt"
 
 # Output file to store the results
 OUTPUT_FILE="results.txt"

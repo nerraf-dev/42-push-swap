@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 12:28:29 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/04 09:54:44 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/06 13:45:34 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,19 +47,20 @@
 void	sort_big(t_stack_node **stack_a, t_stack_node **stack_b)
 {
 	int		len;
-	int		chunk_size;
-	int		i;
+	// int		chunk_size;
+	// int		i;
 
 	len = s_size(*stack_a);
-	chunk_size = len / 10;
+	// chunk_size = len / 10;
 	while (len > 3)
 	{
-		i = 0;
-		while (i < chunk_size && len > 3)
+		// i = 0;
+		// while (i < chunk_size && len > 3)
+		while (len > 3)
 		{
 			pb(stack_a, stack_b);
 			len--;
-			i++;
+			// i++;
 		}
 		if (s_size(*stack_b) > 1 && (*stack_b)->value < (*stack_b)->next->value)
 			sb(stack_b);
