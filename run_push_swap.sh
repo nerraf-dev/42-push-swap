@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Default file containing the test cases
-TEST_FILE="benchmarks/test-100.txt"
+TEST_FILE="benchmarks/tests-100.txt"
 
 # Output file to store the results
 OUTPUT_FILE="results.txt"
@@ -70,6 +70,7 @@ while IFS= read -r line; do
 done < "$TEST_FILE"
 
 # Calculate the average command count
+echo "Number of tests run: $test_count" >> "$OUTPUT_FILE"
 if [ $test_count -gt 0 ]; then
     average_commands=$(echo "scale=2; $total_commands / $test_count" | bc)
 else

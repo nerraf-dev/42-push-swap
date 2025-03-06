@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 11:14:18 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/28 11:12:30 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/06 14:40:29 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	is_valid_int(const char *str)
 	return (1);
 }
 
+//TODO: Fix numbers that are less/greater than INT MIN/MAX
 int	*convert_to_int_array(char **split, int size)
 {
 	int	*int_array;
