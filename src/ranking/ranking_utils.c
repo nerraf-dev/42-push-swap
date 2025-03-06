@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 21:48:50 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/05 19:24:23 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/06 13:55:23 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ t_count_node	*create_linked_list(int length)
 }
 
 // Function to populate the linked list with counts
-void	populate_count_list(int *arr, int length, t_count_node *head, int offset)
+void	populate_count_list(int *arr, int length,
+		t_count_node *head, int offset)
 {
 	int		i;
 	int		index;
