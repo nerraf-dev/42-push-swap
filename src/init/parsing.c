@@ -4,13 +4,12 @@
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/25 11:14:36 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/06 14:36:47 by sfarren          ###   ########.fr       */
+/*                                                +#+#+#+#+#+   +#+           #+#    #+#             */
+/*   Updated: 2025/03/07 10:09:23 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/arg_parser.h"
+#include "../../includes/push_swap.h"
 
 void	free_split(char **split)
 {
@@ -25,47 +24,51 @@ void	free_split(char **split)
 	free(split);
 }
 
-static int	*parse_single_arg(char **argv, int *arr_size)
+static char	**split_arguments(int argc, char **argv)
 {
 	char	**split;
-	int		*int_array;
-	int		i;
-	int		duplicates;
 
-	split = ft_split(argv[1], ' ');
-	if (!split)
-		handle_error("Memory allocation failed", NULL, NULL);
+	if (argc == 2)
+	{
+		split = ft_split(argv[1], ' ');
+		if (!split)
+			handle_error("Memory allocation failed", NULL, NULL);
+	}
+	else
+		split = argv + 1;
+	return (split);
+}
+
+static void	validate_arguments(char **split, int argc)
+{
+	int	i;
+
 	i = 0;
 	while (split[i] != NULL)
 	{
 		if (!is_valid_int(split[i]))
-			handle_error("Invalid integer found", split, NULL);
+		{
+			if (argc == 2)
+				handle_error("Invalid integer found", split, NULL);
+			else
+				handle_error("Invalid integer found", NULL, NULL);
+		}
 		i++;
 	}
-	*arr_size = i;
-	int_array = convert_to_int_array(split, *arr_size);
-	free_split(split);
-	duplicates = has_duplicates(int_array, *arr_size);
-	if (duplicates)
-		handle_error("Duplicate values found", NULL, int_array);
-	return (int_array);
 }
 
 static int	*parse_arguments(int argc, char **argv, int *arr_size)
 {
+	char	**split;
 	int		*int_array;
-	int		i;
 	int		duplicates;
 
-	i = 1;
-	*arr_size = argc - 1;
-	while (i < argc)
-	{
-		if (!is_valid_int(argv[i]))
-			handle_error("Invalid integer found", NULL, NULL);
-		i++;
-	}
-	int_array = convert_to_int_array(argv + 1, *arr_size);
+	split = split_arguments(argc, argv);
+	validate_arguments(split, argc);
+	*arr_size = split_length(split); // Use split_length instead of int_array_length
+	int_array = convert_to_int_array(split, *arr_size);
+	if (argc == 2)
+		free_split(split);
 	duplicates = has_duplicates(int_array, *arr_size);
 	if (duplicates)
 		handle_error("Duplicate values found", NULL, int_array);
@@ -79,10 +82,7 @@ int	*argument_parser(int argc, char **argv, int *arr_size)
 	int_array = NULL;
 	if (argc == 1)
 		handle_error("No arguments given", NULL, NULL);
-	if (argc == 2)
-		int_array = parse_single_arg(argv, arr_size);
-	else
-		int_array = parse_arguments(argc, argv, arr_size);
+	int_array = parse_arguments(argc, argv, arr_size);
 	if (!int_array)
 		handle_error("Memory allocation failed", NULL, NULL);
 	return (int_array);

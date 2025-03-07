@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 21:00:45 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/06 14:33:33 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/07 09:56:45 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,6 @@ int	main(int argc, char **argv)
 
 	arr_size = 0;
 	int_array = argument_parser(argc, argv, &arr_size);
-	ft_printf("INT-ARRAY: ");
-	for (int i = 0; i < arr_size; i++)
-	{
-		ft_printf("%d ", int_array[i]);
-	}
 	if (is_sorted(int_array, arr_size))
 		return (0);
 	stack_a = initialise_stack(int_array, arr_size);

@@ -6,14 +6,15 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 13:34:33 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/04 10:44:14 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/07 10:13:41 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ARG_PARSER_H
 # define ARG_PARSER_H
 
-# include "../src/libft/src/libft.h"
+# include <stdlib.h>
+# include <limits.h>
 
 /**
  * @brief Parses command-line arguments into an integer array.
@@ -74,5 +75,23 @@ int		*convert_to_int_array(char **split, int size);
  * @return 1 if duplicates are found, 0 otherwise.
  */
 int		has_duplicates(int *arr, int size);
+
+/**
+ * @brief Checks the sign of a string representing an integer.
+ *
+ * @param str The string to be checked.
+ * @return The sign of the integer.
+ */
+int		check_sign(const char **str);
+
+/**
+ * @brief Checks for overflow in a long integer result.
+ *
+ * @param result The long integer result.
+ * @param sign The sign of the integer.
+ * @return 1 if overflow is detected, 0 otherwise.
+ */
+int		check_overflow(long result, int sign);
+int		split_length(char **split);
 
 #endif

@@ -6,11 +6,11 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 11:14:18 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/06 14:40:29 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/07 10:13:14 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/arg_parser.h"
+#include "../../includes/push_swap.h"
 
 int	int_array_length(int *int_array)
 {
@@ -22,14 +22,6 @@ int	int_array_length(int *int_array)
 	return (i);
 }
 
-int	is_valid_int(const char *str)
-{
-	if (!ft_isdigit(str[0]) && str[0] != '-')
-		return (0);
-	return (1);
-}
-
-//TODO: Fix numbers that are less/greater than INT MIN/MAX
 int	*convert_to_int_array(char **split, int size)
 {
 	int	*int_array;
@@ -67,4 +59,14 @@ int	has_duplicates(int *arr, int size)
 		i++;
 	}
 	return (0);
+}
+
+int split_length(char **split)
+{
+	int length = 0;
+	while (split[length] != NULL)
+	{
+		length++;
+	}
+	return length;
 }
