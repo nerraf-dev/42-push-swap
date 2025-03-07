@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 14:34:31 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/26 13:09:26 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/07 12:46:02 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,22 @@ void	min_to_top(t_stack_node **stack_a)
 		else
 			rra(stack_a);
 	}
+}
+
+void	rotate_stacks(t_stack_node **stack_a, t_stack_node **stack_b,
+	t_stack_node *lc_node)
+{
+while (*stack_b != lc_node && *stack_a != lc_node)
+rr(stack_a, stack_b);
+current_index(*stack_a);
+current_index(*stack_b);
+}
+
+void	rev_rotate_stacks(t_stack_node **stack_a, t_stack_node **stack_b,
+	t_stack_node *lc_node)
+{
+while (*stack_b != lc_node && *stack_a != lc_node)
+rrr(stack_a, stack_b);
+current_index(*stack_a);
+current_index(*stack_b);
 }
