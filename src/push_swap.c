@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 21:00:45 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/07 09:56:45 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/09 17:52:39 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,16 @@ static bool	is_sorted(int *int_array, int arr_size)
 	return (true);
 }
 
+/**
+ * @brief Handles errors by printing an error message, freeing allocated memory, and exiting the program.
+ *
+ * This function prints the provided error message, frees the memory allocated for the split array and the integer array,
+ * and then terminates the program with an exit status of 1.
+ *
+ * @param message The error message to be printed.
+ * @param split A pointer to an array of strings that needs to be freed. Can be NULL.
+ * @param int_array A pointer to an array of integers that needs to be freed. Can be NULL.
+ */
 void	handle_error(const char *message, char **split, int *int_array)
 {
 	ft_printf("Error: %s\n", message);
