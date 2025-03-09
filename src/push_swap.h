@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 13:41:39 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/15 14:02:20 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/09 13:19:45 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,7 @@ int		ft_atoi(const char *str);
 
 // TODO: This one wil have to change
 int		push_swap(int *arr, int length);
+
+int		error_handler(const char *msg);
 
 #endif

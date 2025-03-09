@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 21:00:45 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/05 21:42:41 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/09 13:19:52 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,7 @@ int	push_swap(int *arr, int length)
 
 	ranks = get_ranks(arr, length);
 	if (!ranks)
-	{
-		ft_printf("Memory Allocation Failed");
-		return (-1);
-	}
+		return (error_handler("Memory Allocation Failed"));
 	stack_a = create_stack();
 	if (!stack_a)
 	{
