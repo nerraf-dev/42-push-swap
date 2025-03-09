@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 12:28:29 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/09 15:17:00 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/09 15:49:13 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,16 +62,16 @@ static void	initial_pushes(t_stack_node **stack_a, t_stack_node **stack_b,
 void	sort_big(t_stack_node **stack_a, t_stack_node **stack_b)
 {
 	int		len;
-	// int		initial_len;
+	int		initial_len;
 
 	len = stack_size(*stack_a);
 	initial_pushes(stack_a, stack_b, &len);
-	// initial_len = len;
-	while (len > 3 && !stack_sorted(*stack_a))
+	initial_len = len;
+	while (initial_len > 3 && !stack_sorted(*stack_a))
 	{
 		initialise_nodes_a(*stack_a, *stack_b);
 		push_a_to_b(stack_a, stack_b);
-		len--;
+		initial_len--;
 	}
 	sort_small(stack_a, stack_b);
 	while (*stack_b)
