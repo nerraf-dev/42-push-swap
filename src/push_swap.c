@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 21:00:45 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/11 13:05:28 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/11 13:23:02 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,8 @@ int	main(int argc, char **argv)
 	print_stack(stack_a);
 	if (!stack_a)
 		handle_error("Memory allocation failed", NULL, int_array);
-	// if (arr_size <= 5)
-	// 	sort_small(&stack_a, &stack_b);
+	if (arr_size <= 5)
+		sort_small(&stack_a, &stack_b);
 	// else
 	// 	sort_big(&stack_a, &stack_b);
 	free(int_array);
