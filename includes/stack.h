@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 13:18:12 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/25 14:17:16 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/11 12:44:37 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ typedef struct s_stack_node
 {
 	int					value;
 	int					index;
+	int					rank;
 	int					cost;
 	bool				lowest_cost;
 	bool				above_median;

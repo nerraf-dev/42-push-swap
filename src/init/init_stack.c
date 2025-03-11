@@ -6,20 +6,19 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 17:07:11 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/28 11:12:07 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/11 13:02:49 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-t_stack_node	*initialise_stack(int *arr, int size)
+t_stack_node	*initialise_stack(int *arr, int *ranks, int size)
 {
 	t_stack_node	*head;
 	t_stack_node	*new_node;
 	int				i;
 
 	head = NULL;
-	new_node = NULL;
 	if (arr == NULL)
 		return (head);
 	i = size - 1;
@@ -29,10 +28,9 @@ t_stack_node	*initialise_stack(int *arr, int size)
 		if (!new_node)
 			return (NULL);
 		new_node->value = arr[i];
-		new_node->index = 0;
+		new_node->rank = ranks[i];
 		new_node->next = head;
 		new_node->prev = NULL;
-		new_node->target = NULL;
 		if (head != NULL)
 			head->prev = new_node;
 		head = new_node;

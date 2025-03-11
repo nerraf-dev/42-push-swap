@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 21:18:15 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/11 12:54:56 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/11 12:32:08 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <limits.h>
 # include <stdlib.h>
 # include <stdarg.h>
-# include "../src/libft/src/libft.h"
+# include "../libft/src/libft.h"
 
 // # include "../push_swap.h"
 
@@ -28,20 +28,21 @@ typedef struct s_count_props
 	int		offset;
 }	t_count_props;
 
+int		*sort_numbers(int *arr, int length);
+int		*get_ranks(int *arr, int length);
+
+// LIST_UTILS
 typedef struct s_count_node
 {
 	int					value;
 	int					count;
 	struct s_count_node	*next;
-}				t_count_node;
+}						t_count_node;
 
 typedef struct s_count_list
 {
 	t_count_node	*top;
 }	t_count_list;
-
-int				*sort_numbers(int *arr, int length);
-int				*get_ranks(int *arr, int length);
 
 // *** LIST_UTILS ***
 /**
@@ -85,6 +86,8 @@ void	populate_count_list(int *arr, int length, t_count_node *head, int offset);
  * @param count A pointer to the first node of the linked list to be freed.
  */
 void	free_list(t_count_node *count);
+
+int	bin_int(int n);
 
 
 #endif

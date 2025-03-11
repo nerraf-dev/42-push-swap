@@ -6,12 +6,14 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 13:58:17 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/17 21:05:34 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/11 12:43:43 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SORT_H
 # define SORT_H
+
+# include "stack.h"
 
 void			sort_two(t_stack_node **stack);
 void			sort_three(t_stack_node **stack);
