@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 19:40:20 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/11 13:30:23 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/13 13:14:02 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ void	sort_small(t_stack_node	**stack_a, t_stack_node	**stack_b)
 	}
 	else
 	{
-		ft_printf("Sorting more than three elements\n");
 		while (s_size(*stack_a) > 3)
 		{
 			// ft_printf("Pushing element from stack_a to stack_b\n");
