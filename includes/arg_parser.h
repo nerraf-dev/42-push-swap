@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 13:34:33 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/07 10:13:41 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/13 14:04:05 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,6 @@
  * @return Pointer to the integer array containing parsed arguments.
  */
 int		*argument_parser(int argc, char **argv, int *arr_size);
-
-/**
- * @brief Handles errors by printing a message and freeing allocated memory.
- *
- * @param message The error message to be printed.
- * @param split The array of strings to be freed.
- * @param int_array The integer array to be freed.
- */
-void	handle_error(const char *message, char **split, int *int_array);
 
 /**
  * @brief Frees a split array of strings.
@@ -93,5 +84,5 @@ int		check_sign(const char **str);
  */
 int		check_overflow(long result, int sign);
 int		split_length(char **split);
-
+long	ft_atol(const char *str);
 #endif

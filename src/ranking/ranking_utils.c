@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 21:48:50 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/09 17:29:54 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/13 14:29:01 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,14 @@ t_count_node	*create_linked_list(int length)
 {
 	t_count_node	*head;
 	t_count_node	*current;
-	int		i;
+	int				i;
 
+	ft_printf("In CLL\n");
 	head = create_count_node(0);
+	ft_printf("created HEAD node\n");
 	current = head;
 	i = 1;
+	ft_printf("LEN: %d\n", length);
 	while (i < length)
 	{
 		current->next = create_count_node(i);

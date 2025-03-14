@@ -6,7 +6,7 @@
 #    By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/20 13:36:23 by sfarren           #+#    #+#              #
-#    Updated: 2025/03/11 12:47:07 by sfarren          ###   ########.fr        #
+#    Updated: 2025/03/13 14:05:29 by sfarren          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRCS =  src/push_swap.c \
         src/init/parser_utils.c \
 		src/init/parser_helpers.c \
         src/init/init_stack.c \
+		src/init/ft_atol.c \
         src/sort/sort_utils.c \
 		src/sort/sort_small.c \
 		src/sort/sort_big.c \

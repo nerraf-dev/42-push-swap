@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 13:18:12 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/11 12:53:46 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/13 14:39:37 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,9 @@ int	*sort_numbers(int *arr, int length)
 	t_count_props	props;
 
 	props = get_props(arr, length);
+	ft_printf("Got PROPS");
 	count = create_linked_list(props.range);
+	ft_printf("Created list");
 	populate_count_list(arr, length, count, props.offset);
 	sorted_arr = (int *)malloc(length * sizeof(int));
 	if (!sorted_arr)
@@ -85,23 +87,6 @@ int	*sort_numbers(int *arr, int length)
 	// free(sorted_arr);
 	return (sorted_arr);
 }
-
-// void	free_arrays(int num_of_arrays, ...)
-// {
-// 	va_list	arrays;
-// 	int		*arr;
-// 	int		i;
-
-// 	i = 0;
-// 	while (i < num_of_arrays)
-// 	{
-// 		va_start(arrays, num_of_arrays);
-// 		arr = va_arg(arrays, int *);
-// 		free(arr);
-// 		va_end(arrays);
-// 		i++;
-// 	}
-// }
 
 int	*get_ranks(int *arr, int length)
 {

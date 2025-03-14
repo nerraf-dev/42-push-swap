@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 19:48:33 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/11 12:52:02 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/13 18:53:31 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,14 @@ void			initialise_b_nodes(t_stack_node *stack_a,
 void			initialise_nodes_a(t_stack_node *stack_a,
 					t_stack_node *stack_b);
 // Error Handling Functions
-void			handle_error(const char *message, char **split,
-					int *int_array);
+void			handle_error(bool error, char **split, int *int_array);
 // Stack Manipulation Functions
 void			free_stack(t_stack_node **stack);
 void			push_prep(t_stack_node **stack,	t_stack_node *top_node,
 					char stack_name);
 void			push_b_to_a(t_stack_node **stack_a, t_stack_node **stack_b);
 // Sorting Functions
-void			sort_small(t_stack_node	**stack_a, t_stack_node	**stack_b);
+void			sort_small(int *int_array, int arr_size);
 void			sort_big(t_stack_node **stack_a, t_stack_node **stack_b);
 // Sort utils
 void			min_to_top(t_stack_node **stack_a);

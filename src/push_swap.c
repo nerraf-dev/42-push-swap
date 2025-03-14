@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 21:00:45 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/13 13:07:27 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/13 19:07:35 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,10 @@ static bool	is_sorted(int *int_array, int arr_size)
  * @param split A pointer to an array of strings that needs to be freed. Can be NULL.
  * @param int_array A pointer to an array of integers that needs to be freed. Can be NULL.
  */
-void	handle_error(const char *message, char **split, int *int_array)
+void	handle_error(bool error, char **split, int *int_array)
 {
-	ft_printf("Error: %s\n", message);
+	if (error)
+	 	ft_printf_fd(2, "Error\n");
 	if (split)
 	{
 		free_split(split);
@@ -50,17 +51,17 @@ void	handle_error(const char *message, char **split, int *int_array)
 	exit(1);
 }
 
-// static void	print_stack(t_stack_node *stack)
-// {
-// 	t_stack_node	*current;
+static void	print_stack(t_stack_node *stack)
+{
+	t_stack_node	*current;
 
-// 	current = stack;
-// 	while (current != NULL)
-// 	{
-// 		ft_printf("Value: %d, Rank: %d\n", current->value, current->rank);
-// 		current = current->next;
-// 	}
-// }
+	current = stack;
+	while (current != NULL)
+	{
+		ft_printf("Value: %d, Rank: %d\n", current->value, current->rank);
+		current = current->next;
+	}
+}
 
 int	main(int argc, char **argv)
 {
@@ -70,23 +71,32 @@ int	main(int argc, char **argv)
 	t_stack_node	*stack_a;
 	t_stack_node	*stack_b;
 
+	ft_printf("INT_MAX: %d\n", INT_MAX);
+	ft_printf("INT_MIN: %d\n", INT_MIN);
 	arr_size = 0;
 	int_array = argument_parser(argc, argv, &arr_size);
 	if (is_sorted(int_array, arr_size))
 		return (0);
-	ranks = get_ranks(int_array, arr_size);
-	stack_a = initialise_stack(int_array, ranks, arr_size);
-	stack_b = initialise_stack(NULL, NULL, 0);
-	if (!stack_a)
-		handle_error("Memory allocation failed", NULL, int_array);
-	if (arr_size <= 5)
-		sort_small(&stack_a, &stack_b);
+	ft_printf("arr_size: %d\n", arr_size);
+	if (arr_size <= 3)
+	{
+		ft_printf("Sort small");
+		sort_small(int_array, arr_size);
+	}
 	else
+	{
+		ranks = get_ranks(int_array, arr_size);
+		stack_a = initialise_stack(int_array, ranks, arr_size);
+		stack_b = initialise_stack(NULL, NULL, 0);
+		if (!stack_a)
+			handle_error(true, NULL, int_array);
 		sort_big(&stack_a, &stack_b);
-	// print_stack(stack_a);
-	free(int_array);
-	free(ranks);
-	free_stack(&stack_a);
-	free_stack(&stack_b);
+		print_stack(stack_a);
+		print_stack(stack_b);
+		free(int_array);
+		free(ranks);
+		free_stack(&stack_a);
+		free_stack(&stack_b);
+	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 19:40:20 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/13 13:14:02 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/13 19:12:47 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,61 +21,63 @@ void	push_b_to_a(t_stack_node **stack_a, t_stack_node **stack_b)
 	}
 }
 
-static void	sort_two(t_stack_node	**stack)
+// static void	sort_two(t_stack_node	**stack)
+// {
+// 	if (!*stack || !(*stack)->next)
+// 		return ;
+// 	if ((*stack)->value > (*stack)->next->value)
+// 		sa(stack);
+// }
+
+// static void	sort_three(t_stack_node	**stack)
+// {
+// 	t_stack_node	*current;
+// 	int				max;
+
+// 	current = *stack;
+// 	max = get_max(current);
+// 	if (current->value == max)
+// 		ra(stack);
+// 	else if (current->next->value == max)
+// 		rra(stack);
+// 	if ((*stack)->value > (*stack)->next->value)
+// 		sa(stack);
+// }
+static int	big_int(int *int_array, int arr_size)
 {
-	if (!*stack || !(*stack)->next)
-		return ;
-	if ((*stack)->value > (*stack)->next->value)
-		sa(stack);
+	int	i;
+	int	max;
+
+	i = 0;
+	max = int_array[0];
+	while (i < arr_size)
+	{
+		if (int_array[i] > max)
+			max = int_array[i];
+		i++;
+	}
+	return (max);
 }
 
-static void	sort_three(t_stack_node	**stack)
+void	sort_small(int *int_array, int arr_size)
 {
-	t_stack_node	*current;
-	int				max;
+	int	max;
 
-	current = *stack;
-	max = get_max(current);
-	if (current->value == max)
-		ra(stack);
-	else if (current->next->value == max)
-		rra(stack);
-	if ((*stack)->value > (*stack)->next->value)
-		sa(stack);
-}
-
-void	sort_small(t_stack_node	**stack_a, t_stack_node	**stack_b)
-{
-	// ft_printf("Starting sort_small\n");
-	if (s_size(*stack_a) == 2)
+	max = big_int(int_array, arr_size);
+	ft_printf("Max: %d\n", max);
+	if (arr_size == 2)
 	{
-		// ft_printf("Sorting two elements\n");
-		sort_two(stack_a);
+		if (int_array[0] > int_array[1])
+			ft_printf("sa\n");
 	}
-	else if (s_size(*stack_a) == 3)
+	else if (arr_size == 3)
 	{
-		// ft_printf("Sorting three elements\n");
-		sort_three(stack_a);
+		ft_printf("int_array[0]: %d\n", int_array[0]);
+		if (int_array[0] == max)
+			ft_printf("ra\n");
+		else if (int_array[1] == max)
+			ft_printf("rra\n");
+		if (int_array[0] > int_array[1])
+			ft_printf("sa\n");
 	}
-	else
-	{
-		while (s_size(*stack_a) > 3)
-		{
-			// ft_printf("Pushing element from stack_a to stack_b\n");
-			pb(stack_a, stack_b);
-		}
-		sort_three(stack_a);
-		while (*stack_b)
-		{
-			// ft_printf("Initialising b nodes\n");
-			initialise_b_nodes(*stack_a, *stack_b);
-			// ft_printf("Pushing element from stack_b to stack_a\n");
-			push_b_to_a(stack_a, stack_b);
-		}
-		// ft_printf("Setting current index\n");
-		current_index(*stack_a);
-		// ft_printf("Moving minimum to top\n");
-		min_to_top(stack_a);
-	}
-	// ft_printf("Finished sort_small\n");
 }
