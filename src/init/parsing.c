@@ -32,7 +32,7 @@ static char	**split_arguments(int argc, char **argv)
 	{
 		split = ft_split(argv[1], ' ');
 		if (!split)
-			handle_error("Memory allocation failed", NULL, NULL);
+			handle_error(true, NULL, NULL);
 	}
 	else
 		split = argv + 1;
@@ -49,9 +49,9 @@ static void	validate_arguments(char **split, int argc)
 		if (!is_valid_int(split[i]))
 		{
 			if (argc == 2)
-				handle_error("Invalid integer found", split, NULL);
+				handle_error(true, split, NULL);
 			else
-				handle_error("Invalid integer found", NULL, NULL);
+				handle_error(true, NULL, NULL);
 		}
 		i++;
 	}
@@ -71,7 +71,7 @@ static int	*parse_arguments(int argc, char **argv, int *arr_size)
 		free_split(split);
 	duplicates = has_duplicates(int_array, *arr_size);
 	if (duplicates)
-		handle_error("Duplicate values found", NULL, int_array);
+		handle_error(true, NULL, int_array);
 	return (int_array);
 }
 
@@ -81,9 +81,9 @@ int	*argument_parser(int argc, char **argv, int *arr_size)
 
 	int_array = NULL;
 	if (argc == 1)
-		handle_error("No arguments given", NULL, NULL);
+		handle_error(false, NULL, NULL);
 	int_array = parse_arguments(argc, argv, arr_size);
 	if (!int_array)
-		handle_error("Memory allocation failed", NULL, NULL);
+		handle_error(true, NULL, NULL);
 	return (int_array);
 }

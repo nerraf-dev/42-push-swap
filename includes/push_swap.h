@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 19:48:33 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/06 11:28:18 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/14 12:28:01 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "../src/libft/src/libft.h"
 # include "stack.h"
 # include "arg_parser.h"
-// # include "ranking.h"
+# include "ranking.h"
 # include <limits.h>
 # include <stdbool.h>
 # include <stddef.h>
@@ -28,8 +28,7 @@ void			initialise_b_nodes(t_stack_node *stack_a,
 void			initialise_nodes_a(t_stack_node *stack_a,
 					t_stack_node *stack_b);
 // Error Handling Functions
-void			handle_error(const char *message, char **split,
-					int *int_array);
+void			handle_error(bool error, char **split, int *int_array);
 // Stack Manipulation Functions
 void			free_stack(t_stack_node **stack);
 void			push_prep(t_stack_node **stack,	t_stack_node *top_node,

@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 11:14:18 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/07 10:13:14 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/14 12:21:23 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	*convert_to_int_array(char **split, int size)
 	while (i < size)
 	{
 		if (!is_valid_int(split[i]))
-			handle_error("Invalid integer found", split, int_array);
+			handle_error(true, split, int_array);
 		int_array[i] = ft_atoi(split[i]);
 		i++;
 	}

@@ -6,7 +6,7 @@
 #    By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/20 13:36:23 by sfarren           #+#    #+#              #
-#    Updated: 2025/03/07 09:47:06 by sfarren          ###   ########.fr        #
+#    Updated: 2025/03/14 12:28:23 by sfarren          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,7 @@ SRCS =  src/push_swap.c \
         src/stack/reverse_rotate.c \
 		src/stack/init_a_b.c \
 		src/stack/init_b_a.c \
+		src/ranking/ranking.c \
 
 
 OBJS = $(SRCS:.c=.o)

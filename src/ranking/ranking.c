@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:41:29 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/14 12:05:40 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/14 12:22:16 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	assign_ranks(int *arr, int *ranks, int size)
 
 	sorted = malloc(size * sizeof(int));
 	if (!sorted)
-		handle_error("Memory allocation failed", NULL, arr);
+		handle_error(true, NULL, arr);
 	i = 0;
 	while (i < size)
 	{
