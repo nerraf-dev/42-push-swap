@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 13:58:17 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/17 21:05:34 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/14 20:02:48 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 void			sort_two(t_stack_node **stack);
 void			sort_three(t_stack_node **stack);
 void			sort_big(t_stack_node **stack_a, t_stack_node **stack_b);
+void			sort_radix(t_stack_node **stack_a, t_stack_node **stack_b);
 
 // Max Min
 t_stack_node	*find_min(t_stack_node *stack);

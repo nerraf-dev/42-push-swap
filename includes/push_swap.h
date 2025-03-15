@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 19:48:33 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/14 12:28:01 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/14 20:30:06 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,12 @@ void			push_prep(t_stack_node **stack,	t_stack_node *top_node,
 					char stack_name);
 void			push_b_to_a(t_stack_node **stack_a, t_stack_node **stack_b);
 // Sorting Functions
-void			sort_small(t_stack_node	**stack_a, t_stack_node	**stack_b);
-void			sort_big(t_stack_node **stack_a, t_stack_node **stack_b);
+void			sort_small(t_stack_node	**stack_a, t_stack_node	**stack_b,
+					int len);
+void			sort_big(t_stack_node **stack_a, t_stack_node **stack_b,
+					int len);
+void			sort_radix(t_stack_node **stack_a, t_stack_node **stack_b,
+					int len);
 // Sort utils
 void			min_to_top(t_stack_node **stack_a);
 t_stack_node	*get_lc_node(t_stack_node *stack);

@@ -6,27 +6,11 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 12:28:29 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/06 13:52:57 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/14 20:36:29 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"\
-
-
-static int	stack_size(t_stack_node *stack)
-{
-	int				size;
-	t_stack_node	*current;
-
-	size = 0;
-	current = stack;
-	while (current)
-	{
-		size++;
-		current = current->next;
-	}
-	return (size);
-}
+#include "../../includes/push_swap.h"
 
 static void	rotate_stacks(t_stack_node **stack_a, t_stack_node **stack_b,
 				t_stack_node *lc_node)
@@ -60,11 +44,8 @@ static void	push_a_to_b(t_stack_node **stack_a, t_stack_node **stack_b)
 	pb(stack_a, stack_b);
 }
 
-void	sort_big(t_stack_node **stack_a, t_stack_node **stack_b)
+void	sort_big(t_stack_node **stack_a, t_stack_node **stack_b, int len)
 {
-	int		len;
-
-	len = stack_size(*stack_a);
 	if (len-- > 3)
 		pb(stack_a, stack_b);
 	if (len-- > 3)
@@ -76,7 +57,7 @@ void	sort_big(t_stack_node **stack_a, t_stack_node **stack_b)
 		initialise_nodes_a(*stack_a, *stack_b);
 		push_a_to_b(stack_a, stack_b);
 	}
-	sort_small(stack_a, stack_b);
+	sort_small(stack_a, stack_b, len + 1);
 	while (*stack_b)
 	{
 		initialise_b_nodes(*stack_a, *stack_b);

@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 14:34:31 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/26 13:09:26 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/14 20:12:58 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,19 @@ void	min_to_top(t_stack_node **stack_a)
 		else
 			rra(stack_a);
 	}
+}
+
+int	stack_size(t_stack_node *stack)
+{
+	int				size;
+	t_stack_node	*current;
+
+	size = 0;
+	current = stack;
+	while (current)
+	{
+		size++;
+		current = current->next;
+	}
+	return (size);
 }

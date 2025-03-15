@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 19:40:20 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/04 09:53:42 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/14 20:29:01 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,19 @@ static void	sort_three(t_stack_node	**stack)
 		sa(stack);
 }
 
-void	sort_small(t_stack_node	**stack_a, t_stack_node	**stack_b)
+void	sort_small(t_stack_node	**stack_a, t_stack_node	**stack_b, int len)
 {
-	if (s_size(*stack_a) == 2)
+	if (len == 2)
 		sort_two(stack_a);
-	else if (s_size(*stack_a) == 3)
+	else if (len == 3)
 		sort_three(stack_a);
 	else
 	{
-		while (s_size(*stack_a) > 3)
+		while (len > 3)
+		{
 			pb(stack_a, stack_b);
+			len--;
+		}
 		sort_three(stack_a);
 		while (*stack_b)
 		{

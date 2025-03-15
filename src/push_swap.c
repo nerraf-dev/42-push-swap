@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 21:00:45 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/14 12:37:36 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/14 21:13:13 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static bool	is_sorted(int *int_array, int arr_size)
 void	handle_error(bool error, char **split, int *int_array)
 {
 	if (error)
-		ft_printf_fd(2, "Error: %s\n");
+		ft_printf_fd(2, "Error\n");
 	if (split)
 		free_split(split);
 	if (int_array)
@@ -37,17 +37,18 @@ void	handle_error(bool error, char **split, int *int_array)
 	exit(1);
 }
 
-void print_stack(t_stack_node *stack, const char *stack_name)
+void	print_stack(t_stack_node *stack, const char *stack_name)
 {
-    t_stack_node *current = stack;
+	t_stack_node	*current;
 
-    ft_printf("Stack %s:\n", stack_name);
-    while (current != NULL)
-    {
-        ft_printf("Value: %d\n", current->value);
-        current = current->next;
-    }
-    ft_printf("\n");
+	current = stack;
+	ft_printf("Stack %s:\n", stack_name);
+	while (current != NULL)
+	{
+		ft_printf("Value: %d\n", current->value);
+		current = current->next;
+	}
+	ft_printf("\n");
 }
 
 int	main(int argc, char **argv)
@@ -59,21 +60,22 @@ int	main(int argc, char **argv)
 
 	arr_size = 0;
 	int_array = argument_parser(argc, argv, &arr_size);
+	// ft_printf("Array size: %d\n", arr_size);
 	if (is_sorted(int_array, arr_size))
 		return (0);
 	stack_a = initialise_stack(int_array, arr_size);
 	stack_b = initialise_stack(NULL, 0);
-	print_stack(stack_a, "A");
-	print_stack(stack_b, "B");
+	// print_stack(stack_a, "A");
 	if (!stack_a)
 		handle_error(true, NULL, int_array);
 	if (arr_size <= 5)
-		sort_small(&stack_a, &stack_b);
+		sort_small(&stack_a, &stack_b, arr_size);
+	else if (arr_size <= 100)
+		sort_big(&stack_a, &stack_b, arr_size);
 	else
-		sort_big(&stack_a, &stack_b);
+		sort_radix(&stack_a, &stack_b, arr_size);
 	free(int_array);
-	print_stack(stack_a, "A");
-	print_stack(stack_b, "B");
+	// print_stack(stack_a, "A");
 	free_stack(&stack_a);
 	free_stack(&stack_b);
 	return (0);
