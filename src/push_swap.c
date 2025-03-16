@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 21:00:45 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/16 10:57:17 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/16 18:29:38 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,20 +35,6 @@ void	handle_error(bool error, char **split, int *int_array)
 	if (int_array)
 		free(int_array);
 	exit(1);
-}
-
-void	print_stack(t_stack_node *stack, const char *stack_name)
-{
-	t_stack_node	*current;
-
-	current = stack;
-	ft_printf("Stack %s:\n", stack_name);
-	while (current != NULL)
-	{
-		ft_printf("Value: %d\n", current->value);
-		current = current->next;
-	}
-	ft_printf("\n");
 }
 
 int	main(int argc, char **argv)
