@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 13:18:12 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/25 14:17:16 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/16 11:49:15 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,7 @@ void			rr(t_stack_node **stack_a, t_stack_node **stack_b);
 void			rra(t_stack_node **stack);
 void			rrb(t_stack_node **stack);
 void			rrr(t_stack_node **stack_a, t_stack_node **stack_b);
+
+// Utility Functions
 
 #endif
