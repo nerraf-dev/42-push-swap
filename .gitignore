@@ -3,6 +3,7 @@
 push_swap_visualizer/
 .vscode/
 
+.venv/
 *.o
 *.a
 
