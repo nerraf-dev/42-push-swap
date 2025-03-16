@@ -6,13 +6,12 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 17:07:11 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/16 11:12:30 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/16 18:42:12 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-// Helper function to create a new stack node
 static t_stack_node	*create_node(int value)
 {
 	t_stack_node	*new_node;
@@ -27,7 +26,6 @@ static t_stack_node	*create_node(int value)
 	return (new_node);
 }
 
-// Function to initialize the stack
 t_stack_node	*initialise_stack(int *arr, int size)
 {
 	t_stack_node	*head;

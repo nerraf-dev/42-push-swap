@@ -6,12 +6,19 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 12:28:29 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/14 20:36:29 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/16 18:44:10 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
+/**
+ * @brief Rotate both stacks until the lowest cost node is at the top.
+ *
+ * @param stack_a The first stack.
+ * @param stack_b The second stack.
+ * @param lc_node The lowest cost node.
+ */
 static void	rotate_stacks(t_stack_node **stack_a, t_stack_node **stack_b,
 				t_stack_node *lc_node)
 {
@@ -21,6 +28,13 @@ static void	rotate_stacks(t_stack_node **stack_a, t_stack_node **stack_b,
 	current_index(*stack_b);
 }
 
+/**
+ * @brief Reverse rotate both stacks until the lowest cost node is at the top.
+ *
+ * @param stack_a The first stack.
+ * @param stack_b The second stack.
+ * @param lc_node The lowest cost node.
+ */
 static void	rev_rotate_stacks(t_stack_node **stack_a, t_stack_node **stack_b,
 				t_stack_node *lc_node)
 {
@@ -30,6 +44,12 @@ static void	rev_rotate_stacks(t_stack_node **stack_a, t_stack_node **stack_b,
 	current_index(*stack_b);
 }
 
+/**
+ * @brief Push the lowest cost node from stack a to stack b.
+ *
+ * @param stack_a The source stack a.
+ * @param stack_b The destination stack b.
+ */
 static void	push_a_to_b(t_stack_node **stack_a, t_stack_node **stack_b)
 {
 	t_stack_node	*lc_node;
@@ -44,6 +64,13 @@ static void	push_a_to_b(t_stack_node **stack_a, t_stack_node **stack_b)
 	pb(stack_a, stack_b);
 }
 
+/**
+ * @brief Sort a large stack using a combination of algorithms.
+ *
+ * @param stack_a The stack to sort.
+ * @param stack_b The auxiliary stack.
+ * @param len The length of the stack.
+ */
 void	sort_big(t_stack_node **stack_a, t_stack_node **stack_b, int len)
 {
 	if (len-- > 3)

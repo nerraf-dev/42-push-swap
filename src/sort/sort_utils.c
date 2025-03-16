@@ -6,12 +6,18 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 14:34:31 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/14 20:12:58 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/16 18:44:30 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
+/**
+ * @brief Get the maximum value in the stack.
+ *
+ * @param stack The stack to search.
+ * @return The maximum value.
+ */
 int	get_max(t_stack_node *stack)
 {
 	t_stack_node	*current;
@@ -28,6 +34,12 @@ int	get_max(t_stack_node *stack)
 	return (max);
 }
 
+/**
+ * @brief Check if the stack is sorted in ascending order.
+ *
+ * @param stack The stack to check.
+ * @return true if sorted, false otherwise.
+ */
 bool	stack_sorted(t_stack_node	*stack)
 {
 	t_stack_node	*current;
@@ -44,6 +56,11 @@ bool	stack_sorted(t_stack_node	*stack)
 	return (true);
 }
 
+/**
+ * @brief Move the minimum value to the top of the stack.
+ *
+ * @param stack_a The stack to modify.
+ */
 void	min_to_top(t_stack_node **stack_a)
 {
 	while ((*stack_a)->value != find_min(*stack_a)->value)
@@ -55,6 +72,12 @@ void	min_to_top(t_stack_node **stack_a)
 	}
 }
 
+/**
+ * @brief Get the size of the stack.
+ *
+ * @param stack The stack to measure.
+ * @return The size of the stack.
+ */
 int	stack_size(t_stack_node *stack)
 {
 	int				size;
