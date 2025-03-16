@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.h                                             :+:      :+:    :+:   */
+/*   commands.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/17 13:58:17 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/14 20:02:48 by sfarren          ###   ########.fr       */
+/*   Created: 2025/03/16 11:49:15 by sfarren           #+#    #+#             */
+/*   Updated: 2025/03/16 11:56:21 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SORT_H
-# define SORT_H
+#ifndef COMMANDS_H
+# define COMMANDS_H
 
-void			sort_two(t_stack_node **stack);
-void			sort_three(t_stack_node **stack);
-void			sort_big(t_stack_node **stack_a, t_stack_node **stack_b);
-void			sort_radix(t_stack_node **stack_a, t_stack_node **stack_b);
+# include "stack.h"
 
-// Max Min
-t_stack_node	*find_min(t_stack_node *stack);
-t_stack_node	*find_max(t_stack_node *stack);
-// Push_Swap_Commands
+// Push_Swap Commands
 void			pa(t_stack_node **stack_a, t_stack_node **stack_b);
 void			pb(t_stack_node **stack_a, t_stack_node **stack_b);
 void			sa(t_stack_node **stack);
