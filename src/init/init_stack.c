@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 17:07:11 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/14 12:26:04 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/15 19:03:22 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ t_stack_node	*initialise_stack(int *arr, int size)
 	ranks = NULL;
 	if (arr == NULL)
 		return (head);
-
 	ranks = malloc(size * sizeof(int));
 	if (!ranks)
 		handle_error(true, NULL, arr);
