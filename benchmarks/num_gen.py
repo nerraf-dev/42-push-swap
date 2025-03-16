@@ -4,7 +4,7 @@ import random   #Import the random modules
 
 i = 0
 nums = list(range(1, 101))
-random.shuffle(nums)
+# random.shuffle(nums)
 
 
 cmd = "leaks -atExit -- ./push_swap "

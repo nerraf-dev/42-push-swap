@@ -6,12 +6,17 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 21:20:12 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/04 09:53:42 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/16 18:46:23 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
+/**
+ * @brief Sets the index and above_median flag for each node in the stack.
+ *
+ * @param stack The stack to set the index and above_median flag for.
+ */
 void	current_index(t_stack_node *stack)
 {
 	int	i;
@@ -33,6 +38,12 @@ void	current_index(t_stack_node *stack)
 	}
 }
 
+/**
+ * @brief Sets the target node in stack a for each node in stack b.
+ *
+ * @param stack_a The stack a to set targets for.
+ * @param stack_b The stack b to find targets from.
+ */
 static void	set_target_a(t_stack_node *stack_a, t_stack_node *stack_b)
 {
 	t_stack_node	*current_b;
@@ -61,6 +72,13 @@ static void	set_target_a(t_stack_node *stack_a, t_stack_node *stack_b)
 	}
 }
 
+/**
+ * @brief Calculates the cost of moving each node in stack a to its
+ * 		  target in stack b.
+ *
+ * @param stack_a The stack a to calculate costs for.
+ * @param stack_b The stack b to find targets from.
+ */
 static void	calculate_cost_a(t_stack_node *stack_a, t_stack_node *stack_b)
 {
 	int	len_a;
@@ -81,6 +99,11 @@ static void	calculate_cost_a(t_stack_node *stack_a, t_stack_node *stack_b)
 	}
 }
 
+/**
+ * @brief Sets the node with the lowest cost in the stack.
+ *
+ * @param stack The stack to set the lowest cost node for.
+ */
 void	set_lowest_cost(t_stack_node *stack)
 {
 	int				lowest_cost;
@@ -101,6 +124,13 @@ void	set_lowest_cost(t_stack_node *stack)
 	lowest_cost_node->lowest_cost = true;
 }
 
+/**
+ * @brief Initializes the nodes in stack a with their target nodes in
+ * 			stack b and calculates costs.
+ *
+ * @param stack_a The stack a to initialize.
+ * @param stack_b The stack b to find targets from.
+ */
 void	initialise_nodes_a(t_stack_node *stack_a, t_stack_node *stack_b)
 {
 	current_index(stack_a);

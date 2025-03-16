@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.h                                            :+:      :+:    :+:   */
+/*   initialisation.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/17 13:18:12 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/16 12:07:50 by sfarren          ###   ########.fr       */
+/*   Created: 2025/03/16 12:08:10 by sfarren           #+#    #+#             */
+/*   Updated: 2025/03/16 12:08:14 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STACK_H
-# define STACK_H
-# include <stdbool.h>
+#ifndef INITIALISATION_H
+# define INITIALISATION_H
 
-typedef struct s_stack_node
-{
-	int					value;
-	int					index;
-	int					cost;
-	bool				lowest_cost;
-	bool				above_median;
-	struct s_stack_node	*next;
-	struct s_stack_node	*prev;
-	struct s_stack_node	*target;
-}	t_stack_node;
+# include "stack.h"
+
+// Stack Initialisation Functions
+t_stack_node	*initialise_stack(int *arr, int size);
+void			initialise_b_nodes(t_stack_node *stack_a,
+					t_stack_node *stack_b);
+void			initialise_nodes_a(t_stack_node *stack_a,
+					t_stack_node *stack_b);
 
 #endif

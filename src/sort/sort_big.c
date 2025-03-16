@@ -6,27 +6,50 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 12:28:29 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/09 15:49:13 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/16 18:57:07 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-static int	stack_size(t_stack_node *stack)
+/**
+ * @brief Rotate both stacks until the lowest cost node is at the top.
+ *
+ * @param stack_a The first stack.
+ * @param stack_b The second stack.
+ * @param lc_node The lowest cost node.
+ */
+static void	rotate_stacks(t_stack_node **stack_a, t_stack_node **stack_b,
+				t_stack_node *lc_node)
 {
-	int				size;
-	t_stack_node	*current;
-
-	size = 0;
-	current = stack;
-	while (current)
-	{
-		size++;
-		current = current->next;
-	}
-	return (size);
+	while (*stack_b != lc_node && *stack_a != lc_node)
+		rr(stack_a, stack_b);
+	current_index(*stack_a);
+	current_index(*stack_b);
 }
 
+/**
+ * @brief Reverse rotate both stacks until the lowest cost node is at the top.
+ *
+ * @param stack_a The first stack.
+ * @param stack_b The second stack.
+ * @param lc_node The lowest cost node.
+ */
+static void	rev_rotate_stacks(t_stack_node **stack_a, t_stack_node **stack_b,
+				t_stack_node *lc_node)
+{
+	while (*stack_b != lc_node && *stack_a != lc_node)
+		rrr(stack_a, stack_b);
+	current_index(*stack_a);
+	current_index(*stack_b);
+}
+
+/**
+ * @brief Push the lowest cost node from stack a to stack b.
+ *
+ * @param stack_a The source stack a.
+ * @param stack_b The destination stack b.
+ */
 static void	push_a_to_b(t_stack_node **stack_a, t_stack_node **stack_b)
 {
 	t_stack_node	*lc_node;
@@ -59,21 +82,28 @@ static void	initial_pushes(t_stack_node **stack_a, t_stack_node **stack_b,
 		sb(stack_b);
 }
 
-void	sort_big(t_stack_node **stack_a, t_stack_node **stack_b)
+/**
+ * @brief Sort a large stack using a combination of algorithms.
+ *
+ * @param stack_a The stack to sort.
+ * @param stack_b The auxiliary stack.
+ * @param len The length of the stack.
+ */
+void	sort_big(t_stack_node **stack_a, t_stack_node **stack_b, int len)
 {
-	int		len;
-	int		initial_len;
-
-	len = stack_size(*stack_a);
-	initial_pushes(stack_a, stack_b, &len);
-	initial_len = len;
-	while (initial_len > 3 && !stack_sorted(*stack_a))
+	if (len-- > 3)
+		pb(stack_a, stack_b);
+	if (len-- > 3)
+		pb(stack_a, stack_b);
+	if ((*stack_b)->value < (*stack_b)->next->value)
+		sb(stack_b);
+	while (len-- > 3 && !stack_sorted(*stack_a))
 	{
 		initialise_nodes_a(*stack_a, *stack_b);
 		push_a_to_b(stack_a, stack_b);
 		initial_len--;
 	}
-	sort_small(stack_a, stack_b);
+	sort_small(stack_a, stack_b, len + 1);
 	while (*stack_b)
 	{
 		initialise_b_nodes(*stack_a, *stack_b);

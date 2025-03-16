@@ -1,83 +1,115 @@
 #!/bin/bash
 
-# Default file containing the test cases
-TEST_FILE="benchmarks/tests-100.txt"
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+NC='\033[0m' # No Color
 
-# Output file to store the results
-OUTPUT_FILE="results.txt"
+# Function to generate unique random integers
+generate_random_numbers() {
+    local count=$1
+    local min=$2
+    local max=$3
+    local numbers=()
+    local num
 
-# Path to the push_swap executable
-PUSH_SWAP="./push_swap"
+    while [ ${#numbers[@]} -lt $count ]; do
+        num=$((min + RANDOM % (max - min + 1)))
+        if [[ ! " ${numbers[@]} " =~ " ${num} " ]]; then
+            numbers+=("$num")
+        fi
+    done
 
-# Function to display usage information
-usage() {
-    echo "Usage: $0 [-f test_file] [-o output_file]"
-    echo "  -f test_file    Specify the test file (default: $TEST_FILE)"
-    echo "  -o output_file  Specify the output file (default: $OUTPUT_FILE)"
-    exit 1
+    echo "${numbers[@]}"
 }
 
-# Parse command-line arguments
-while getopts "f:o:" opt; do
-    case $opt in
-        f)
-            TEST_FILE="$OPTARG"
-            ;;
-        o)
-            OUTPUT_FILE="$OPTARG"
-            ;;
-        *)
-            usage
-            ;;
-    esac
-done
+# Function to test valid inputs
+test_valid_inputs() {
+    echo -e "${YELLOW}Testing valid inputs...${NC}"
 
-# Check if the push_swap executable exists
-if [ ! -f "$PUSH_SWAP" ]; then
-    echo "Error: push_swap executable not found at $PUSH_SWAP"
-    exit 1
-fi
+    # Test cases
+    local test_cases=(
+        "2 integers" "$(generate_random_numbers 2 -100 100)"
+        "3 integers" "$(generate_random_numbers 3 -100 100)"
+        "4 integers" "$(generate_random_numbers 4 -100 100)"
+        "5 integers" "$(generate_random_numbers 5 -100 100)"
+        "10 integers" "$(generate_random_numbers 10 -100 100)"
+        "50 integers" "$(generate_random_numbers 50 -1000 1000)"
+        "100 integers" "$(generate_random_numbers 100 -1000 1000)"
+        "200 integers" "$(generate_random_numbers 200 -10000 10000)"
+        "500 integers" "$(generate_random_numbers 500 -10000 10000)"
+        "INT_MIN and INT_MAX" "-2147483648 2147483647"
+    )
 
-# Check if the test file exists
-if [ ! -f "$TEST_FILE" ]; then
-    echo "Error: test file not found at $TEST_FILE"
-    exit 1
-fi
+    # Run tests
+    for ((i=0; i<${#test_cases[@]}; i+=2)); do
+        description="${test_cases[i]}"
+        input="${test_cases[i+1]}"
 
-# Clear the output file
-> "$OUTPUT_FILE"
+        echo -e "\n${YELLOW}Test: $description${NC}"
+        echo "Input: $input"
 
-# Initialize variables for calculating the average
-total_commands=0
-test_count=0
+        # Run push_swap and checker
+        ./push_swap $input | ./checker_Mac $input
+        if [ $? -eq 0 ]; then
+            echo -e "${GREEN}OK${NC}"
+        else
+            echo -e "${RED}KO${NC}"
+        fi
+    done
+}
 
-# Read the test cases from the file
-while IFS= read -r line; do
-    # Run push_swap with the current test case
-    COMMANDS=$($PUSH_SWAP $line)
+# Function to test invalid inputs
+# Function to test invalid inputs
+test_invalid_inputs() {
+    echo -e "${YELLOW}Testing invalid inputs...${NC}"
 
-    # Count the number of commands output by push_swap
-    COMMAND_COUNT=$(echo "$COMMANDS" | wc -l)
+    # Test cases
+    local test_cases=(
+        "No arguments" ""
+        "Duplicate values" "1 2 3 4 5 5"
+        "Value larger than INT_MAX" "2147483648"
+        "Value smaller than INT_MIN" "-2147483649"
+        "Incorrect type (string)" "1 2 three 4"
+        "Incorrect type (char)" "1 2 @ 4"
+    )
 
-    # Add to the total command count and increment the test count
-    total_commands=$((total_commands + COMMAND_COUNT))
-    test_count=$((test_count + 1))
+    # Run tests
+    for ((i=0; i<${#test_cases[@]}; i+=2)); do
+        description="${test_cases[i]}"
+        input="${test_cases[i+1]}"
 
-    # Print the test case and the command count to the output file
-    echo "Test case: $line" >> "$OUTPUT_FILE"
-    echo "Command count: $COMMAND_COUNT" >> "$OUTPUT_FILE"
-    echo "------------------------" >> "$OUTPUT_FILE"
-done < "$TEST_FILE"
+        echo -e "\n${YELLOW}Test: $description${NC}"
+        echo "Input: $input"
 
-# Calculate the average command count
-echo "Number of tests run: $test_count" >> "$OUTPUT_FILE"
-if [ $test_count -gt 0 ]; then
-    average_commands=$(echo "scale=2; $total_commands / $test_count" | bc)
-else
-    average_commands=0
-fi
+        if [ -z "$input" ]; then
+            # Special case for no arguments
+            output=$(./push_swap)
+            if [ -z "$output" ]; then
+                echo -e "${GREEN}No output as expected${NC}"
+            else
+                echo -e "${RED}Unexpected output: $output${NC}"
+            fi
+        else
+            # Run push_swap and check for error message
+            ./push_swap $input 2>&1 | grep -q "Error"
+            if [ $? -eq 0 ]; then
+                echo -e "${GREEN}Error message displayed${NC}"
+            else
+                echo -e "${RED}Error message not displayed${NC}"
+            fi
+        fi
+    done
+}
 
-# Print the average command count to the output file
-echo "Average command count: $average_commands" >> "$OUTPUT_FILE"
+# Main script
+echo -e "${YELLOW}Starting tests...${NC}"
 
-echo "Results have been written to $OUTPUT_FILE"
+# Test valid inputs
+test_valid_inputs
+
+# Test invalid inputs
+test_invalid_inputs
+
+echo -e "${YELLOW}Tests completed.${NC}"

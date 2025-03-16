@@ -6,12 +6,19 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 21:00:45 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/07 09:56:45 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/16 18:34:29 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
+/**
+ * @brief Checks if the array is sorted in ascending order.
+ *
+ * @param int_array The array of integers to check.
+ * @param arr_size The size of the array.
+ * @return true if the array is sorted, false otherwise.
+ */
 static bool	is_sorted(int *int_array, int arr_size)
 {
 	int	i;
@@ -26,20 +33,31 @@ static bool	is_sorted(int *int_array, int arr_size)
 	return (true);
 }
 
-void	handle_error(const char *message, char **split, int *int_array)
+/**
+ * @brief Handles errors by printing an error message and freeing memory.
+ *
+ * @param error A boolean indicating if an error occurred.
+ * @param split A pointer to an array of strings to be freed.
+ * @param int_array A pointer to an array of integers to be freed.
+ */
+void	handle_error(bool error, char **split, int *int_array)
 {
-	ft_printf("Error: %s\n", message);
+	if (error)
+		ft_printf_fd(2, "Error\n");
 	if (split)
-	{
 		free_split(split);
-	}
 	if (int_array)
-	{
 		free(int_array);
-	}
 	exit(1);
 }
 
+/**
+ * @brief The main function that initializes the stacks and sorts the array.
+ *
+ * @param argc The number of command-line arguments.
+ * @param argv The array of command-line arguments.
+ * @return int Returns 0 on success, exits with 1 on error.
+ */
 int	main(int argc, char **argv)
 {
 	int				*int_array;
@@ -54,11 +72,13 @@ int	main(int argc, char **argv)
 	stack_a = initialise_stack(int_array, arr_size);
 	stack_b = initialise_stack(NULL, 0);
 	if (!stack_a)
-		handle_error("Memory allocation failed", NULL, int_array);
+		handle_error(true, NULL, int_array);
 	if (arr_size <= 5)
-		sort_small(&stack_a, &stack_b);
+		sort_small(&stack_a, &stack_b, arr_size);
+	else if (arr_size <= 100)
+		sort_big(&stack_a, &stack_b, arr_size);
 	else
-		sort_big(&stack_a, &stack_b);
+		sort_radix(&stack_a, &stack_b, arr_size);
 	free(int_array);
 	free_stack(&stack_a);
 	free_stack(&stack_b);

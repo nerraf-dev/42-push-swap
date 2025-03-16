@@ -6,12 +6,18 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 11:14:18 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/07 10:13:14 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/16 18:50:06 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
+/**
+ * @brief Calculates the length of an integer array.
+ *
+ * @param int_array The integer array.
+ * @return int The length of the array.
+ */
 int	int_array_length(int *int_array)
 {
 	int	i;
@@ -22,6 +28,13 @@ int	int_array_length(int *int_array)
 	return (i);
 }
 
+/**
+ * @brief Converts a split array of strings to an array of integers.
+ *
+ * @param split The split array of strings.
+ * @param size The size of the array.
+ * @return int* The array of integers.
+ */
 int	*convert_to_int_array(char **split, int size)
 {
 	int	*int_array;
@@ -34,13 +47,20 @@ int	*convert_to_int_array(char **split, int size)
 	while (i < size)
 	{
 		if (!is_valid_int(split[i]))
-			handle_error("Invalid integer found", split, int_array);
+			handle_error(true, split, int_array);
 		int_array[i] = ft_atoi(split[i]);
 		i++;
 	}
 	return (int_array);
 }
 
+/**
+ * @brief Checks if an array of integers contains duplicates.
+ *
+ * @param arr The array of integers.
+ * @param size The size of the array.
+ * @return int 1 if duplicates are found, 0 otherwise.
+ */
 int	has_duplicates(int *arr, int size)
 {
 	int	i;
@@ -61,12 +81,20 @@ int	has_duplicates(int *arr, int size)
 	return (0);
 }
 
-int split_length(char **split)
+/**
+ * @brief Calculates the length of a split array of strings.
+ *
+ * @param split The split array of strings.
+ * @return int The length of the array.
+ */
+int	split_length(char **split)
 {
-	int length = 0;
+	int	length;
+
+	length = 0;
 	while (split[length] != NULL)
 	{
 		length++;
 	}
-	return length;
+	return (length);
 }
