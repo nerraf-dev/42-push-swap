@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 19:48:33 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/16 11:57:19 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/16 12:07:27 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,16 @@ void			handle_error(bool error, char **split, int *int_array);
 // Stack Manipulation Functions
 void			free_stack(t_stack_node **stack);
 void			push_prep(t_stack_node **stack,	t_stack_node *top_node,
-                    char stack_name);
+					char stack_name);
 void			push_b_to_a(t_stack_node **stack_a, t_stack_node **stack_b);
 
 // Sorting Functions
 void			sort_small(t_stack_node	**stack_a, t_stack_node	**stack_b,
-                    int len);
+					int len);
 void			sort_big(t_stack_node **stack_a, t_stack_node **stack_b,
-                    int len);
+					int len);
 void			sort_radix(t_stack_node **stack_a, t_stack_node **stack_b,
-                    int len);
+					int len);
 
 // Sort utils
 void			min_to_top(t_stack_node **stack_a);

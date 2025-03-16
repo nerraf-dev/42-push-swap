@@ -1,6 +1,7 @@
 .src-copy/
 .course_content/
 push_swap_visualizer/
+.vscode/
 
 *.o
 *.a
