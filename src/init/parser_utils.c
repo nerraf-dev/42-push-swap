@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 11:14:18 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/14 12:21:23 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/16 11:13:43 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,14 @@ int	has_duplicates(int *arr, int size)
 	return (0);
 }
 
-int split_length(char **split)
+int	split_length(char **split)
 {
-	int length = 0;
+	int	length;
+
+	length = 0;
 	while (split[length] != NULL)
 	{
 		length++;
 	}
-	return length;
+	return (length);
 }

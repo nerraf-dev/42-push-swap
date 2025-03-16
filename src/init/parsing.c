@@ -4,8 +4,9 @@
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           #+#    #+#             */
-/*   Updated: 2025/03/07 10:09:23 by sfarren          ###   ########.fr       */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/16 10:58:10 by sfarren           #+#    #+#             */
+/*   Updated: 2025/03/16 10:58:31 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +66,7 @@ static int	*parse_arguments(int argc, char **argv, int *arr_size)
 
 	split = split_arguments(argc, argv);
 	validate_arguments(split, argc);
-	*arr_size = split_length(split); // Use split_length instead of int_array_length
+	*arr_size = split_length(split);
 	int_array = convert_to_int_array(split, *arr_size);
 	if (argc == 2)
 		free_split(split);

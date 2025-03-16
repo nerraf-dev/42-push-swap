@@ -6,61 +6,56 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 17:07:11 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/15 19:03:22 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/16 11:12:30 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
+// Helper function to create a new stack node
+static t_stack_node	*create_node(int value)
+{
+	t_stack_node	*new_node;
+
+	new_node = (t_stack_node *)malloc(sizeof(t_stack_node));
+	if (!new_node)
+		return (NULL);
+	new_node->value = value;
+	new_node->index = 0;
+	new_node->next = NULL;
+	new_node->prev = NULL;
+	return (new_node);
+}
+
+// Function to initialize the stack
 t_stack_node	*initialise_stack(int *arr, int size)
 {
 	t_stack_node	*head;
 	t_stack_node	*new_node;
-	int				*ranks;
 	int				i;
 
 	head = NULL;
 	new_node = NULL;
-	ranks = NULL;
-	if (arr == NULL)
-		return (head);
-	ranks = malloc(size * sizeof(int));
-	if (!ranks)
-		handle_error(true, NULL, arr);
-	assign_ranks(arr, ranks, size);
 	i = size - 1;
+	if (arr == NULL)
+		return (NULL);
 	while (i >= 0)
 	{
-		new_node = (t_stack_node *)malloc(sizeof(t_stack_node));
+		new_node = create_node(arr[i]);
 		if (!new_node)
 		{
-			free(ranks);
+			free_stack(&head);
 			return (NULL);
 		}
-		new_node->value = ranks[i];
-		new_node->index = 0;
 		new_node->next = head;
-		new_node->prev = NULL;
-		new_node->target = NULL;
 		if (head != NULL)
 			head->prev = new_node;
 		head = new_node;
 		i--;
 	}
-	free(ranks);
 	return (head);
 }
 
-/**
- * @brief Retrieves the node with the lowest cost from the stack.
- *
- * This function traverses the given stack and returns the first node
- * that has the `lowest_cost` flag set to true. If no such node is found,
- * or if the stack is empty, the function returns NULL.
- *
- * @param stack A pointer to the head of the stack.
- * @return pointer to node with the lowest cost, or NULL if no node exists.
- */
 t_stack_node	*get_lc_node(t_stack_node *stack)
 {
 	if (!stack)
