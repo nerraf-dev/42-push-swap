@@ -6,12 +6,19 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 21:00:45 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/16 18:29:38 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/16 18:34:29 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
+/**
+ * @brief Checks if the array is sorted in ascending order.
+ *
+ * @param int_array The array of integers to check.
+ * @param arr_size The size of the array.
+ * @return true if the array is sorted, false otherwise.
+ */
 static bool	is_sorted(int *int_array, int arr_size)
 {
 	int	i;
@@ -26,6 +33,13 @@ static bool	is_sorted(int *int_array, int arr_size)
 	return (true);
 }
 
+/**
+ * @brief Handles errors by printing an error message and freeing memory.
+ *
+ * @param error A boolean indicating if an error occurred.
+ * @param split A pointer to an array of strings to be freed.
+ * @param int_array A pointer to an array of integers to be freed.
+ */
 void	handle_error(bool error, char **split, int *int_array)
 {
 	if (error)
@@ -37,6 +51,13 @@ void	handle_error(bool error, char **split, int *int_array)
 	exit(1);
 }
 
+/**
+ * @brief The main function that initializes the stacks and sorts the array.
+ *
+ * @param argc The number of command-line arguments.
+ * @param argv The array of command-line arguments.
+ * @return int Returns 0 on success, exits with 1 on error.
+ */
 int	main(int argc, char **argv)
 {
 	int				*int_array;

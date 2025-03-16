@@ -6,12 +6,18 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 13:17:16 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/04 09:53:42 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/16 18:35:50 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
+/**
+ * @brief Gets the last node of the stack.
+ *
+ * @param stack The stack to get the last node from.
+ * @return t_stack_node* The last node of the stack.
+ */
 t_stack_node	*get_last_node(t_stack_node *stack)
 {
 	if (!stack)
@@ -21,6 +27,11 @@ t_stack_node	*get_last_node(t_stack_node *stack)
 	return (stack);
 }
 
+/**
+ * @brief Frees all nodes in the stack.
+ *
+ * @param stack The stack to be freed.
+ */
 void	free_stack(t_stack_node **stack)
 {
 	t_stack_node	*current;
@@ -38,6 +49,12 @@ void	free_stack(t_stack_node **stack)
 	*stack = NULL;
 }
 
+/**
+ * @brief Calculates the size of the stack.
+ *
+ * @param stack The stack to calculate the size of.
+ * @return int The size of the stack, or -1 if a cycle is detected.
+ */
 int	s_size(t_stack_node *stack)
 {
 	t_stack_node	*slow;
@@ -63,6 +80,12 @@ int	s_size(t_stack_node *stack)
 	return (size);
 }
 
+/**
+ * @brief Finds the node with the minimum value in the stack.
+ *
+ * @param stack The stack to search.
+ * @return t_stack_node* The node with the minimum value.
+ */
 t_stack_node	*find_min(t_stack_node *stack)
 {
 	int				min;
@@ -83,6 +106,12 @@ t_stack_node	*find_min(t_stack_node *stack)
 	return (min_node);
 }
 
+/**
+ * @brief Finds the node with the maximum value in the stack.
+ *
+ * @param stack The stack to search.
+ * @return t_stack_node* The node with the maximum value.
+ */
 t_stack_node	*find_max(t_stack_node *stack)
 {
 	long			max;
