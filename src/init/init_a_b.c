@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 21:20:12 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/16 18:36:54 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/16 18:46:23 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,8 @@ static void	set_target_a(t_stack_node *stack_a, t_stack_node *stack_b)
 }
 
 /**
- * @brief Calculates the cost of moving each node in stack a to its target in stack b.
+ * @brief Calculates the cost of moving each node in stack a to its
+ * 		  target in stack b.
  *
  * @param stack_a The stack a to calculate costs for.
  * @param stack_b The stack b to find targets from.
@@ -124,7 +125,8 @@ void	set_lowest_cost(t_stack_node *stack)
 }
 
 /**
- * @brief Initializes the nodes in stack a with their target nodes in stack b and calculates costs.
+ * @brief Initializes the nodes in stack a with their target nodes in
+ * 			stack b and calculates costs.
  *
  * @param stack_a The stack a to initialize.
  * @param stack_b The stack b to find targets from.

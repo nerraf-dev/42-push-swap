@@ -6,14 +6,14 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 12:04:15 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/16 18:35:57 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/16 18:46:43 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
 /**
- * @brief Reverses the rotation of the stack by moving the last element to the front.
+ * @brief Reverses rotation of the stack by moving the last element to the front.
  *
  * @param stack The stack to reverse rotate.
  */
