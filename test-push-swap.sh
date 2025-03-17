@@ -9,6 +9,14 @@ NC='\033[0m' # No Color
 # Number of tests to run for 100 and 500 values
 NUM_TESTS=5
 
+# OS-specific checker
+OS=$(uname)
+if [ "$OS" == "Darwin" ]; then
+    CHECKER='./checker_Mac'
+else
+    CHECKER='./checker_linux'
+fi
+
 # Function to generate random integers without duplicates
 generate_random_numbers() {
     local count=$1
@@ -60,7 +68,7 @@ test_valid_inputs() {
         echo "Input: $input"
 
         # Run push_swap and checker
-        ./push_swap $input | ./checker_Mac $input
+        ./push_swap $input | $CHECKER $input
         if [ $? -eq 0 ]; then
             echo -e "${GREEN}OK${NC}"
         else
@@ -168,7 +176,13 @@ run_multiple_tests() {
 
     for ((i=1; i<=NUM_TESTS; i++)); do
         input=$(generate_random_numbers $size -10000 10000)
-        operations=$(./push_swap $input | wc -l)
+        operations=$(./push_swap $input | tee >(wc -l > ops_count) | $CHECKER $input)
+        if [ $? -eq 0 ]; then
+            echo -e "${GREEN}OK${NC}"
+        else
+            echo -e "${RED}KO${NC}"
+        fi
+        operations=$(cat ops_count)
         total_operations=$((total_operations + operations))
         echo -e "Test $i: $operations operations"
     done
@@ -176,6 +190,7 @@ run_multiple_tests() {
     average_operations=$((total_operations / NUM_TESTS))
     echo -e "${YELLOW}Average operations for $size values: $average_operations${NC}"
     evaluate_efficiency $average_operations $size
+    rm ops_count
 }
 
 # Function to test benchmark requirements

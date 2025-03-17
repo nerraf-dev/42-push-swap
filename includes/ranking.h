@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 21:18:15 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/16 11:49:18 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/17 10:05:39 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,5 @@
 
 void	assign_ranks(int *arr, int *ranks, int size);
 
-// Utility Functions
 
 #endif
