@@ -6,7 +6,7 @@
 #    By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/20 13:36:23 by sfarren           #+#    #+#              #
-#    Updated: 2025/03/16 18:40:27 by sfarren          ###   ########.fr        #
+#    Updated: 2025/03/17 12:39:13 by sfarren          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ else
 endif
 
 CFLAGS = -Wall -Wextra -Werror -g
+
 
 NAME = push_swap
 LIBFT_DIR = src/libft
@@ -51,7 +52,7 @@ $(LIBFT):
 $(NAME): $(OBJS) $(LIBFT)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT)
 
-$(NAME)_valgrind: LDFLAGS += -Wl,--preload=/usr/lib/valgrind/libasan.so
+
 $(NAME)_valgrind: $(OBJS) $(LIBFT)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(LDFLAGS)
 
@@ -66,8 +67,9 @@ fclean: clean
 	$(MAKE) -C $(LIBFT_DIR) fclean
 	rm -f $(NAME)
 
-valgrind: $(NAME)_valgrind
-	valgrind --leak-check=full --track-origins=yes ./$(NAME)
+valgrind: $(NAME)
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME) "3 2 1 0"
+# valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --log-file=valgrind-out.txt ./$(NAME) "3 2 1 0"
 
 re: fclean all
 
