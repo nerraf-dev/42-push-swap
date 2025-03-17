@@ -6,11 +6,34 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 17:07:11 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/17 12:17:03 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/17 13:29:46 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
+
+static t_stack_node	*create_new_node(int value)
+{
+	t_stack_node	*new_node;
+
+	new_node = (t_stack_node *)malloc(sizeof(t_stack_node));
+	if (!new_node)
+		return (NULL);
+	new_node->value = value;
+	new_node->index = 0;
+	new_node->next = NULL;
+	new_node->prev = NULL;
+	new_node->target = NULL;
+	return (new_node);
+}
+
+static void	add_to_stack(t_stack_node **head, t_stack_node *new_node)
+{
+	if (*head != NULL)
+		(*head)->prev = new_node;
+	new_node->next = *head;
+	*head = new_node;
+}
 
 t_stack_node	*initialise_stack(int *arr, int size)
 {
@@ -20,32 +43,22 @@ t_stack_node	*initialise_stack(int *arr, int size)
 	int				i;
 
 	head = NULL;
-	new_node = NULL;
-	ranks = NULL;
-	if (arr == NULL)
-		return (head);
+	if (!arr)
+		return (NULL);
 	ranks = malloc(size * sizeof(int));
 	if (!ranks)
 		handle_error(true, NULL, arr);
 	assign_ranks(arr, ranks, size);
 	i = size - 1;
-	while (i >= 0)
+	while (i-- >= 0)
 	{
-		new_node = (t_stack_node *)malloc(sizeof(t_stack_node));
+		new_node = create_new_node(ranks[i]);
 		if (!new_node)
 		{
 			free(ranks);
 			return (NULL);
 		}
-		new_node->value = ranks[i];
-		new_node->index = 0;
-		new_node->next = head;
-		new_node->prev = NULL;
-		new_node->target = NULL;
-		if (head != NULL)
-			head->prev = new_node;
-		head = new_node;
-		i--;
+		add_to_stack(&head, new_node);
 	}
 	free(ranks);
 	return (head);
