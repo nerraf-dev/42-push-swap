@@ -182,11 +182,14 @@ evaluate_efficiency() {
 run_multiple_tests() {
     local size=$1
     local total_operations=0
+    local input_file="input_values_${size}.txt"
 
     echo -e "\n${YELLOW}Running $NUM_TESTS tests for $size values...${NC}"
+    echo "" > $input_file  # Clear the file before writing new inputs
 
     for ((i=1; i<=NUM_TESTS; i++)); do
         input=$(generate_random_numbers $size -10000 10000)
+        echo "Test $i: $input" >> $input_file  # Write the input values to the file
         operations=$(./push_swap $input | tee >(wc -l > ops_count) | $CHECKER $input)
         if [ $? -eq 0 ]; then
             echo -e "${GREEN}OK${NC}"
@@ -203,6 +206,8 @@ run_multiple_tests() {
     evaluate_efficiency $average_operations $size
     rm ops_count
 }
+
+# ...existing code...
 
 # Function to test benchmark requirements
 test_benchmark() {
