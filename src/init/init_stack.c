@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 17:07:11 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/18 11:18:30 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/18 13:57:36 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,21 @@ t_stack_node	*initialise_stack(int *arr, int size)
 	t_stack_node	*head;
 	t_stack_node	*new_node;
 	int				i;
+	int				*ranks;
 
 	head = NULL;
 	new_node = NULL;
+	ranks = NULL;
 	i = size - 1;
 	if (arr == NULL)
 		return (NULL);
+	ranks = malloc(size * sizeof(int));
+	if (!ranks)
+		handle_error(true, NULL, arr);
+	assign_ranks(arr, ranks, size);
 	while (i >= 0)
 	{
-		new_node = create_node(arr[i]);
+		new_node = create_node(ranks[i]);
 		if (!new_node)
 		{
 			free_stack(&head);
