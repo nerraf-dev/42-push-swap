@@ -6,12 +6,18 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 20:02:04 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/15 18:41:57 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/18 11:16:56 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
+/**
+ * Sort the stack using the radix sort algorithm.
+ * @param stack_a The main stack to sort.
+ * @param stack_b The auxiliary stack.
+ * @param len The number of elements in the stack.
+ */
 void	sort_radix(t_stack_node **stack_a, t_stack_node **stack_b, int len)
 {
 	int		max_num;

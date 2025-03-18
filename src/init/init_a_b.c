@@ -6,12 +6,16 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 21:20:12 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/17 19:36:58 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/18 11:18:27 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
+/**
+ * Assigns index and median status to each node in the stack.
+ * @param stack The stack to process.
+ */
 void	current_index(t_stack_node *stack)
 {
 	int	i;
@@ -33,6 +37,11 @@ void	current_index(t_stack_node *stack)
 	}
 }
 
+/**
+ * Sets the target node in stack_b for each node in stack_a.
+ * @param stack_a The stack A to process.
+ * @param stack_b The stack B to process.
+ */
 static void	set_target_a(t_stack_node *stack_a, t_stack_node *stack_b)
 {
 	t_stack_node	*current_b;
@@ -61,6 +70,11 @@ static void	set_target_a(t_stack_node *stack_a, t_stack_node *stack_b)
 	}
 }
 
+/**
+ * Calculates the cost for each node in stack_a to reach its target in stack_b.
+ * @param stack_a The stack A to process.
+ * @param stack_b The stack B to process.
+ */
 static void	calculate_cost_a(t_stack_node *stack_a, t_stack_node *stack_b)
 {
 	int	len_a;
@@ -81,6 +95,10 @@ static void	calculate_cost_a(t_stack_node *stack_a, t_stack_node *stack_b)
 	}
 }
 
+/**
+ * Marks the node with the lowest cost in the stack.
+ * @param stack The stack to process.
+ */
 void	set_lowest_cost(t_stack_node *stack)
 {
 	int				lowest_cost;
@@ -101,6 +119,11 @@ void	set_lowest_cost(t_stack_node *stack)
 	lowest_cost_node->lowest_cost = true;
 }
 
+/**
+ * Initializes nodes in stack_a with index, target, and cost.
+ * @param stack_a The stack A to initialize.
+ * @param stack_b The stack B to use for target calculation.
+ */
 void	initialise_nodes_a(t_stack_node *stack_a, t_stack_node *stack_b)
 {
 	current_index(stack_a);

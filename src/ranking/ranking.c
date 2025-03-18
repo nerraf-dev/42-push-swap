@@ -6,13 +6,17 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:41:29 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/14 12:22:16 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/18 11:19:55 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-// Swap two integers
+/**
+ * Swaps two integers.
+ * @param a The first integer.
+ * @param b The second integer.
+ */
 void	swap(int *a, int *b)
 {
 	int	temp;
@@ -22,7 +26,11 @@ void	swap(int *a, int *b)
 	*b = temp;
 }
 
-// Bubble sort to sort the array
+/**
+ * Sorts an array of integers using bubble sort.
+ * @param arr The array to sort.
+ * @param size The size of the array.
+ */
 void	bubble_sort(int *arr, int size)
 {
 	int	i;
@@ -42,7 +50,12 @@ void	bubble_sort(int *arr, int size)
 	}
 }
 
-// Assign ranks to values in the input array
+/**
+ * Assigns ranks to values in the input array.
+ * @param arr The input array.
+ * @param ranks The array to store ranks.
+ * @param size The size of the arrays.
+ */
 void	assign_ranks(int *arr, int *ranks, int size)
 {
 	int	*sorted;

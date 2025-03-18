@@ -6,13 +6,17 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 17:07:11 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/16 11:12:30 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/18 11:18:30 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-// Helper function to create a new stack node
+/**
+ * Creates a new stack node with the given value.
+ * @param value The value to assign to the new node.
+ * @return The newly created stack node.
+ */
 static t_stack_node	*create_node(int value)
 {
 	t_stack_node	*new_node;
@@ -27,7 +31,12 @@ static t_stack_node	*create_node(int value)
 	return (new_node);
 }
 
-// Function to initialize the stack
+/**
+ * Initializes a stack from an array of integers.
+ * @param arr The array of integers.
+ * @param size The size of the array.
+ * @return The head of the initialized stack.
+ */
 t_stack_node	*initialise_stack(int *arr, int size)
 {
 	t_stack_node	*head;
@@ -56,6 +65,11 @@ t_stack_node	*initialise_stack(int *arr, int size)
 	return (head);
 }
 
+/**
+ * Retrieves the node with the lowest cost in the stack.
+ * @param stack The stack to search.
+ * @return The node with the lowest cost.
+ */
 t_stack_node	*get_lc_node(t_stack_node *stack)
 {
 	if (!stack)
@@ -69,6 +83,12 @@ t_stack_node	*get_lc_node(t_stack_node *stack)
 	return (NULL);
 }
 
+/**
+ * Prepares the stack for pushing by rotating it to the top node.
+ * @param stack The stack to prepare.
+ * @param top_node The node to rotate to the top.
+ * @param stack_name The name of the stack ('a' or 'b').
+ */
 void	push_prep(t_stack_node **stack,	t_stack_node *top_node,
 						char stack_name)
 {

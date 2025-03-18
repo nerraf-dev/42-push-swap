@@ -6,12 +6,17 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 18:57:16 by sfarren           #+#    #+#             */
-/*   Updated: 2024/10/28 11:15:06 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/18 11:18:31 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
+/**
+ * Sets the target node in stack_a for each node in stack_b.
+ * @param stack_a The stack A to process.
+ * @param stack_b The stack B to process.
+ */
 static void	set_target_b(t_stack_node *stack_a, t_stack_node *stack_b)
 {
 	t_stack_node	*current_a;
@@ -41,6 +46,11 @@ static void	set_target_b(t_stack_node *stack_a, t_stack_node *stack_b)
 	}
 }
 
+/**
+ * Initializes nodes in stack_b with index and target.
+ * @param stack_a The stack A to use for target calculation.
+ * @param stack_b The stack B to initialize.
+ */
 void	initialise_b_nodes(t_stack_node *stack_a, t_stack_node *stack_b)
 {
 	current_index(stack_a);
