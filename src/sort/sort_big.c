@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 12:28:29 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/18 11:17:12 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/19 10:20:21 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,30 @@ static void	push_a_to_b(t_stack_node **stack_a, t_stack_node **stack_b)
 }
 
 /**
+ * Perform initial pushes from stack A to stack B.
+ * @param stack_a The source stack.
+ * @param stack_b The destination stack.
+ * @param len The number of elements in the stack.
+ */
+static void	initial_pushes(t_stack_node **stack_a,
+			t_stack_node **stack_b, int *len)
+{
+	if (*len > 3)
+	{
+		(*len)--;
+		pb(stack_a, stack_b);
+	}
+	if (*len > 3)
+	{
+		(*len)--;
+		pb(stack_a, stack_b);
+	}
+	if (*stack_b && (*stack_b)->next
+		&& (*stack_b)->value < (*stack_b)->next->value)
+		sb(stack_b);
+}
+
+/**
  * Sort a large stack using a combination of sorting algorithms.
  * @param stack_a The main stack to sort.
  * @param stack_b The auxiliary stack.
@@ -69,18 +93,14 @@ static void	push_a_to_b(t_stack_node **stack_a, t_stack_node **stack_b)
  */
 void	sort_big(t_stack_node **stack_a, t_stack_node **stack_b, int len)
 {
-	if (len-- > 3)
-		pb(stack_a, stack_b);
-	if (len-- > 3)
-		pb(stack_a, stack_b);
-	if ((*stack_b)->value < (*stack_b)->next->value)
-		sb(stack_b);
-	while (len-- > 3 && !stack_sorted(*stack_a))
+	initial_pushes(stack_a, stack_b, &len);
+	while (len > 3 && !stack_sorted(*stack_a))
 	{
 		initialise_nodes_a(*stack_a, *stack_b);
 		push_a_to_b(stack_a, stack_b);
+		len--;
 	}
-	sort_small(stack_a, stack_b, len + 1);
+	sort_small(stack_a, stack_b, len);
 	while (*stack_b)
 	{
 		initialise_b_nodes(*stack_a, *stack_b);
