@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 17:07:11 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/18 13:57:36 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/19 09:43:42 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,34 @@ static t_stack_node	*create_node(int value)
 	return (new_node);
 }
 
+static int	*init_ranks(int *arr, int size)
+{
+	int	*ranks;
+
+	ranks = malloc(size * sizeof(int));
+	if (!ranks)
+		handle_error(true, NULL, arr);
+	assign_ranks(arr, ranks, size);
+	return (ranks);
+}
+
+static t_stack_node	*create_and_link_node(t_stack_node **head, int rank)
+{
+	t_stack_node	*new_node;
+
+	new_node = create_node(rank);
+	if (!new_node)
+	{
+		free_stack(head);
+		return (NULL);
+	}
+	new_node->next = *head;
+	if (*head != NULL)
+		(*head)->prev = new_node;
+	*head = new_node;
+	return (new_node);
+}
+
 /**
  * Initializes a stack from an array of integers.
  * @param arr The array of integers.
@@ -40,79 +68,22 @@ static t_stack_node	*create_node(int value)
 t_stack_node	*initialise_stack(int *arr, int size)
 {
 	t_stack_node	*head;
-	t_stack_node	*new_node;
-	int				i;
 	int				*ranks;
+	int				i;
 
-	head = NULL;
-	new_node = NULL;
-	ranks = NULL;
-	i = size - 1;
 	if (arr == NULL)
 		return (NULL);
-	ranks = malloc(size * sizeof(int));
+	head = NULL;
+	ranks = init_ranks(arr, size);
 	if (!ranks)
-		handle_error(true, NULL, arr);
-	assign_ranks(arr, ranks, size);
+		return (NULL);
+	i = size - 1;
 	while (i >= 0)
 	{
-		new_node = create_node(ranks[i]);
-		if (!new_node)
-		{
-			free_stack(&head);
+		if (!create_and_link_node(&head, ranks[i]))
 			return (NULL);
-		}
-		new_node->next = head;
-		if (head != NULL)
-			head->prev = new_node;
-		head = new_node;
 		i--;
 	}
+	free(ranks);
 	return (head);
-}
-
-/**
- * Retrieves the node with the lowest cost in the stack.
- * @param stack The stack to search.
- * @return The node with the lowest cost.
- */
-t_stack_node	*get_lc_node(t_stack_node *stack)
-{
-	if (!stack)
-		return (NULL);
-	while (stack)
-	{
-		if (stack->lowest_cost)
-			return (stack);
-		stack = stack->next;
-	}
-	return (NULL);
-}
-
-/**
- * Prepares the stack for pushing by rotating it to the top node.
- * @param stack The stack to prepare.
- * @param top_node The node to rotate to the top.
- * @param stack_name The name of the stack ('a' or 'b').
- */
-void	push_prep(t_stack_node **stack,	t_stack_node *top_node,
-						char stack_name)
-{
-	while (*stack != top_node)
-	{
-		if (stack_name == 'a')
-		{
-			if (top_node->above_median)
-				ra(stack);
-			else
-				rra(stack);
-		}
-		else if (stack_name == 'b')
-		{
-			if (top_node->above_median)
-				rb(stack);
-			else
-				rrb(stack);
-		}
-	}
 }

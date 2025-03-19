@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 21:00:45 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/18 11:08:51 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/18 19:49:08 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,6 @@
 
 /**
  * @brief Checks if the array is sorted in ascending order.
- *
- * This function iterates through the array and checks if each element
- * is less than or equal to the next element. If any element is found
- * to be greater than the next element, the function returns false.
  *
  * @param int_array The array of integers to check.
  * @param arr_size The size of the array.
@@ -40,10 +36,6 @@ static bool	is_sorted(int *int_array, int arr_size)
 /**
  * @brief Handles errors by printing an error message and freeing memory.
  *
- * This function prints an error message to the standard error output
- * if the error parameter is true. It also frees the memory allocated
- * for the split array and the int_array if they are not NULL.
- *
  * @param error A boolean indicating if an error occurred.
  * @param split A pointer to an array of strings to be freed.
  * @param int_array A pointer to an array of integers to be freed.
@@ -61,11 +53,6 @@ void	handle_error(bool error, char **split, int *int_array)
 
 /**
  * @brief The main function that initializes the stacks and sorts the array.
- *
- * This function parses the command-line arguments to create an array of
- * integers. It then checks if the array is already sorted. If not, it
- * initializes two stacks and sorts the array using different algorithms
- * based on the size of the array. Finally, it frees the allocated memory.
  *
  * @param argc The number of command-line arguments.
  * @param argv The array of command-line arguments.
