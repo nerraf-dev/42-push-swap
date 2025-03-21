@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 19:48:33 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/16 12:07:27 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/21 13:53:32 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,8 @@ int				get_max(t_stack_node *stack);
 t_stack_node	*find_max(t_stack_node *stack);
 int				s_size(t_stack_node *stack);
 bool			stack_sorted(t_stack_node	*stack);
+
+
+void			print_stack(t_stack_node *stack);
 
 #endif

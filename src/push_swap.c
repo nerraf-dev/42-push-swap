@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 21:00:45 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/18 19:49:08 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/21 13:53:02 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,23 @@ void	handle_error(bool error, char **split, int *int_array)
 }
 
 /**
+ * @brief Prints the elements of a stack.
+ *
+ * @param stack The stack to print.
+ */
+void	print_stack(t_stack_node *stack)
+{
+	t_stack_node	*current;
+
+	current = stack;
+	while (current)
+	{
+		ft_printf("value: %d - index: %d\n", current->value, current->index);
+		current = current->next;
+	}
+}
+
+/**
  * @brief The main function that initializes the stacks and sorts the array.
  *
  * @param argc The number of command-line arguments.
@@ -71,14 +88,19 @@ int	main(int argc, char **argv)
 		return (0);
 	stack_a = initialise_stack(int_array, arr_size);
 	stack_b = initialise_stack(NULL, 0);
+	print_stack(stack_a);
 	if (!stack_a)
 		handle_error(true, NULL, int_array);
 	if (arr_size <= 5)
 		sort_small(&stack_a, &stack_b, arr_size);
 	else if (arr_size <= 100)
+	{
+		ft_printf("sort big\n");
 		sort_big(&stack_a, &stack_b, arr_size);
+	}
 	else
 		sort_radix(&stack_a, &stack_b, arr_size);
+	print_stack(stack_a);
 	free(int_array);
 	free_stack(&stack_a);
 	free_stack(&stack_b);

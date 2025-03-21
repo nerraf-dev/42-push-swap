@@ -58,10 +58,13 @@ For up to 100 integers:
 	- if the value is below the median, the cost is the length of the stack minus the index
   - Check if value is greater than value in stack `b`
 	- if true, `pb`
-	
 
 
+1 2 3 4 5
+ 3: i - 2
+ len- 5
 
+ 5 - 2 = 3
 
 - For each chunk:
   - Find the median value

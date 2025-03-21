@@ -6,7 +6,7 @@
 #    By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/20 13:36:23 by sfarren           #+#    #+#              #
-#    Updated: 2025/03/19 09:44:07 by sfarren          ###   ########.fr        #
+#    Updated: 2025/03/21 12:09:49 by sfarren          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,6 @@ SRCS =  src/push_swap.c \
 		src/parsing/parser_helpers.c \
 		src/init/init_stack.c \
 		src/init/init_utils.c \
-		src/init/init_a_b.c \
 		src/init/init_b_a.c \
 		src/sort/sort_utils.c \
 		src/sort/sort_small.c \
@@ -41,6 +40,8 @@ SRCS =  src/push_swap.c \
 		src/stack/swap.c \
 		src/stack/reverse_rotate.c \
 		src/ranking/ranking.c \
+
+# src/init/init_a_b.c \
 
 OBJ_DIR = obj
 OBJS = $(SRCS:src/%.c=$(OBJ_DIR)/%.o)

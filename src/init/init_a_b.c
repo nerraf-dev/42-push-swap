@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 21:20:12 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/18 11:18:27 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/20 11:16:01 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ static void	calculate_cost_a(t_stack_node *stack_a, t_stack_node *stack_b)
 	}
 }
 
+
 /**
  * Marks the node with the lowest cost in the stack.
  * @param stack The stack to process.
@@ -127,8 +128,8 @@ void	set_lowest_cost(t_stack_node *stack)
 void	initialise_nodes_a(t_stack_node *stack_a, t_stack_node *stack_b)
 {
 	current_index(stack_a);
-	current_index(stack_b);
-	set_target_a(stack_a, stack_b);
+	// current_index(stack_b);
+	// set_target_a(stack_a, stack_b);
 	calculate_cost_a(stack_a, stack_b);
 	set_lowest_cost(stack_a);
 }

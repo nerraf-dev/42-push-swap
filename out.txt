@@ -1,0 +1,236 @@
+value: 9 - index: 0
+value: 1 - index: 1
+value: 6 - index: 2
+value: 8 - index: 3
+value: 5 - index: 4
+value: 2 - index: 5
+value: 4 - index: 6
+value: 7 - index: 7
+value: 0 - index: 8
+value: 3 - index: 9
+sort big
+lb: 0
+ub: 19
+Find in range
+Node: 9, Rev Node: 3
+pb
+Stack A:
+value: 1 - index: 1
+value: 6 - index: 2
+value: 8 - index: 3
+value: 5 - index: 4
+value: 2 - index: 5
+value: 4 - index: 6
+value: 7 - index: 7
+value: 0 - index: 8
+value: 3 - index: 9
+Stack B:
+value: 9 - index: 0
+index A
+index B
+Find in range
+Node: 1, Rev Node: 3
+Nodes in b
+LC Node: 1 - index: 0
+Target: 9 - index: 0
+pb
+Stack A:
+value: 6 - index: 1
+value: 8 - index: 2
+value: 5 - index: 3
+value: 2 - index: 4
+value: 4 - index: 5
+value: 7 - index: 6
+value: 0 - index: 7
+value: 3 - index: 8
+Stack B:
+value: 1 - index: 0
+value: 9 - index: 0
+index A
+index B
+Find in range
+Node: 6, Rev Node: 3
+Nodes in b
+LC Node: 6 - index: 0
+Target: 1 - index: 0
+pb
+Stack A:
+value: 8 - index: 1
+value: 5 - index: 2
+value: 2 - index: 3
+value: 4 - index: 4
+value: 7 - index: 5
+value: 0 - index: 6
+value: 3 - index: 7
+Stack B:
+value: 6 - index: 0
+value: 1 - index: 0
+value: 9 - index: 1
+index A
+index B
+Find in range
+Node: 8, Rev Node: 3
+Nodes in b
+LC Node: 8 - index: 0
+Target: 6 - index: 0
+pb
+Stack A:
+value: 5 - index: 1
+value: 2 - index: 2
+value: 4 - index: 3
+value: 7 - index: 4
+value: 0 - index: 5
+value: 3 - index: 6
+Stack B:
+value: 8 - index: 0
+value: 6 - index: 0
+value: 1 - index: 1
+value: 9 - index: 2
+index A
+index B
+Find in range
+Node: 5, Rev Node: 3
+Nodes in b
+LC Node: 5 - index: 0
+Target: 1 - index: 2
+Cost A: 0, Cost B: 2
+rb
+Cost A: 0, Cost B: 2
+rb
+pb
+Stack A:
+value: 2 - index: 1
+value: 4 - index: 2
+value: 7 - index: 3
+value: 0 - index: 4
+value: 3 - index: 5
+Stack B:
+value: 5 - index: 0
+value: 1 - index: 2
+value: 9 - index: 3
+value: 8 - index: 0
+value: 6 - index: 1
+index A
+index B
+Find in range
+Node: 2, Rev Node: 3
+Nodes in b
+LC Node: 2 - index: 0
+Target: 1 - index: 1
+Cost A: 0, Cost B: 1
+rb
+pb
+Stack A:
+value: 4 - index: 1
+value: 7 - index: 2
+value: 0 - index: 3
+value: 3 - index: 4
+Stack B:
+value: 2 - index: 0
+value: 1 - index: 1
+value: 9 - index: 2
+value: 8 - index: 3
+value: 6 - index: 4
+value: 5 - index: 0
+index A
+index B
+Find in range
+Node: 4, Rev Node: 3
+Nodes in b
+LC Node: 4 - index: 0
+Target: 2 - index: 0
+pb
+Stack A:
+value: 7 - index: 1
+value: 0 - index: 2
+value: 3 - index: 3
+Stack B:
+value: 4 - index: 0
+value: 2 - index: 0
+value: 1 - index: 1
+value: 9 - index: 2
+value: 8 - index: 3
+value: 6 - index: 4
+value: 5 - index: 5
+index A
+index B
+Find in range
+Node: 7, Rev Node: 3
+Nodes in b
+LC Node: 7 - index: 0
+Target: 6 - index: 5
+Cost A: 0, Cost B: 5
+rrb
+Cost A: 0, Cost B: 5
+rrb
+pb
+Stack A:
+value: 0 - index: 1
+value: 3 - index: 2
+Stack B:
+value: 7 - index: 0
+value: 6 - index: 5
+value: 5 - index: 6
+value: 4 - index: 0
+value: 2 - index: 1
+value: 1 - index: 2
+value: 9 - index: 3
+value: 8 - index: 4
+index A
+index B
+Find in range
+Node: 0, Rev Node: 3
+Nodes in b
+LC Node: 0 - index: 0
+Target: 9 - index: 6
+Cost A: 0, Cost B: 4
+rrb
+Cost A: 0, Cost B: 4
+rrb
+pb
+Stack A:
+value: 3 - index: 1
+Stack B:
+value: 0 - index: 0
+value: 9 - index: 6
+value: 8 - index: 7
+value: 7 - index: 0
+value: 6 - index: 1
+value: 5 - index: 2
+value: 4 - index: 3
+value: 2 - index: 4
+value: 1 - index: 5
+index A
+index B
+Find in range
+Node: 3, Rev Node: 3
+Nodes in b
+LC Node: 3 - index: 0
+Target: 2 - index: 7
+Cost A: 0, Cost B: 3
+rrb
+Cost A: 0, Cost B: 3
+rrb
+pb
+Stack A:
+Stack B:
+value: 3 - index: 0
+value: 2 - index: 7
+value: 1 - index: 8
+value: 0 - index: 0
+value: 9 - index: 1
+value: 8 - index: 2
+value: 7 - index: 3
+value: 6 - index: 4
+value: 5 - index: 5
+value: 4 - index: 6
+index A
+index B
+lb: 20
+ub: 39
+lb: 40
+ub: 59
+lb: 60
+ub: 79
+lb: 80
+ub: 99
