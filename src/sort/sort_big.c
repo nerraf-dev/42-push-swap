@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 12:28:29 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/21 15:36:36 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/21 15:55:30 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	current_index(t_stack_node *stack)
 	while (stack)
 	{
 		stack->index = i;
-		if (i <= median)
+		if (i <= median - 1)
 			stack->above_median = true;
 		else
 			stack->above_median = false;
@@ -249,7 +249,7 @@ void	sort_big(t_stack_node **stack_a, t_stack_node **stack_b, int arr_size)
 			node = find_in_range(*stack_a, lb, ub);
 			rev_node = rev_find_in_range(*stack_a, lb, ub);
 			ft_printf("Node: %d, Rev Node: %d\n", node->value, rev_node->value);
-			if (node->index < arr_size - rev_node->index)
+			if (node->index < arr_size - rev_node->index) // not arr size calc stack a len
 				lc_node = node;
 			else
 				lc_node = rev_node;
@@ -267,54 +267,21 @@ void	sort_big(t_stack_node **stack_a, t_stack_node **stack_b, int arr_size)
 				set_target(lc_node, stack_b);
 				ft_printf("LC Node: %d - index: %d\n", lc_node->value, lc_node->index);
 				ft_printf("Target: %d - index: %d\n", lc_node->target->value, lc_node->target->index);
-				// calc cost of getting to top
-				//		if above median: cost = index
-				//		if below median: cost = len - index
-				// Calculate cost of getting to top
-				// if (lc_node->above_median)
-				// 	cost[0] = lc_node->index;
-				// else
-				// 	cost[0] = arr_size - lc_node->index;
-				// if (lc_node->target->above_median)
-				// 	cost[1] = lc_node->target->index;
-				// else
-				// 	cost[1] = arr_size - lc_node->target->index;
-				// ft_printf("Cost A: %d, Cost B: %d\n", cost[0], cost[1]);
+
 				move_to_top(stack_a, stack_b, lc_node, lc_node->target, arr_size);
 				pb(stack_a, stack_b);
-				// if lc_node is above median and target is below median
-				//		rotate lc_node to top of `a`
-				//		reverse rotate target to top of `b`
-				// if lc_node is below median and target is above median
-				//		reverse rotate lc_node to top of `a`
-				//		rotate target to top of `b`
-				// if lc_node is above median and target is at the top of `b`
-				//		rotate lc_node to top of `a`
-				// if lc_node is below median and target is at the top of `b`
-				//		reverse rotate lc_node to top of `a`
-				// if lc_node is at the top of `a` and target is above median
-				//		rotate target to top of `b`
-				// if lc_node is at the top of `a` and target is below median
-				//		reverse rotate target to top of `b`
-				// if lc_node is at the top of `a` and target is at the top of `b`
-				//		push to `b`
-
-
-
-
-
-
 
 			}
-			ft_printf("Stack A:\n");
-			print_stack(*stack_a);
-			ft_printf("Stack B:\n");
-			print_stack(*stack_b);
 			ft_printf("index A\n");
 			current_index(*stack_a);
 			ft_printf("index B\n");
 			current_index(*stack_b);
-
+			ft_printf("---\n");
+			ft_printf("Stack A:\n");
+			print_stack(*stack_a);
+			ft_printf("\nStack B:\n");
+			print_stack(*stack_b);
+			ft_printf("---\n");
 		}
 		chunk++;
 	}
