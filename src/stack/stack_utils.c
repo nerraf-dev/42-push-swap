@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 13:17:16 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/18 11:13:34 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/22 12:10:29 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,7 @@ t_stack_node	*find_max(t_stack_node *stack)
 			max = stack->value;
 			max_node = stack;
 		}
+		// ft_printf("Max node found: value %d, index %d\n", max_node->value, max_node->index);
 		stack = stack->next;
 	}
 	return (max_node);

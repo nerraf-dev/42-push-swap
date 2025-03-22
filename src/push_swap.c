@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 21:00:45 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/22 10:44:24 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/22 12:56:53 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,13 @@ void	handle_error(bool error, char **split, int *int_array)
  *
  * @param stack The stack to print.
  */
-void	print_stack(t_stack_node *stack)
+void	print_stack(t_stack_node *stack, char *label )
 {
 	t_stack_node	*current;
 
 	current = stack;
+	if (label)
+		ft_printf("Stack %s:\n", label);
 	while (current)
 	{
 		ft_printf("value: %d - index: %d\n", current->value, current->index);
@@ -96,12 +98,13 @@ int	main(int argc, char **argv)
 	else if (arr_size <= 100)
 	{
 		// ft_printf("sort big\n");
-		sort_big(&stack_a, &stack_b);
+		sort_big(&stack_a, &stack_b, 20, 5);
 	}
 	else
+		// sort_big(&stack_a, &stack_b, arr_size/10, arr_size/(arr_size/10));
 		sort_radix(&stack_a, &stack_b, arr_size);
-	// print_stack(stack_a);
-	// print_stack(stack_b);
+	// print_stack(stack_a, "stack_a");
+	// print_stack(stack_b, "stack_b");
 	free(int_array);
 	free_stack(&stack_a);
 	free_stack(&stack_b);

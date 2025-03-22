@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 12:28:29 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/22 11:12:53 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/22 12:21:23 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,10 +174,8 @@ void	move_to_top(t_stack_node **stack_a, t_stack_node **stack_b,
 	}
 }
 
-void	sort_big(t_stack_node **stack_a, t_stack_node **stack_b)
+void	sort_big(t_stack_node **stack_a, t_stack_node **stack_b, int chunk_size, int num_chunks)
 {
-	int				chunk_size;
-	int				num_chunks;
 	int				chunk;
 	int				bounds[2];
 	t_stack_node	*node;
@@ -185,8 +183,6 @@ void	sort_big(t_stack_node **stack_a, t_stack_node **stack_b)
 	t_stack_node	*lc_node;
 
 	chunk = 0;
-	chunk_size = CHUNK_SIZE;
-	num_chunks = NUM_CHUNKS;
 	while (chunk < num_chunks)
 	{
 		bounds[0] = chunk * chunk_size;
@@ -213,13 +209,19 @@ void	sort_big(t_stack_node **stack_a, t_stack_node **stack_b)
 
 			}
 			current_index(*stack_a);
+			// print_stack(*stack_a, "PB- stack_a");
 			current_index(*stack_b);
+			// print_stack(*stack_b, "PB- stack_b");
 		}
 		chunk++;
 	}
+	// ft_printf("Stacks after chunk move to b\n");
+	// print_stack(*stack_a, "stack_a");
+	// print_stack(*stack_b, "stack_b");
 	while (*stack_b)
 	{
 		lc_node = find_max(*stack_b);
+		// ft_printf("lc_node: %d index: %d\n", lc_node->value, lc_node->index);
 		move_to_top(NULL, stack_b, NULL, lc_node);
 		current_index(*stack_a);
 		current_index(*stack_b);

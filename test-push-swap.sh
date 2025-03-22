@@ -200,9 +200,10 @@ run_multiple_tests() {
 
     for ((i=1; i<=NUM_TESTS; i++)); do
         input=$(generate_random_numbers $size -10000 10000)
-        echo "Test $i: $input" >> $input_file  # Write the input values to the file
-        operations=$(./push_swap $input | tee >(wc -l > ops_count) | $CHECKER $input)
-        if [ $? -eq 0 ]; then
+        echo "$input" >> $input_file  # Write the input values to the file
+        operations=$(./push_swap $input | tee >(wc -l > ops_count))
+        result=$(./push_swap $input | $CHECKER $input)
+        if [ "$result" == "OK" ]; then
             echo -e "${GREEN}OK${NC}"
         else
             echo -e "${RED}KO${NC}"
