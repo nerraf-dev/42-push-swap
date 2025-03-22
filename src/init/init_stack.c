@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 17:07:11 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/19 09:43:42 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/21 13:55:55 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
  * @param value The value to assign to the new node.
  * @return The newly created stack node.
  */
-static t_stack_node	*create_node(int value)
+static t_stack_node	*create_node(int value, int index)
 {
 	t_stack_node	*new_node;
 
@@ -25,7 +25,7 @@ static t_stack_node	*create_node(int value)
 	if (!new_node)
 		return (NULL);
 	new_node->value = value;
-	new_node->index = 0;
+	new_node->index = index;
 	new_node->next = NULL;
 	new_node->prev = NULL;
 	return (new_node);
@@ -42,11 +42,11 @@ static int	*init_ranks(int *arr, int size)
 	return (ranks);
 }
 
-static t_stack_node	*create_and_link_node(t_stack_node **head, int rank)
+static t_stack_node	*create_and_link_node(t_stack_node **head, int rank, int i)
 {
 	t_stack_node	*new_node;
 
-	new_node = create_node(rank);
+	new_node = create_node(rank, i);
 	if (!new_node)
 	{
 		free_stack(head);
@@ -80,7 +80,7 @@ t_stack_node	*initialise_stack(int *arr, int size)
 	i = size - 1;
 	while (i >= 0)
 	{
-		if (!create_and_link_node(&head, ranks[i]))
+		if (!create_and_link_node(&head, ranks[i], i))
 			return (NULL);
 		i--;
 	}

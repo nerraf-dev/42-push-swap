@@ -6,105 +6,226 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 12:28:29 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/19 10:20:21 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/22 12:21:23 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-/**
- * Rotate both stacks until the least cost node is at the top.
- * @param stack_a The first stack.
- * @param stack_b The second stack.
- * @param lc_node The least cost node.
- */
-static void	rotate_stacks(t_stack_node **stack_a, t_stack_node **stack_b,
-				t_stack_node *lc_node)
+void	current_index(t_stack_node *stack)
 {
-	while (*stack_b != lc_node && *stack_a != lc_node)
-		rr(stack_a, stack_b);
-	current_index(*stack_a);
-	current_index(*stack_b);
+	int	i;
+	int	median;
+
+	i = 0;
+	if (!stack)
+		return ;
+	median = s_size(stack) / 2;
+	while (stack)
+	{
+		stack->index = i;
+		if (i <= median - 1)
+			stack->above_median = true;
+		else
+			stack->above_median = false;
+		stack = stack->next;
+		i++;
+	}
 }
 
-/**
- * Reverse rotate both stacks until the least cost node is at the top.
- * @param stack_a The first stack.
- * @param stack_b The second stack.
- * @param lc_node The least cost node.
- */
-static void	rev_rotate_stacks(t_stack_node **stack_a, t_stack_node **stack_b,
-				t_stack_node *lc_node)
+static int	values_in_range(t_stack_node *stack, int *bounds)
 {
-	while (*stack_b != lc_node && *stack_a != lc_node)
-		rrr(stack_a, stack_b);
-	current_index(*stack_a);
-	current_index(*stack_b);
+	while (stack)
+	{
+		if (stack->value >= bounds[0] && stack->value <= bounds[1])
+			return (1);
+		stack = stack->next;
+	}
+	return (0);
 }
 
-/**
- * Push the least cost node from stack A to stack B.
- * @param stack_a The source stack.
- * @param stack_b The destination stack.
- */
-static void	push_a_to_b(t_stack_node **stack_a, t_stack_node **stack_b)
+static t_stack_node	*find_in_range(t_stack_node *stack, int *bounds)
 {
+	while (stack)
+	{
+		if (stack->value >= bounds[0] && stack->value <= bounds[1])
+			return (stack);
+		stack = stack->next;
+	}
+	return (NULL);
+}
+
+static t_stack_node	*rev_find_in_range(t_stack_node *stack, int *bounds)
+{
+	t_stack_node	*last;
+
+	last = NULL;
+	while (stack)
+	{
+		if (stack->value >= bounds[0] && stack->value <= bounds[1])
+			last = stack;
+		stack = stack->next;
+	}
+	return (last);
+}
+
+void	rotate_to_top(t_stack_node **stack_a, t_stack_node **stack_b,
+			t_stack_node *top_node_a, t_stack_node *top_node_b)
+{
+	while (*stack_a != top_node_a || (stack_b && *stack_b != top_node_b))
+	{
+		if (*stack_a != top_node_a && stack_b && *stack_b != top_node_b)
+		{
+			if (top_node_a->above_median && top_node_b && top_node_b->above_median)
+				rr(stack_a, stack_b);
+			else if (!top_node_a->above_median && top_node_b && !top_node_b->above_median)
+				rrr(stack_a, stack_b);
+			else
+				break ;
+		}
+		else if (*stack_a != top_node_a)
+		{
+			if (top_node_a->above_median)
+				ra(stack_a);
+			else
+				rra(stack_a);
+		}
+		else if (stack_b && *stack_b != top_node_b)
+		{
+			if (top_node_b && top_node_b->above_median)
+				rb(stack_b);
+			else if (top_node_b)
+				rrb(stack_b);
+		}
+	}
+}
+
+void	set_target(t_stack_node *node, t_stack_node **stack)
+{
+	t_stack_node	*current;
+	t_stack_node	*target;
+	t_stack_node	*min;
+	t_stack_node	*max;
+
+	if (!node || !stack || !*stack)
+		return ;
+	min = find_min(*stack);
+	max = find_max(*stack);
+	if (node->value > max->value)
+		target = min;
+	else if (node->value < min->value)
+		target = max;
+	else
+	{
+		current = *stack;
+		target = NULL;
+		while (current)
+		{
+			if (current->value < node->value)
+			{
+				if (!target || current->value > target->value)
+					target = current;
+			}
+			current = current->next;
+		}
+		if (!target)
+			target = min;
+	}
+	node->target = target;
+}
+
+void	move_to_top(t_stack_node **stack_a, t_stack_node **stack_b,
+			t_stack_node *lc_node, t_stack_node *target)
+{
+	while ((stack_a && *stack_a != lc_node) || *stack_b != target)
+	{
+		if ((stack_a && *stack_a != lc_node) && *stack_b != target)
+		{
+			if (lc_node->above_median && target->above_median)
+				rr(stack_a, stack_b);
+			else if (!lc_node->above_median && !target->above_median)
+				rrr(stack_a, stack_b);
+			else
+			{
+				if (lc_node->above_median)
+					ra(stack_a);
+				else
+					rra(stack_a);
+				if (target->above_median)
+					rb(stack_b);
+				else
+					rrb(stack_b);
+			}
+		}
+		else if (stack_a && *stack_a != lc_node)
+		{
+			if (lc_node->above_median)
+				ra(stack_a);
+			else
+				rra(stack_a);
+		}
+		else if (*stack_b != target)
+		{
+			if (target->above_median)
+				rb(stack_b);
+			else
+				rrb(stack_b);
+		}
+	}
+}
+
+void	sort_big(t_stack_node **stack_a, t_stack_node **stack_b, int chunk_size, int num_chunks)
+{
+	int				chunk;
+	int				bounds[2];
+	t_stack_node	*node;
+	t_stack_node	*rev_node;
 	t_stack_node	*lc_node;
 
-	lc_node = get_lc_node(*stack_a);
-	if (lc_node->above_median && lc_node->target->above_median)
-		rotate_stacks(stack_a, stack_b, lc_node);
-	else if (!(lc_node->above_median) && !(lc_node->target->above_median))
-		rev_rotate_stacks(stack_a, stack_b, lc_node);
-	push_prep(stack_a, lc_node, 'a');
-	push_prep(stack_b, lc_node->target, 'b');
-	pb(stack_a, stack_b);
-}
+	chunk = 0;
+	while (chunk < num_chunks)
+	{
+		bounds[0] = chunk * chunk_size;
+		bounds[1] = ((chunk + 1) * chunk_size) - 1;
+		while (values_in_range(*stack_a, &bounds[0]))
+		{
+			node = find_in_range(*stack_a, &bounds[0]);
+			rev_node = rev_find_in_range(*stack_a, &bounds[0]);
+			if (node->index < s_size(*stack_a) - rev_node->index)
+				lc_node = node;
+			else
+				lc_node = rev_node;
+			if (*stack_b == NULL)
+			{
+				rotate_to_top(stack_a, NULL, lc_node, NULL);
+				pb(stack_a, stack_b);
+			}
+			else
+			{
+				set_target(lc_node, stack_b);
 
-/**
- * Perform initial pushes from stack A to stack B.
- * @param stack_a The source stack.
- * @param stack_b The destination stack.
- * @param len The number of elements in the stack.
- */
-static void	initial_pushes(t_stack_node **stack_a,
-			t_stack_node **stack_b, int *len)
-{
-	if (*len > 3)
-	{
-		(*len)--;
-		pb(stack_a, stack_b);
-	}
-	if (*len > 3)
-	{
-		(*len)--;
-		pb(stack_a, stack_b);
-	}
-	if (*stack_b && (*stack_b)->next
-		&& (*stack_b)->value < (*stack_b)->next->value)
-		sb(stack_b);
-}
+				move_to_top(stack_a, stack_b, lc_node, lc_node->target);
+				pb(stack_a, stack_b);
 
-/**
- * Sort a large stack using a combination of sorting algorithms.
- * @param stack_a The main stack to sort.
- * @param stack_b The auxiliary stack.
- * @param len The number of elements in the stack.
- */
-void	sort_big(t_stack_node **stack_a, t_stack_node **stack_b, int len)
-{
-	initial_pushes(stack_a, stack_b, &len);
-	while (len > 3 && !stack_sorted(*stack_a))
-	{
-		initialise_nodes_a(*stack_a, *stack_b);
-		push_a_to_b(stack_a, stack_b);
-		len--;
+			}
+			current_index(*stack_a);
+			// print_stack(*stack_a, "PB- stack_a");
+			current_index(*stack_b);
+			// print_stack(*stack_b, "PB- stack_b");
+		}
+		chunk++;
 	}
-	sort_small(stack_a, stack_b, len);
+	// ft_printf("Stacks after chunk move to b\n");
+	// print_stack(*stack_a, "stack_a");
+	// print_stack(*stack_b, "stack_b");
 	while (*stack_b)
 	{
-		initialise_b_nodes(*stack_a, *stack_b);
-		push_b_to_a(stack_a, stack_b);
+		lc_node = find_max(*stack_b);
+		// ft_printf("lc_node: %d index: %d\n", lc_node->value, lc_node->index);
+		move_to_top(NULL, stack_b, NULL, lc_node);
+		current_index(*stack_a);
+		current_index(*stack_b);
+		pa(stack_a, stack_b);
 	}
-	min_to_top(stack_a);
 }
+

@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 19:48:33 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/16 12:07:27 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/22 11:50:33 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,7 @@ void			push_b_to_a(t_stack_node **stack_a, t_stack_node **stack_b);
 // Sorting Functions
 void			sort_small(t_stack_node	**stack_a, t_stack_node	**stack_b,
 					int len);
-void			sort_big(t_stack_node **stack_a, t_stack_node **stack_b,
-					int len);
+void			sort_big(t_stack_node **stack_a, t_stack_node **stack_b, int chunk_size, int num_chunks);
 void			sort_radix(t_stack_node **stack_a, t_stack_node **stack_b,
 					int len);
 
@@ -49,5 +48,8 @@ int				get_max(t_stack_node *stack);
 t_stack_node	*find_max(t_stack_node *stack);
 int				s_size(t_stack_node *stack);
 bool			stack_sorted(t_stack_node	*stack);
+
+
+void			print_stack(t_stack_node *stack, char *label);
 
 #endif
