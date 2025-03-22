@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 21:00:45 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/21 13:53:02 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/22 10:44:24 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,19 +88,20 @@ int	main(int argc, char **argv)
 		return (0);
 	stack_a = initialise_stack(int_array, arr_size);
 	stack_b = initialise_stack(NULL, 0);
-	print_stack(stack_a);
+	// print_stack(stack_a);
 	if (!stack_a)
 		handle_error(true, NULL, int_array);
 	if (arr_size <= 5)
 		sort_small(&stack_a, &stack_b, arr_size);
 	else if (arr_size <= 100)
 	{
-		ft_printf("sort big\n");
-		sort_big(&stack_a, &stack_b, arr_size);
+		// ft_printf("sort big\n");
+		sort_big(&stack_a, &stack_b);
 	}
 	else
 		sort_radix(&stack_a, &stack_b, arr_size);
-	print_stack(stack_a);
+	// print_stack(stack_a);
+	// print_stack(stack_b);
 	free(int_array);
 	free_stack(&stack_a);
 	free_stack(&stack_b);

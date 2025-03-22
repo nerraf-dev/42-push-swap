@@ -54,6 +54,7 @@ generate_mostly_sorted_list() {
     list=("${list[-1]}" "${list[@]:0:size-1}")
     echo "${list[@]}"
 }
+
 # Function to test valid inputs
 test_valid_inputs() {
     echo -e "${YELLOW}Testing valid inputs...${NC}"
@@ -68,6 +69,7 @@ test_valid_inputs() {
         "50 integers" "$(generate_random_numbers 50 -1000 1000)"
         "INT_MIN and INT_MAX" "-2147483648 2147483647"
         "Mostly sorted list (100 values)" "2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 1"
+        # "Duplicate values (should fail)" "1 2 3 4 5 5"
     )
 
     # Run tests
@@ -84,6 +86,7 @@ test_valid_inputs() {
             echo -e "${GREEN}OK${NC}"
         else
             echo -e "${RED}KO${NC}"
+            failed_tests+=("$description")
         fi
     done
 }
@@ -117,6 +120,7 @@ test_invalid_inputs() {
                 echo -e "${GREEN}No output as expected${NC}"
             else
                 echo -e "${RED}Unexpected output: $output${NC}"
+                failed_tests+=("$description")
             fi
         else
             # Run push_swap and check for error message
@@ -125,6 +129,7 @@ test_invalid_inputs() {
                 echo -e "${GREEN}Error message displayed${NC}"
             else
                 echo -e "${RED}Error message not displayed${NC}"
+                failed_tests+=("$description")
             fi
         fi
     done
@@ -140,12 +145,14 @@ evaluate_efficiency() {
             echo -e "${GREEN}3 values: $operations operations (Perfect)${NC}"
         else
             echo -e "${RED}3 values: $operations operations (Fail)${NC}"
+            failed_tests+=("3 values")
         fi
     elif [ $size -eq 5 ]; then
         if [ $operations -le 12 ]; then
             echo -e "${GREEN}5 values: $operations operations (Perfect)${NC}"
         else
             echo -e "${RED}5 values: $operations operations (Fail)${NC}"
+            failed_tests+=("5 values")
         fi
     elif [ $size -eq 100 ]; then
         if [ $operations -lt 700 ]; then
@@ -158,8 +165,10 @@ evaluate_efficiency() {
             echo -e "${YELLOW}100 values: $operations operations (2 points)${NC}"
         elif [ $operations -lt 1500 ]; then
             echo -e "${RED}100 values: $operations operations (1 point)${NC}"
+            failed_tests+=("100 values")
         else
             echo -e "${RED}100 values: $operations operations (Fail)${NC}"
+            failed_tests+=("100 values")
         fi
     elif [ $size -eq 500 ]; then
         if [ $operations -lt 5500 ]; then
@@ -172,8 +181,10 @@ evaluate_efficiency() {
             echo -e "${YELLOW}500 values: $operations operations (2 points)${NC}"
         elif [ $operations -lt 11500 ]; then
             echo -e "${RED}500 values: $operations operations (1 point)${NC}"
+            failed_tests+=("500 values")
         else
             echo -e "${RED}500 values: $operations operations (Fail)${NC}"
+            failed_tests+=("500 values")
         fi
     fi
 }
@@ -195,6 +206,7 @@ run_multiple_tests() {
             echo -e "${GREEN}OK${NC}"
         else
             echo -e "${RED}KO${NC}"
+            failed_tests+=("Test $i for $size values")
         fi
         operations=$(cat ops_count)
         total_operations=$((total_operations + operations))
@@ -206,8 +218,6 @@ run_multiple_tests() {
     evaluate_efficiency $average_operations $size
     rm ops_count
 }
-
-# ...existing code...
 
 # Function to test benchmark requirements
 test_benchmark() {
@@ -235,6 +245,9 @@ test_benchmark() {
 # Main script
 echo -e "${YELLOW}Starting tests...${NC}"
 
+# Array to keep track of failed tests
+failed_tests=()
+
 # Test valid inputs
 test_valid_inputs
 
@@ -243,5 +256,15 @@ test_invalid_inputs
 
 # Test benchmark requirements
 test_benchmark
+
+# Print summary of failed tests
+if [ ${#failed_tests[@]} -eq 0 ]; then
+    echo -e "${GREEN}All tests passed!${NC}"
+else
+    echo -e "${RED}The following tests failed:${NC}"
+    for test in "${failed_tests[@]}"; do
+        echo -e "${RED}- $test${NC}"
+    done
+fi
 
 echo -e "${YELLOW}Tests completed.${NC}"
