@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 19:48:33 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/23 14:29:31 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/23 17:40:00 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,22 @@ void			sort_radix(t_stack_node **stack_a, t_stack_node **stack_b,
 					int len);
 
 // Sort utils
-void			min_to_top(t_stack_node **stack_a);
-t_stack_node	*get_lc_node(t_stack_node *stack);
 void			current_index(t_stack_node *stack);
 t_stack_node	*find_min(t_stack_node *stack);
 t_stack_node	*find_max(t_stack_node *stack);
-int				s_size(t_stack_node *stack);
-bool			stack_sorted(t_stack_node	*stack);
+t_stack_node	*find_in_range(t_stack_node *stack, int *bounds);
+t_stack_node	*get_lc_node(t_stack_node *stack);
+void			min_to_top(t_stack_node **stack_a);
 void			move_to_top(t_stack_node **stack_a, t_stack_node **stack_b,
 					t_stack_node *lc_node, t_stack_node *target);
+t_stack_node	*rev_find_in_range(t_stack_node *stack, int *bounds);
+int				s_size(t_stack_node *stack);
+void			set_target(t_stack_node *node, t_stack_node **stack);
+bool			stack_sorted(t_stack_node	*stack);
+int				values_in_range(t_stack_node *stack, int *bounds);
 // TODO: Remove
 void			print_stack(t_stack_node *stack, char *label);
+
+
 
 #endif
