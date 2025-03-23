@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 17:07:11 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/21 13:55:55 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/23 12:55:17 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static int	*init_ranks(int *arr, int size)
 	return (ranks);
 }
 
-static t_stack_node	*create_and_link_node(t_stack_node **head, int rank, int i)
+static t_stack_node	*build_stack(t_stack_node **head, int rank, int i)
 {
 	t_stack_node	*new_node;
 
@@ -80,7 +80,7 @@ t_stack_node	*initialise_stack(int *arr, int size)
 	i = size - 1;
 	while (i >= 0)
 	{
-		if (!create_and_link_node(&head, ranks[i], i))
+		if (!build_stack(&head, ranks[i], i))
 			return (NULL);
 		i--;
 	}

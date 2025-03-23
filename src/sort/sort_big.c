@@ -6,32 +6,11 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 12:28:29 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/22 12:21:23 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/23 14:42:57 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
-
-void	current_index(t_stack_node *stack)
-{
-	int	i;
-	int	median;
-
-	i = 0;
-	if (!stack)
-		return ;
-	median = s_size(stack) / 2;
-	while (stack)
-	{
-		stack->index = i;
-		if (i <= median - 1)
-			stack->above_median = true;
-		else
-			stack->above_median = false;
-		stack = stack->next;
-		i++;
-	}
-}
 
 static int	values_in_range(t_stack_node *stack, int *bounds)
 {
@@ -134,45 +113,6 @@ void	set_target(t_stack_node *node, t_stack_node **stack)
 	node->target = target;
 }
 
-void	move_to_top(t_stack_node **stack_a, t_stack_node **stack_b,
-			t_stack_node *lc_node, t_stack_node *target)
-{
-	while ((stack_a && *stack_a != lc_node) || *stack_b != target)
-	{
-		if ((stack_a && *stack_a != lc_node) && *stack_b != target)
-		{
-			if (lc_node->above_median && target->above_median)
-				rr(stack_a, stack_b);
-			else if (!lc_node->above_median && !target->above_median)
-				rrr(stack_a, stack_b);
-			else
-			{
-				if (lc_node->above_median)
-					ra(stack_a);
-				else
-					rra(stack_a);
-				if (target->above_median)
-					rb(stack_b);
-				else
-					rrb(stack_b);
-			}
-		}
-		else if (stack_a && *stack_a != lc_node)
-		{
-			if (lc_node->above_median)
-				ra(stack_a);
-			else
-				rra(stack_a);
-		}
-		else if (*stack_b != target)
-		{
-			if (target->above_median)
-				rb(stack_b);
-			else
-				rrb(stack_b);
-		}
-	}
-}
 
 void	sort_big(t_stack_node **stack_a, t_stack_node **stack_b, int chunk_size, int num_chunks)
 {
@@ -197,7 +137,7 @@ void	sort_big(t_stack_node **stack_a, t_stack_node **stack_b, int chunk_size, in
 				lc_node = rev_node;
 			if (*stack_b == NULL)
 			{
-				rotate_to_top(stack_a, NULL, lc_node, NULL);
+				move_to_top(stack_a, NULL, lc_node, NULL);
 				pb(stack_a, stack_b);
 			}
 			else

@@ -6,32 +6,33 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 14:34:31 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/18 11:16:28 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/23 14:29:21 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-/**
- * Get the maximum value in the stack.
- * @param stack The stack to search.
- * @return The maximum value in the stack.
- */
-int	get_max(t_stack_node *stack)
+void	current_index(t_stack_node *stack)
 {
-	t_stack_node	*current;
-	int				max;
+	int	i;
+	int	median;
 
-	current = stack;
-	max = INT_MIN;
-	while (current)
+	i = 0;
+	if (!stack)
+		return ;
+	median = s_size(stack) / 2;
+	while (stack)
 	{
-		if (current->value > max)
-			max = current->value;
-		current = current->next;
+		stack->index = i;
+		if (i <= median - 1)
+			stack->above_median = true;
+		else
+			stack->above_median = false;
+		stack = stack->next;
+		i++;
 	}
-	return (max);
 }
+
 
 /**
  * Check if the stack is sorted in ascending order.

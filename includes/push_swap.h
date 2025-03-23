@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 19:48:33 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/22 11:50:33 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/23 14:29:31 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ void			push_b_to_a(t_stack_node **stack_a, t_stack_node **stack_b);
 // Sorting Functions
 void			sort_small(t_stack_node	**stack_a, t_stack_node	**stack_b,
 					int len);
-void			sort_big(t_stack_node **stack_a, t_stack_node **stack_b, int chunk_size, int num_chunks);
+void			sort_big(t_stack_node **stack_a, t_stack_node **stack_b,
+					int chunk_size, int num_chunks);
 void			sort_radix(t_stack_node **stack_a, t_stack_node **stack_b,
 					int len);
 
@@ -44,12 +45,12 @@ void			min_to_top(t_stack_node **stack_a);
 t_stack_node	*get_lc_node(t_stack_node *stack);
 void			current_index(t_stack_node *stack);
 t_stack_node	*find_min(t_stack_node *stack);
-int				get_max(t_stack_node *stack);
 t_stack_node	*find_max(t_stack_node *stack);
 int				s_size(t_stack_node *stack);
 bool			stack_sorted(t_stack_node	*stack);
-
-
+void			move_to_top(t_stack_node **stack_a, t_stack_node **stack_b,
+					t_stack_node *lc_node, t_stack_node *target);
+// TODO: Remove
 void			print_stack(t_stack_node *stack, char *label);
 
 #endif
