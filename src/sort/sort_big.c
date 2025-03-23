@@ -6,18 +6,36 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 12:28:29 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/23 17:38:12 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/23 18:02:43 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
+/**
+ * reindex - Updates the indices of the nodes in both stacks.
+ * @stack_a: Pointer to the first stack.
+ * @stack_b: Pointer to the second stack.
+ *
+ * This function recalculates and updates the indices of all nodes in
+ * both stack_a and stack_b.
+ */
 static void	reindex(t_stack_node *stack_a, t_stack_node *stack_b)
 {
 	current_index(stack_a);
 	current_index(stack_b);
 }
 
+/**
+ * sort_chunk - Sorts a chunk of the stack within specified bounds.
+ * @stack_a: Pointer to the first stack.
+ * @stack_b: Pointer to the second stack.
+ * @bounds: Array containing the lower and upper bounds of the chunk.
+ *
+ * This function sorts a chunk of the stack defined by the bounds array.
+ * It moves nodes within the bounds from stack_a to stack_b, ensuring
+ * that the nodes are moved in the correct order.
+ */
 static void	sort_chunk(t_stack_node **stack_a, t_stack_node **stack_b,
 			int *bounds)
 {
@@ -48,6 +66,17 @@ static void	sort_chunk(t_stack_node **stack_a, t_stack_node **stack_b,
 	}
 }
 
+/**
+ * sort_big - Sorts a large stack using a chunk-based approach.
+ * @stack_a: Pointer to the first stack.
+ * @stack_b: Pointer to the second stack.
+ * @chunk_size: Size of each chunk.
+ * @num_chunks: Number of chunks to divide the stack into.
+ *
+ * This function sorts a large stack by dividing it into smaller chunks
+ * and sorting each chunk individually. It then moves the sorted chunks
+ * back to the original stack in the correct order.
+ */
 void	sort_big(t_stack_node **stack_a, t_stack_node **stack_b,
 			int chunk_size, int num_chunks)
 {
@@ -72,4 +101,3 @@ void	sort_big(t_stack_node **stack_a, t_stack_node **stack_b,
 		pa(stack_a, stack_b);
 	}
 }
-
