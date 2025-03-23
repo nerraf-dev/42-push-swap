@@ -7,7 +7,7 @@ YELLOW='\033[0;33m'
 NC='\033[0m' # No Color
 
 # Number of tests to run for 100 and 500 values
-NUM_TESTS=5
+NUM_TESTS=10
 
 # OS-specific checker
 OS=$(uname)
