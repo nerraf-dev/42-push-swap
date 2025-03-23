@@ -6,108 +6,98 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 12:28:29 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/16 18:57:07 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/23 19:58:43 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
 /**
- * @brief Rotate both stacks until the lowest cost node is at the top.
+ * reindex - Updates the indices of the nodes in both stacks.
+ * @stack_a: Pointer to the first stack.
+ * @stack_b: Pointer to the second stack.
  *
- * @param stack_a The first stack.
- * @param stack_b The second stack.
- * @param lc_node The lowest cost node.
+ * This function recalculates and updates the indices of all nodes in
+ * both stack_a and stack_b.
  */
-static void	rotate_stacks(t_stack_node **stack_a, t_stack_node **stack_b,
-				t_stack_node *lc_node)
+static void	reindex(t_stack_node *stack_a, t_stack_node *stack_b)
 {
-	while (*stack_b != lc_node && *stack_a != lc_node)
-		rr(stack_a, stack_b);
-	current_index(*stack_a);
-	current_index(*stack_b);
+	current_index(stack_a);
+	current_index(stack_b);
 }
 
 /**
- * @brief Reverse rotate both stacks until the lowest cost node is at the top.
+ * sort_chunk - Sorts a chunk of the stack within specified bounds.
+ * @stack_a: Pointer to the first stack.
+ * @stack_b: Pointer to the second stack.
+ * @bounds: Array containing the lower and upper bounds of the chunk.
  *
- * @param stack_a The first stack.
- * @param stack_b The second stack.
- * @param lc_node The lowest cost node.
+ * This function sorts a chunk of the stack defined by the bounds array.
+ * It moves nodes within the bounds from stack_a to stack_b, ensuring
+ * that the nodes are moved in the correct order.
  */
-static void	rev_rotate_stacks(t_stack_node **stack_a, t_stack_node **stack_b,
-				t_stack_node *lc_node)
+static void	sort_chunk(t_stack_node **stack_a, t_stack_node **stack_b,
+			int *bounds)
 {
-	while (*stack_b != lc_node && *stack_a != lc_node)
-		rrr(stack_a, stack_b);
-	current_index(*stack_a);
-	current_index(*stack_b);
-}
-
-/**
- * @brief Push the lowest cost node from stack a to stack b.
- *
- * @param stack_a The source stack a.
- * @param stack_b The destination stack b.
- */
-static void	push_a_to_b(t_stack_node **stack_a, t_stack_node **stack_b)
-{
+	t_stack_node	*node;
+	t_stack_node	*rev_node;
 	t_stack_node	*lc_node;
 
-	lc_node = get_lc_node(*stack_a);
-	if (lc_node->above_median && lc_node->target->above_median)
-		rotate_stacks(stack_a, stack_b, lc_node);
-	else if (!(lc_node->above_median) && !(lc_node->target->above_median))
-		rev_rotate_stacks(stack_a, stack_b, lc_node);
-	push_prep(stack_a, lc_node, 'a');
-	push_prep(stack_b, lc_node->target, 'b');
-	pb(stack_a, stack_b);
-}
-
-static void	initial_pushes(t_stack_node **stack_a, t_stack_node **stack_b,
-		int *len)
-{
-	if (*len > 3)
+	while (values_in_range(*stack_a, bounds))
 	{
-		(*len)--;
-		pb(stack_a, stack_b);
+		node = find_in_range(*stack_a, bounds);
+		rev_node = rev_find_in_range(*stack_a, bounds);
+		if (node->index < s_size(*stack_a) - rev_node->index)
+			lc_node = node;
+		else
+			lc_node = rev_node;
+		if (*stack_b == NULL)
+		{
+			move_to_top(stack_a, NULL, lc_node, NULL);
+			pb(stack_a, stack_b);
+		}
+		else
+		{
+			set_target(lc_node, stack_b);
+			move_to_top(stack_a, stack_b, lc_node, lc_node->target);
+			pb(stack_a, stack_b);
+		}
+		reindex(*stack_a, *stack_b);
 	}
-	if (*len > 3)
-	{
-		(*len)--;
-		pb(stack_a, stack_b);
-	}
-	if (*stack_b && (*stack_b)->next
-		&& (*stack_b)->value < (*stack_b)->next->value)
-		sb(stack_b);
 }
 
 /**
- * @brief Sort a large stack using a combination of algorithms.
+ * sort_big - Sorts a large stack using a chunk-based approach.
+ * @stack_a: Pointer to the first stack.
+ * @stack_b: Pointer to the second stack.
+ * @chunk_size: Size of each chunk.
+ * @num_chunks: Number of chunks to divide the stack into.
  *
- * @param stack_a The stack to sort.
- * @param stack_b The auxiliary stack.
- * @param len The length of the stack.
+ * This function sorts a large stack by dividing it into smaller chunks
+ * and sorting each chunk individually. It then moves the sorted chunks
+ * back to the original stack in the correct order.
  */
-void	sort_big(t_stack_node **stack_a, t_stack_node **stack_b, int len)
+void	sort_big(t_stack_node **stack_a, t_stack_node **stack_b,
+			int chunk_size, int num_chunks)
 {
-	if (len-- > 3)
-		pb(stack_a, stack_b);
-	if (len-- > 3)
-		pb(stack_a, stack_b);
-	if ((*stack_b)->value < (*stack_b)->next->value)
-		sb(stack_b);
-	while (len-- > 3 && !stack_sorted(*stack_a))
+	int				chunk;
+	int				bounds[2];
+	t_stack_node	*lc_node;
+
+	chunk = 0;
+	while (chunk < num_chunks)
 	{
-		initialise_nodes_a(*stack_a, *stack_b);
-		push_a_to_b(stack_a, stack_b);
-		initial_len--;
+		bounds[0] = chunk * chunk_size;
+		bounds[1] = ((chunk + 1) * chunk_size) - 1;
+		sort_chunk(stack_a, stack_b, bounds);
+		chunk++;
 	}
-	sort_small(stack_a, stack_b, len + 1);
 	while (*stack_b)
 	{
-		initialise_b_nodes(*stack_a, *stack_b);
-		min_to_top(stack_a);
+		lc_node = find_max(*stack_b);
+		move_to_top(NULL, stack_b, NULL, lc_node);
+		current_index(*stack_a);
+		current_index(*stack_b);
+		pa(stack_a, stack_b);
 	}
-	min_to_top(stack_a);
 }

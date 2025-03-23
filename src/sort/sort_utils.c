@@ -6,39 +6,49 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 14:34:31 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/16 18:56:03 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/23 20:00:00 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
 /**
- * @brief Get the maximum value in the stack.
+ * @brief Assigns an index to each node in the stack and determines if the node
+ *        is above the median.
  *
- * @param stack The stack to search.
- * @return The maximum value.
+ * Iterates through the given stack and assigns an index to each
+ * node starting from 0. It also determines if the node's index is above the
+ * median index of the stack. If the index is less than or equal to the median
+ * index, the node's `above_median` attribute is set to true, otherwise it is
+ * set to false.
+ *
+ * @param stack A pointer to the head of the stack.
  */
-int	get_max(t_stack_node *stack)
+void	current_index(t_stack_node *stack)
 {
-	t_stack_node	*current;
-	int				max;
+	int	i;
+	int	median;
 
-	current = stack;
-	max = INT_MIN;
-	while (current)
+	i = 0;
+	if (!stack)
+		return ;
+	median = s_size(stack) / 2;
+	while (stack)
 	{
-		if (current->value > max)
-			max = current->value;
-		current = current->next;
+		stack->index = i;
+		if (i <= median - 1)
+			stack->above_median = true;
+		else
+			stack->above_median = false;
+		stack = stack->next;
+		i++;
 	}
-	return (max);
 }
 
 /**
- * @brief Check if the stack is sorted in ascending order.
- *
+ * Check if the stack is sorted in ascending order.
  * @param stack The stack to check.
- * @return true if sorted, false otherwise.
+ * @return True if the stack is sorted, false otherwise.
  */
 bool	stack_sorted(t_stack_node	*stack)
 {
@@ -57,8 +67,7 @@ bool	stack_sorted(t_stack_node	*stack)
 }
 
 /**
- * @brief Move the minimum value to the top of the stack.
- *
+ * Move the minimum value in the stack to the top.
  * @param stack_a The stack to modify.
  */
 void	min_to_top(t_stack_node **stack_a)
@@ -72,29 +81,10 @@ void	min_to_top(t_stack_node **stack_a)
 	}
 }
 
-void	rotate_stacks(t_stack_node **stack_a, t_stack_node **stack_b,
-	t_stack_node *lc_node)
-{
-while (*stack_b != lc_node && *stack_a != lc_node)
-rr(stack_a, stack_b);
-current_index(*stack_a);
-current_index(*stack_b);
-}
-
-void	rev_rotate_stacks(t_stack_node **stack_a, t_stack_node **stack_b,
-	t_stack_node *lc_node)
-{
-while (*stack_b != lc_node && *stack_a != lc_node)
-rrr(stack_a, stack_b);
-current_index(*stack_a);
-current_index(*stack_b);
-}
-
 /**
- * @brief Get the size of the stack.
- *
+ * Get the size of the stack.
  * @param stack The stack to measure.
- * @return The size of the stack.
+ * @return The number of elements in the stack.
  */
 int	stack_size(t_stack_node *stack)
 {

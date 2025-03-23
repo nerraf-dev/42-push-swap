@@ -6,16 +6,15 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 10:58:10 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/16 18:50:11 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/23 19:58:10 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
 /**
- * @brief Frees a split array of strings.
- *
- * @param split The array of strings to be freed.
+ * Frees the memory allocated for a split string array.
+ * @param split The split string array to free.
  */
 void	free_split(char **split)
 {
@@ -31,11 +30,10 @@ void	free_split(char **split)
 }
 
 /**
- * @brief Splits the arguments into an array of strings.
- *
+ * Splits the arguments into an array of strings.
  * @param argc The argument count.
  * @param argv The argument vector.
- * @return char** The split array of strings.
+ * @return The split string array.
  */
 static char	**split_arguments(int argc, char **argv)
 {
@@ -53,9 +51,8 @@ static char	**split_arguments(int argc, char **argv)
 }
 
 /**
- * @brief Validates the arguments to ensure they are valid integers.
- *
- * @param split The split array of strings.
+ * Validates the arguments to ensure they are valid integers.
+ * @param split The split string array of arguments.
  * @param argc The argument count.
  */
 static void	validate_arguments(char **split, int argc)
@@ -77,12 +74,11 @@ static void	validate_arguments(char **split, int argc)
 }
 
 /**
- * @brief Parses the arguments into an array of integers.
- *
+ * Parses the arguments into an array of integers.
  * @param argc The argument count.
  * @param argv The argument vector.
- * @param arr_size Pointer to store the size of the array.
- * @return int* The array of integers.
+ * @param arr_size The size of the resulting integer array.
+ * @return The array of parsed integers.
  */
 static int	*parse_arguments(int argc, char **argv, int *arr_size)
 {
@@ -103,12 +99,11 @@ static int	*parse_arguments(int argc, char **argv, int *arr_size)
 }
 
 /**
- * @brief Parses the command line arguments and returns an array of integers.
- *
+ * Parses the command-line arguments into an array of integers.
  * @param argc The argument count.
  * @param argv The argument vector.
- * @param arr_size Pointer to store the size of the array.
- * @return int* The array of integers.
+ * @param arr_size The size of the resulting integer array.
+ * @return The array of parsed integers.
  */
 int	*argument_parser(int argc, char **argv, int *arr_size)
 {

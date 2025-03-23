@@ -6,92 +6,98 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 17:07:11 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/17 12:17:03 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/23 19:51:35 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-t_stack_node	*initialise_stack(int *arr, int size)
+/**
+ * Creates a new stack node with the given value and index.
+ * @param value The value to assign to the new node.
+ * @param index The index to assign to the new node.
+ * @return The newly created stack node.
+ */
+static t_stack_node	*create_node(int value, int index)
 {
-	t_stack_node	*head;
 	t_stack_node	*new_node;
-	int				*ranks;
-	int				i;
 
-	head = NULL;
-	new_node = NULL;
-	ranks = NULL;
-	if (arr == NULL)
-		return (head);
+	new_node = (t_stack_node *)malloc(sizeof(t_stack_node));
+	if (!new_node)
+		return (NULL);
+	new_node->value = value;
+	new_node->index = index;
+	new_node->next = NULL;
+	new_node->prev = NULL;
+	return (new_node);
+}
+
+/**
+ * Initializes an array of ranks based on the given array.
+ * @param arr The array of integers.
+ * @param size The size of the array.
+ * @return The array of ranks.
+ */
+static int	*init_ranks(int *arr, int size)
+{
+	int	*ranks;
+
 	ranks = malloc(size * sizeof(int));
 	if (!ranks)
 		handle_error(true, NULL, arr);
 	assign_ranks(arr, ranks, size);
+	return (ranks);
+}
+
+/**
+ * Builds the stack by adding a new node with the given rank and index.
+ * @param head The head of the stack.
+ * @param rank The rank to assign to the new node.
+ * @param i The index to assign to the new node.
+ * @return The newly created stack node.
+ */
+static t_stack_node	*build_stack(t_stack_node **head, int rank, int i)
+{
+	t_stack_node	*new_node;
+
+	new_node = create_node(rank, i);
+	if (!new_node)
+	{
+		free_stack(head);
+		return (NULL);
+	}
+	new_node->next = *head;
+	if (*head != NULL)
+		(*head)->prev = new_node;
+	*head = new_node;
+	return (new_node);
+}
+
+/**
+ * Initializes a stack from an array of integers.
+ * @param arr The array of integers.
+ * @param size The size of the array.
+ * @return The head of the initialized stack.
+ */
+t_stack_node	*initialise_stack(int *arr, int size)
+{
+	t_stack_node	*head;
+	int				*ranks;
+	int				i;
+
+	if (arr == NULL)
+		return (NULL);
+	head = NULL;
+	ranks = init_ranks(arr, size);
+	if (!ranks)
+		return (NULL);
 	i = size - 1;
 	while (i >= 0)
 	{
-		new_node = (t_stack_node *)malloc(sizeof(t_stack_node));
-		if (!new_node)
-		{
-			free(ranks);
+		if (!build_stack(&head, ranks[i], i))
 			return (NULL);
-		}
-		new_node->value = ranks[i];
-		new_node->index = 0;
-		new_node->next = head;
-		new_node->prev = NULL;
-		new_node->target = NULL;
-		if (head != NULL)
-			head->prev = new_node;
-		head = new_node;
 		i--;
 	}
 	free(ranks);
 	return (head);
-}
-
-/**
- * @brief Retrieves the node with the lowest cost from the stack.
- *
- * This function traverses the given stack and returns the first node
- * that has the `lowest_cost` flag set to true. If no such node is found,
- * or if the stack is empty, the function returns NULL.
- *
- * @param stack A pointer to the head of the stack.
- * @return pointer to node with the lowest cost, or NULL if no node exists.
- */
-t_stack_node	*get_lc_node(t_stack_node *stack)
-{
-	if (!stack)
-		return (NULL);
-	while (stack)
-	{
-		if (stack->lowest_cost)
-			return (stack);
-		stack = stack->next;
-	}
-	return (NULL);
-}
-
-void	push_prep(t_stack_node **stack,	t_stack_node *top_node,
-						char stack_name)
-{
-	while (*stack != top_node)
-	{
-		if (stack_name == 'a')
-		{
-			if (top_node->above_median)
-				ra(stack);
-			else
-				rra(stack);
-		}
-		else if (stack_name == 'b')
-		{
-			if (top_node->above_median)
-				rb(stack);
-			else
-				rrb(stack);
-		}
-	}
 }

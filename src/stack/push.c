@@ -6,17 +6,17 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 13:25:15 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/16 18:43:10 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/23 20:00:15 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
 /**
- * @brief Pushes the top element from src stack to dst stack.
+ * @brief Pushes the top element from the source stack to the destination stack.
  *
- * @param dst The destination stack.
- * @param src The source stack.
+ * @param dst Pointer to the destination stack.
+ * @param src Pointer to the source stack.
  */
 static void	push(t_stack_node **dst, t_stack_node **src)
 {
@@ -31,10 +31,10 @@ static void	push(t_stack_node **dst, t_stack_node **src)
 }
 
 /**
- * @brief Pushes the top element from stack b to stack a and prints "pa".
+ * @brief Pushes the top element from stack_b to stack_a and prints "pa".
  *
- * @param stack_a The destination stack a.
- * @param stack_b The source stack b.
+ * @param stack_a Pointer to stack_a.
+ * @param stack_b Pointer to stack_b.
  */
 void	pa(t_stack_node **stack_a, t_stack_node **stack_b)
 {
@@ -43,10 +43,10 @@ void	pa(t_stack_node **stack_a, t_stack_node **stack_b)
 }
 
 /**
- * @brief Pushes the top element from stack a to stack b and prints "pb".
+ * @brief Pushes the top element from stack_a to stack_b and prints "pb".
  *
- * @param stack_a The source stack a.
- * @param stack_b The destination stack b.
+ * @param stack_a Pointer to stack_a.
+ * @param stack_b Pointer to stack_b.
  */
 void	pb(t_stack_node **stack_a, t_stack_node **stack_b)
 {

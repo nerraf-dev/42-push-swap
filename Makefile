@@ -6,15 +6,15 @@
 #    By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/20 13:36:23 by sfarren           #+#    #+#              #
-#    Updated: 2025/03/17 12:39:13 by sfarren          ###   ########.fr        #
+#    Updated: 2025/03/23 19:48:07 by sfarren          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S), Darwin)
-	CC = gcc
+    CC = gcc
 else
-	CC = clang
+    CC = clang
 endif
 
 CFLAGS = -Wall -Wextra -Werror -g
@@ -29,20 +29,25 @@ SRCS =  src/push_swap.c \
 		src/parsing/parser_utils.c \
 		src/parsing/parser_helpers.c \
 		src/init/init_stack.c \
-		src/init/init_a_b.c \
+		src/init/init_utils.c \
 		src/init/init_b_a.c \
 		src/sort/sort_utils.c \
 		src/sort/sort_small.c \
 		src/sort/sort_big.c \
+		src/sort/sort_big_utils.c \
 		src/sort/sort_radix.c \
-		src/stack/stack_utils.c \
+		src/stack/move_to_top.c \
 		src/stack/push.c \
 		src/stack/rotate.c \
-		src/stack/swap.c \
 		src/stack/reverse_rotate.c \
+		src/stack/stack_utils.c \
+		src/stack/swap.c \
 		src/ranking/ranking.c \
 
-OBJS = $(SRCS:.c=.o)
+# src/init/init_a_b.c \
+
+OBJ_DIR = obj
+OBJS = $(SRCS:src/%.c=$(OBJ_DIR)/%.o)
 
 all: $(LIBFT) $(NAME)
 
@@ -56,12 +61,14 @@ $(NAME): $(OBJS) $(LIBFT)
 $(NAME)_valgrind: $(OBJS) $(LIBFT)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(LDFLAGS)
 
-%.o: %.c
+$(OBJ_DIR)/%.o: src/%.c
+	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	$(MAKE) -C $(LIBFT_DIR) clean
 	rm -f $(OBJS)
+	rm -rf $(OBJ_DIR)
 
 fclean: clean
 	$(MAKE) -C $(LIBFT_DIR) fclean

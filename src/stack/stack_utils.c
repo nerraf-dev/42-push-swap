@@ -6,17 +6,17 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 13:17:16 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/16 18:35:50 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/23 20:01:45 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
 /**
- * @brief Gets the last node of the stack.
+ * Get the last node of the stack.
  *
- * @param stack The stack to get the last node from.
- * @return t_stack_node* The last node of the stack.
+ * @param stack Pointer to the stack.
+ * @return Pointer to the last node of the stack.
  */
 t_stack_node	*get_last_node(t_stack_node *stack)
 {
@@ -28,9 +28,9 @@ t_stack_node	*get_last_node(t_stack_node *stack)
 }
 
 /**
- * @brief Frees all nodes in the stack.
+ * Free all nodes in the stack.
  *
- * @param stack The stack to be freed.
+ * @param stack Pointer to the stack to be freed.
  */
 void	free_stack(t_stack_node **stack)
 {
@@ -50,10 +50,10 @@ void	free_stack(t_stack_node **stack)
 }
 
 /**
- * @brief Calculates the size of the stack.
+ * Get the size of the stack.
  *
- * @param stack The stack to calculate the size of.
- * @return int The size of the stack, or -1 if a cycle is detected.
+ * @param stack Pointer to the stack.
+ * @return Size of the stack, or -1 if a cycle is detected.
  */
 int	s_size(t_stack_node *stack)
 {
@@ -81,10 +81,10 @@ int	s_size(t_stack_node *stack)
 }
 
 /**
- * @brief Finds the node with the minimum value in the stack.
+ * Find the node with the minimum value in the stack.
  *
- * @param stack The stack to search.
- * @return t_stack_node* The node with the minimum value.
+ * @param stack Pointer to the stack.
+ * @return Pointer to the node with the minimum value.
  */
 t_stack_node	*find_min(t_stack_node *stack)
 {
@@ -107,10 +107,10 @@ t_stack_node	*find_min(t_stack_node *stack)
 }
 
 /**
- * @brief Finds the node with the maximum value in the stack.
+ * Find the node with the maximum value in the stack.
  *
- * @param stack The stack to search.
- * @return t_stack_node* The node with the maximum value.
+ * @param stack Pointer to the stack.
+ * @return Pointer to the node with the maximum value.
  */
 t_stack_node	*find_max(t_stack_node *stack)
 {

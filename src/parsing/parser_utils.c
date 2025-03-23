@@ -6,17 +6,16 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 11:14:18 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/16 18:50:06 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/23 19:56:24 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
 /**
- * @brief Calculates the length of an integer array.
- *
+ * Returns the length of an integer array.
  * @param int_array The integer array.
- * @return int The length of the array.
+ * @return The length of the array.
  */
 int	int_array_length(int *int_array)
 {
@@ -29,11 +28,10 @@ int	int_array_length(int *int_array)
 }
 
 /**
- * @brief Converts a split array of strings to an array of integers.
- *
- * @param split The split array of strings.
- * @param size The size of the array.
- * @return int* The array of integers.
+ * Converts a split string array to an array of integers.
+ * @param split The split string array.
+ * @param size The size of the resulting integer array.
+ * @return The array of integers.
  */
 int	*convert_to_int_array(char **split, int size)
 {
@@ -55,11 +53,10 @@ int	*convert_to_int_array(char **split, int size)
 }
 
 /**
- * @brief Checks if an array of integers contains duplicates.
- *
+ * Checks if an array of integers contains duplicates.
  * @param arr The array of integers.
  * @param size The size of the array.
- * @return int 1 if duplicates are found, 0 otherwise.
+ * @return 1 if duplicates are found, 0 otherwise.
  */
 int	has_duplicates(int *arr, int size)
 {
@@ -82,10 +79,9 @@ int	has_duplicates(int *arr, int size)
 }
 
 /**
- * @brief Calculates the length of a split array of strings.
- *
- * @param split The split array of strings.
- * @return int The length of the array.
+ * Returns the length of a split string array.
+ * @param split The split string array.
+ * @return The length of the array.
  */
 int	split_length(char **split)
 {

@@ -6,16 +6,16 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 17:36:03 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/16 18:35:23 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/23 20:01:25 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
 /**
- * @brief Swaps the first two elements of the stack.
+ * Swap the first two elements of the stack.
  *
- * @param stack The stack to perform the swap on.
+ * @param stack Pointer to the stack to be swapped.
  */
 static void	swap(t_stack_node **stack)
 {
@@ -36,9 +36,9 @@ static void	swap(t_stack_node **stack)
 }
 
 /**
- * @brief Swaps the first two elements of stack a and prints "sa".
+ * Swap the first two elements of stack 'a' and print "sa".
  *
- * @param a The stack a to perform the swap on.
+ * @param a Pointer to stack 'a'.
  */
 void	sa(t_stack_node **a)
 {
@@ -47,9 +47,9 @@ void	sa(t_stack_node **a)
 }
 
 /**
- * @brief Swaps the first two elements of stack b and prints "sb".
+ * Swap the first two elements of stack 'b' and print "sb".
  *
- * @param b The stack b to perform the swap on.
+ * @param b Pointer to stack 'b'.
  */
 void	sb(t_stack_node **b)
 {
@@ -58,10 +58,10 @@ void	sb(t_stack_node **b)
 }
 
 /**
- * @brief Swaps the first two elements of both stacks a and b, and prints "ss".
+ * Swap the first two elements of both stacks 'a' and 'b' and print "ss".
  *
- * @param a The stack a to perform the swap on.
- * @param b The stack b to perform the swap on.
+ * @param a Pointer to stack 'a'.
+ * @param b Pointer to stack 'b'.
  */
 void	ss(t_stack_node **a, t_stack_node **b)
 {

@@ -6,16 +6,16 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 11:36:51 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/16 18:35:56 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/23 20:01:09 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
 /**
- * @brief Rotates the stack by moving the first element to the end.
+ * Rotate the stack by moving the first element to the end.
  *
- * @param stack The stack to rotate.
+ * @param stack Pointer to the stack to be rotated.
  */
 static void	rotate(t_stack_node	**stack)
 {
@@ -34,9 +34,9 @@ static void	rotate(t_stack_node	**stack)
 }
 
 /**
- * @brief Rotates stack a and prints "ra".
+ * Rotate stack 'a' and print "ra".
  *
- * @param stack The stack a to rotate.
+ * @param stack Pointer to stack 'a'.
  */
 void	ra(t_stack_node	**stack)
 {
@@ -45,9 +45,9 @@ void	ra(t_stack_node	**stack)
 }
 
 /**
- * @brief Rotates stack b and prints "rb".
+ * Rotate stack 'b' and print "rb".
  *
- * @param stack The stack b to rotate.
+ * @param stack Pointer to stack 'b'.
  */
 void	rb(t_stack_node	**stack)
 {
@@ -56,10 +56,10 @@ void	rb(t_stack_node	**stack)
 }
 
 /**
- * @brief Rotates both stacks a and b, and prints "rr".
+ * Rotate both stacks 'a' and 'b' and print "rr".
  *
- * @param stack_a The stack a to rotate.
- * @param stack_b The stack b to rotate.
+ * @param stack_a Pointer to stack 'a'.
+ * @param stack_b Pointer to stack 'b'.
  */
 void	rr(t_stack_node	**stack_a, t_stack_node	**stack_b)
 {
