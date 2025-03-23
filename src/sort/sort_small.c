@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 19:40:20 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/18 11:16:46 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/23 17:54:04 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,11 @@ static void	sort_two(t_stack_node	**stack)
 static void	sort_three(t_stack_node	**stack)
 {
 	t_stack_node	*current;
-	int				max;
 
 	current = *stack;
-	max = get_max(current);
-	if (current->value == max)
+	if (current->value == 2)
 		ra(stack);
-	else if (current->next->value == max)
+	else if (current->next->value == 2)
 		rra(stack);
 	if ((*stack)->value > (*stack)->next->value)
 		sa(stack);
@@ -65,6 +63,8 @@ static void	sort_three(t_stack_node	**stack)
  */
 void	sort_small(t_stack_node	**stack_a, t_stack_node	**stack_b, int len)
 {
+	t_stack_node	*min;
+
 	if (len == 2)
 		sort_two(stack_a);
 	else if (len == 3)
@@ -83,6 +83,7 @@ void	sort_small(t_stack_node	**stack_a, t_stack_node	**stack_b, int len)
 			push_b_to_a(stack_a, stack_b);
 		}
 		current_index(*stack_a);
-		min_to_top(stack_a);
+		min = find_min(*stack_a);
+		move_to_top(stack_a, NULL, min, NULL);
 	}
 }

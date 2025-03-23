@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 21:00:45 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/22 12:56:53 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/23 12:42:20 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	handle_error(bool error, char **split, int *int_array)
 	exit(1);
 }
 
+// TODO: remove print_stack function before push to 42 repo
 /**
  * @brief Prints the elements of a stack.
  *
@@ -90,21 +91,14 @@ int	main(int argc, char **argv)
 		return (0);
 	stack_a = initialise_stack(int_array, arr_size);
 	stack_b = initialise_stack(NULL, 0);
-	// print_stack(stack_a);
 	if (!stack_a)
 		handle_error(true, NULL, int_array);
 	if (arr_size <= 5)
 		sort_small(&stack_a, &stack_b, arr_size);
 	else if (arr_size <= 100)
-	{
-		// ft_printf("sort big\n");
 		sort_big(&stack_a, &stack_b, 20, 5);
-	}
 	else
-		// sort_big(&stack_a, &stack_b, arr_size/10, arr_size/(arr_size/10));
 		sort_radix(&stack_a, &stack_b, arr_size);
-	// print_stack(stack_a, "stack_a");
-	// print_stack(stack_b, "stack_b");
 	free(int_array);
 	free_stack(&stack_a);
 	free_stack(&stack_b);

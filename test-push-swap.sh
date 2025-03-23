@@ -194,9 +194,11 @@ run_multiple_tests() {
     local size=$1
     local total_operations=0
     local input_file="input_values_${size}.txt"
+    local error_file="error_values_${size}.txt"
 
     echo -e "\n${YELLOW}Running $NUM_TESTS tests for $size values...${NC}"
     echo "" > $input_file  # Clear the file before writing new inputs
+    echo "" > $error_file  # Clear the file before writing new errors
 
     for ((i=1; i<=NUM_TESTS; i++)); do
         input=$(generate_random_numbers $size -10000 10000)
@@ -208,6 +210,7 @@ run_multiple_tests() {
         else
             echo -e "${RED}KO${NC}"
             failed_tests+=("Test $i for $size values")
+            echo "Test $i: $input" >> $error_file  # Write the failed input values to the error file
         fi
         operations=$(cat ops_count)
         total_operations=$((total_operations + operations))

@@ -6,15 +6,16 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 17:07:11 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/21 13:55:55 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/23 18:19:03 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
 /**
- * Creates a new stack node with the given value.
+ * Creates a new stack node with the given value and index.
  * @param value The value to assign to the new node.
+ * @param index The index to assign to the new node.
  * @return The newly created stack node.
  */
 static t_stack_node	*create_node(int value, int index)
@@ -31,6 +32,12 @@ static t_stack_node	*create_node(int value, int index)
 	return (new_node);
 }
 
+/**
+ * Initializes an array of ranks based on the given array.
+ * @param arr The array of integers.
+ * @param size The size of the array.
+ * @return The array of ranks.
+ */
 static int	*init_ranks(int *arr, int size)
 {
 	int	*ranks;
@@ -42,7 +49,14 @@ static int	*init_ranks(int *arr, int size)
 	return (ranks);
 }
 
-static t_stack_node	*create_and_link_node(t_stack_node **head, int rank, int i)
+/**
+ * Builds the stack by adding a new node with the given rank and index.
+ * @param head The head of the stack.
+ * @param rank The rank to assign to the new node.
+ * @param i The index to assign to the new node.
+ * @return The newly created stack node.
+ */
+static t_stack_node	*build_stack(t_stack_node **head, int rank, int i)
 {
 	t_stack_node	*new_node;
 
@@ -80,7 +94,7 @@ t_stack_node	*initialise_stack(int *arr, int size)
 	i = size - 1;
 	while (i >= 0)
 	{
-		if (!create_and_link_node(&head, ranks[i], i))
+		if (!build_stack(&head, ranks[i], i))
 			return (NULL);
 		i--;
 	}

@@ -6,31 +6,43 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 14:34:31 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/18 11:16:28 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/23 18:01:42 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
 /**
- * Get the maximum value in the stack.
- * @param stack The stack to search.
- * @return The maximum value in the stack.
+ * @brief Assigns an index to each node in the stack and determines if the node
+ *        is above the median.
+ *
+ * Iterates through the given stack and assigns an index to each
+ * node starting from 0. It also determines if the node's index is above the
+ * median index of the stack. If the index is less than or equal to the median
+ * index, the node's `above_median` attribute is set to true, otherwise it is
+ * set to false.
+ *
+ * @param stack A pointer to the head of the stack.
  */
-int	get_max(t_stack_node *stack)
+void	current_index(t_stack_node *stack)
 {
-	t_stack_node	*current;
-	int				max;
+	int	i;
+	int	median;
 
-	current = stack;
-	max = INT_MIN;
-	while (current)
+	i = 0;
+	if (!stack)
+		return ;
+	median = s_size(stack) / 2;
+	while (stack)
 	{
-		if (current->value > max)
-			max = current->value;
-		current = current->next;
+		stack->index = i;
+		if (i <= median - 1)
+			stack->above_median = true;
+		else
+			stack->above_median = false;
+		stack = stack->next;
+		i++;
 	}
-	return (max);
 }
 
 /**
