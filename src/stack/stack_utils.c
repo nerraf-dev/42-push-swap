@@ -6,17 +6,20 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 13:17:16 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/23 20:01:45 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/25 14:01:22 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
 /**
- * Get the last node of the stack.
+ * get_last_node - Get the last node of the stack.
+ * @stack: Pointer to the stack.
  *
- * @param stack Pointer to the stack.
- * @return Pointer to the last node of the stack.
+ * This function returns a pointer to the last node of the stack. If the
+ * stack is empty, it returns NULL.
+ *
+ * Return: Pointer to the last node of the stack.
  */
 t_stack_node	*get_last_node(t_stack_node *stack)
 {
@@ -28,9 +31,11 @@ t_stack_node	*get_last_node(t_stack_node *stack)
 }
 
 /**
- * Free all nodes in the stack.
+ * free_stack - Free all nodes in the stack.
+ * @stack: Pointer to the stack to be freed.
  *
- * @param stack Pointer to the stack to be freed.
+ * This function frees all nodes in the stack and sets the stack pointer
+ * to NULL.
  */
 void	free_stack(t_stack_node **stack)
 {
@@ -50,10 +55,13 @@ void	free_stack(t_stack_node **stack)
 }
 
 /**
- * Get the size of the stack.
+ * s_size - Get the size of the stack.
+ * @stack: Pointer to the stack.
  *
- * @param stack Pointer to the stack.
- * @return Size of the stack, or -1 if a cycle is detected.
+ * This function returns the size of the stack. If a cycle is detected
+ * in the stack, it returns -1.
+ *
+ * Return: Size of the stack, or -1 if a cycle is detected.
  */
 int	s_size(t_stack_node *stack)
 {
@@ -81,10 +89,13 @@ int	s_size(t_stack_node *stack)
 }
 
 /**
- * Find the node with the minimum value in the stack.
+ * find_min - Find the node with the minimum value in the stack.
+ * @stack: Pointer to the stack.
  *
- * @param stack Pointer to the stack.
- * @return Pointer to the node with the minimum value.
+ * This function returns a pointer to the node with the minimum value
+ * in the stack. If the stack is empty, it returns NULL.
+ *
+ * Return: Pointer to the node with the minimum value.
  */
 t_stack_node	*find_min(t_stack_node *stack)
 {
@@ -107,10 +118,13 @@ t_stack_node	*find_min(t_stack_node *stack)
 }
 
 /**
- * Find the node with the maximum value in the stack.
+ * find_max - Find the node with the maximum value in the stack.
+ * @stack: Pointer to the stack.
  *
- * @param stack Pointer to the stack.
- * @return Pointer to the node with the maximum value.
+ * This function returns a pointer to the node with the maximum value
+ * in the stack. If the stack is empty, it returns NULL.
+ *
+ * Return: Pointer to the node with the maximum value.
  */
 t_stack_node	*find_max(t_stack_node *stack)
 {

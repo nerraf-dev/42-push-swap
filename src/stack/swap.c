@@ -6,18 +6,20 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 17:36:03 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/23 20:01:25 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/25 13:59:36 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
 /**
- * Swap the first two elements of the stack.
+ * swap - Swap the first two elements of the stack.
+ * @stack: Pointer to the stack to be swapped.
  *
- * @param stack Pointer to the stack to be swapped.
+ * This function swaps the first two elements of the stack. If the stack
+ * has less than two elements, the function does nothing.
  */
-static void	swap(t_stack_node **stack)
+void	swap(t_stack_node **stack)
 {
 	t_stack_node	*current;
 	t_stack_node	*next;
@@ -36,9 +38,10 @@ static void	swap(t_stack_node **stack)
 }
 
 /**
- * Swap the first two elements of stack 'a' and print "sa".
+ * sa - Swap the first two elements of stack 'a' and print "sa".
+ * @a: Pointer to stack 'a'.
  *
- * @param a Pointer to stack 'a'.
+ * This function swaps the first two elements of stack 'a' and prints "sa".
  */
 void	sa(t_stack_node **a)
 {
@@ -47,9 +50,10 @@ void	sa(t_stack_node **a)
 }
 
 /**
- * Swap the first two elements of stack 'b' and print "sb".
+ * sb - Swap the first two elements of stack 'b' and print "sb".
+ * @b: Pointer to stack 'b'.
  *
- * @param b Pointer to stack 'b'.
+ * This function swaps the first two elements of stack 'b' and prints "sb".
  */
 void	sb(t_stack_node **b)
 {
@@ -58,10 +62,12 @@ void	sb(t_stack_node **b)
 }
 
 /**
- * Swap the first two elements of both stacks 'a' and 'b' and print "ss".
+ * ss - Swap the first two elements of both stacks 'a' and 'b' and print "ss".
+ * @a: Pointer to stack 'a'.
+ * @b: Pointer to stack 'b'.
  *
- * @param a Pointer to stack 'a'.
- * @param b Pointer to stack 'b'.
+ * This function swaps the first two elements of both stacks 'a' and 'b'
+ * and prints "ss".
  */
 void	ss(t_stack_node **a, t_stack_node **b)
 {

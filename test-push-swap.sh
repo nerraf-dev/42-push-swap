@@ -36,6 +36,13 @@ if [ ! -f $CHECKER ]; then
     exit 1
 fi
 
+# Check if the bonus checker exists
+BONUS_CHECKER="./checker"
+BONUS_CHECKER_EXISTS=false
+if [ -f $BONUS_CHECKER ]; then
+    BONUS_CHECKER_EXISTS=true
+fi
+
 # Function to generate random integers without duplicates
 generate_random_numbers() {
     local count=$1
@@ -49,18 +56,6 @@ generate_random_numbers() {
         fi
     done
     echo "${numbers[@]}"
-}
-
-# Function to generate a mostly sorted list
-generate_mostly_sorted_list() {
-    local size=$1
-    local list=()
-    for ((i=1; i<=size; i++)); do
-        list+=("$i")
-    done
-    # Move the last element to the beginning
-    list=("${list[-1]}" "${list[@]:0:size-1}")
-    echo "${list[@]}"
 }
 
 # Function to test valid inputs
@@ -77,7 +72,6 @@ test_valid_inputs() {
         "50 integers" "$(generate_random_numbers 50 -1000 1000)"
         "INT_MIN and INT_MAX" "-2147483648 2147483647"
         "Mostly sorted list (100 values)" "2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 1"
-        # "Duplicate values (should fail)" "1 2 3 4 5 5"
     )
 
     # Run tests
@@ -95,6 +89,17 @@ test_valid_inputs() {
         else
             echo -e "${RED}KO${NC}"
             failed_tests+=("$description")
+        fi
+
+        # Run push_swap and bonus checker if it exists
+        if [ "$BONUS_CHECKER_EXISTS" = true ]; then
+            ./push_swap $input | $BONUS_CHECKER $input
+            if [ $? -eq 0 ]; then
+                echo -e "${GREEN}Bonus Checker OK${NC}"
+            else
+                echo -e "${RED}Bonus Checker KO${NC}"
+                failed_tests+=("$description (Bonus Checker)")
+            fi
         fi
     done
 }
@@ -138,6 +143,17 @@ test_invalid_inputs() {
             else
                 echo -e "${RED}Error message not displayed${NC}"
                 failed_tests+=("$description")
+            fi
+
+            # Run push_swap and bonus checker if it exists
+            if [ "$BONUS_CHECKER_EXISTS" = true ]; then
+                ./push_swap $input 2>&1 | $BONUS_CHECKER $input | grep -q "Error"
+                if [ $? -eq 0 ]; then
+                    echo -e "${GREEN}Bonus Checker Error message displayed${NC}"
+                else
+                    echo -e "${RED}Bonus Checker Error message not displayed${NC}"
+                    failed_tests+=("$description (Bonus Checker)")
+                fi
             fi
         fi
     done
@@ -225,6 +241,19 @@ run_multiple_tests() {
         operations=$(cat ops_count)
         total_operations=$((total_operations + operations))
         echo -e "Test $i: $operations operations"
+
+        # Run push_swap and bonus checker if it exists
+        if [ "$BONUS_CHECKER_EXISTS" = true ]; then
+            result=$(./push_swap $input | $BONUS_CHECKER $input)
+            if [ "$result" == "OK" ]; then
+                echo -e "${GREEN}Bonus Checker OK${NC}"
+            else
+                echo -e "${RED}Bonus Checker KO${NC}"
+                failed_tests+=("Test $i for $size values (Bonus Checker)")
+                error_occurred=true
+                echo "Test $i: $input" >> $error_file  # Write the failed input values to the error file
+            fi
+        fi
     done
 
     if [ "$error_occurred" = false ]; then

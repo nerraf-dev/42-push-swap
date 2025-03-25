@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:41:29 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/23 19:58:25 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/25 14:06:39 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
  * @param a The first integer.
  * @param b The second integer.
  */
-void	swap(int *a, int *b)
+static void	swap_int(int *a, int *b)
 {
 	int	temp;
 
@@ -43,7 +43,7 @@ void	bubble_sort(int *arr, int size)
 		while (j < size - i - 1)
 		{
 			if (arr[j] > arr[j + 1])
-				swap(&arr[j], &arr[j + 1]);
+				swap_int(&arr[j], &arr[j + 1]);
 			j++;
 		}
 		i++;
