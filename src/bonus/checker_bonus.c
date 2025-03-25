@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 11:12:30 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/25 14:25:31 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/25 19:43:29 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,15 +93,11 @@ int	main(int argc, char **argv)
 		if (!execute_operation(line, &stack_a, &stack_b))
 		{
 			free(line);
-			free_stack(&stack_a);
-			free_stack(&stack_b);
+			break ;
 		}
 		free(line);
 		line = get_next_line(STDIN_FILENO);
 	}
-	// print_stack(stack_a, "a");
-	// print_stack(stack_b, "b");
-	// ft_printf("BONUS CHECKER: ");
 	if (is_sorted(stack_a) && stack_b == NULL)
 		ft_printf("OK\n");
 	else
