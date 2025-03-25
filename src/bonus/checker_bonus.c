@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 11:12:30 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/25 13:24:17 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/25 13:29:58 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,12 +79,12 @@ int	main(int argc, char **argv)
 		break ;
 		if (line[ft_strlen(line) - 1] == '\n')
 			line[ft_strlen(line) - 1] = '\0';
-			if (!execute_operation(line, &stack_a, &stack_b))
-			{
-				free(line);
-				free_stack(&stack_a);
-				free_stack(&stack_b);
-			}
+		if (!execute_operation(line, &stack_a, &stack_b))
+		{
+			free(line);
+			free_stack(&stack_a);
+			free_stack(&stack_b);
+		}
 		free(line);
 		line = get_next_line(STDIN_FILENO);
 	}
