@@ -6,29 +6,30 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 09:42:22 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/19 10:19:39 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/25 11:39:09 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
+// TODO: remove get_lc_node - checkif not used!
 /**
  * Retrieves the node with the lowest cost in the stack.
  * @param stack The stack to search.
  * @return The node with the lowest cost.
  */
-t_stack_node	*get_lc_node(t_stack_node *stack)
-{
-	if (!stack)
-		return (NULL);
-	while (stack)
-	{
-		if (stack->lowest_cost)
-			return (stack);
-		stack = stack->next;
-	}
-	return (NULL);
-}
+// t_stack_node	*get_lc_node(t_stack_node *stack)
+// {
+// 	if (!stack)
+// 		return (NULL);
+// 	while (stack)
+// 	{
+// 		if (stack->lowest_cost)
+// 			return (stack);
+// 		stack = stack->next;
+// 	}
+// 	return (NULL);
+// }
 
 /**
  * Prepares the stack for pushing by rotating it to the top node.

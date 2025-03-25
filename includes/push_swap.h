@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 19:48:33 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/23 19:48:46 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/25 13:18:48 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,7 @@ void	sort_small(t_stack_node	**stack_a, t_stack_node	**stack_b, int len);
 void	sort_big(t_stack_node **stack_a, t_stack_node **stack_b,
 			int chunk_size, int num_chunks);
 void	sort_radix(t_stack_node **stack_a, t_stack_node **stack_b, int len);
+
+int		ft_strcmp(const char *s1, const char *s2);
 
 #endif

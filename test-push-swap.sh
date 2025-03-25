@@ -1,13 +1,21 @@
 #!/bin/bash
 
+# usage: ./test-push-swap.sh [NUM_TESTS]
+# NUM_TESTS: Number of tests to run for 100 and 500 values (default: 5)
+
 # Colors for output
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[0;33m'
 NC='\033[0m' # No Color
 
-# Number of tests to run for 100 and 500 values
-NUM_TESTS=10
+# Default number of tests to run for 100 and 500 values
+NUM_TESTS=5
+
+# Override number of tests if an argument is provided
+if [ $# -eq 1 ]; then
+    NUM_TESTS=$1
+fi
 
 # OS-specific checker
 OS=$(uname)
@@ -198,7 +206,8 @@ run_multiple_tests() {
 
     echo -e "\n${YELLOW}Running $NUM_TESTS tests for $size values...${NC}"
     echo "" > $input_file  # Clear the file before writing new inputs
-    echo "" > $error_file  # Clear the file before writing new errors
+
+    error_occurred=false
 
     for ((i=1; i<=NUM_TESTS; i++)); do
         input=$(generate_random_numbers $size -10000 10000)
@@ -210,12 +219,17 @@ run_multiple_tests() {
         else
             echo -e "${RED}KO${NC}"
             failed_tests+=("Test $i for $size values")
+            error_occurred=true
             echo "Test $i: $input" >> $error_file  # Write the failed input values to the error file
         fi
         operations=$(cat ops_count)
         total_operations=$((total_operations + operations))
         echo -e "Test $i: $operations operations"
     done
+
+    if [ "$error_occurred" = false ]; then
+        rm -f $error_file  # Remove the error file if no errors occurred
+    fi
 
     average_operations=$((total_operations / NUM_TESTS))
     echo -e "${YELLOW}Average operations for $size values: $average_operations${NC}"

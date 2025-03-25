@@ -6,7 +6,7 @@
 #    By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/20 13:36:23 by sfarren           #+#    #+#              #
-#    Updated: 2025/03/25 11:18:08 by sfarren          ###   ########.fr        #
+#    Updated: 2025/03/25 12:01:51 by sfarren          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ LIBFT_DIR = src/libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
 SRCS =  src/push_swap.c \
-		src/utils.c \
+		src/utils/utils.c \
 		src/parsing/parsing.c \
 		src/parsing/parser_utils.c \
 		src/parsing/parser_helpers.c \
@@ -53,12 +53,19 @@ BONUS_NAME = checker
 GNL_DIR = src/gnl
 GNL = $(GNL_DIR)/libgnl.a  # Assuming GNL compiles to libgnl.a
 
-BONUS_SRCS = src/checker_bonus.c \
-             src/stack/push.c \
-             src/stack/rotate.c \
-             src/stack/reverse_rotate.c \
-             src/stack/swap.c \
-             src/stack/stack_utils.c \
+BONUS_SRCS =	src/bonus/checker_bonus.c \
+				src/bonus/utils_bonus.c \
+				src/parsing/parsing.c \
+				src/parsing/parser_utils.c \
+				src/parsing/parser_helpers.c \
+				src/init/init_stack.c \
+				src/ranking/ranking.c \
+				src/utils/utils.c \
+				src/stack/stack_utils.c \
+				src/stack/push.c \
+				src/stack/rotate.c \
+				src/stack/reverse_rotate.c \
+				src/stack/swap.c \
 
 BONUS_OBJS = $(BONUS_SRCS:src/%.c=$(OBJ_DIR)/%.o)
 
