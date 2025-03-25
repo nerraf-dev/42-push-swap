@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 10:47:21 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/25 13:15:41 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/25 13:23:48 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
  * @param split A pointer to an array of strings to be freed.
  * @param int_array A pointer to an array of integers to be freed.
  */
-void	handle_error(bool error, char *msg, char **split, int *int_array)
+void	handle_error(bool error, char **split, int *int_array)
 {
 	if (error)
 		ft_printf_fd(2, "Error\n");

@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 11:12:30 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/25 13:13:40 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/25 13:24:17 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	main(int argc, char **argv)
 	stack_b = initialise_stack(NULL, 0);
 	free(int_array);
 	if (!stack_a)
-		handle_error(true, NULL, NULL, NULL, NULL);
+		handle_error(true, NULL, int_array);
 	line = get_next_line(STDIN_FILENO);
 	while (line != NULL)
 	{
