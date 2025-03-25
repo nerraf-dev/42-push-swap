@@ -83,22 +83,28 @@ test_valid_inputs() {
         echo "Input: $input"
 
         # Run push_swap and checker
-        ./push_swap $input | $CHECKER $input
-        if [ $? -eq 0 ]; then
-            echo -e "${GREEN}OK${NC}"
-        else
-            echo -e "${RED}KO${NC}"
+        result=$(./push_swap $input 2>&1)
+        if [[ $result == "Error" ]]; then
+            echo -e "${RED}push_swap Error${NC}"
             failed_tests+=("$description")
-        fi
-
-        # Run push_swap and bonus checker if it exists
-        if [ "$BONUS_CHECKER_EXISTS" = true ]; then
-            ./push_swap $input | $BONUS_CHECKER $input
+        else
+            echo "$result" | $CHECKER $input
             if [ $? -eq 0 ]; then
-                echo -e "${GREEN}Bonus Checker OK${NC}"
+                echo -e "${GREEN}OK${NC}"
             else
-                echo -e "${RED}Bonus Checker KO${NC}"
-                failed_tests+=("$description (Bonus Checker)")
+                echo -e "${RED}KO${NC}"
+                failed_tests+=("$description")
+            fi
+
+            # Run push_swap and bonus checker if it exists
+            if [ "$BONUS_CHECKER_EXISTS" = true ]; then
+                echo "$result" | $BONUS_CHECKER $input
+                if [ $? -eq 0 ]; then
+                    echo -e "${GREEN}Bonus Checker OK${NC}"
+                else
+                    echo -e "${RED}Bonus Checker KO${NC}"
+                    failed_tests+=("$description (Bonus Checker)")
+                fi
             fi
         fi
     done
@@ -137,8 +143,8 @@ test_invalid_inputs() {
             fi
         else
             # Run push_swap and check for error message
-            ./push_swap $input 2>&1 | grep -q "Error"
-            if [ $? -eq 0 ]; then
+            result=$(./push_swap $input 2>&1)
+            if [[ $result == "Error" ]]; then
                 echo -e "${GREEN}Error message displayed${NC}"
             else
                 echo -e "${RED}Error message not displayed${NC}"
@@ -147,7 +153,7 @@ test_invalid_inputs() {
 
             # Run push_swap and bonus checker if it exists
             if [ "$BONUS_CHECKER_EXISTS" = true ]; then
-                ./push_swap $input 2>&1 | $BONUS_CHECKER $input | grep -q "Error"
+                echo "$result" | $BONUS_CHECKER $input | grep -q "Error"
                 if [ $? -eq 0 ]; then
                     echo -e "${GREEN}Bonus Checker Error message displayed${NC}"
                 else
