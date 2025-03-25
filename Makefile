@@ -6,7 +6,7 @@
 #    By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/20 13:36:23 by sfarren           #+#    #+#              #
-#    Updated: 2025/03/23 19:48:07 by sfarren          ###   ########.fr        #
+#    Updated: 2025/03/25 11:02:40 by sfarren          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ LIBFT_DIR = src/libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
 SRCS =  src/push_swap.c \
+		src/utils.c \
 		src/parsing/parsing.c \
 		src/parsing/parser_utils.c \
 		src/parsing/parser_helpers.c \

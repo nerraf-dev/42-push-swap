@@ -6,6 +6,7 @@ push_swap_visualizer/
 
 *.o
 *.a
+*.tmp
 
 push_swap*
 checker_Mac
