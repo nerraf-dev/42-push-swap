@@ -6,12 +6,11 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 10:47:21 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/25 11:00:12 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/26 22:11:04 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
 
 /**
  * @brief Handles errors by printing an error message and freeing memory.
