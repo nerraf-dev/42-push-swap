@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 19:40:20 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/23 19:59:36 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/26 22:12:32 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,21 +38,46 @@ static void	sort_two(t_stack_node	**stack)
 		sa(stack);
 }
 
+static void	swap_and_rotate(t_stack_node **stack, char dir)
+{
+	if (dir == 'f')
+	{
+		sa(stack);
+		ra(stack);
+	}
+	else if (dir == 'r')
+	{
+		sa(stack);
+		rra(stack);
+	}
+}
+
 /**
  * Sort a stack of three elements.
  * @param stack The stack to sort.
  */
-static void	sort_three(t_stack_node	**stack)
+static void	sort_three(t_stack_node **stack)
 {
 	t_stack_node	*current;
 
 	current = *stack;
-	if (current->value == 2)
-		ra(stack);
-	else if (current->next->value == 2)
-		rra(stack);
-	if ((*stack)->value > (*stack)->next->value)
+	if (current->value > current->next->value
+		&& current->next->value < current->next->next->value
+		&& current->value < current->next->next->value)
 		sa(stack);
+	else if (current->value > current->next->value
+		&& current->next->value > current->next->next->value)
+		swap_and_rotate(stack, 'r');
+	else if (current->value > current->next->value
+		&& current->next->value < current->next->next->value)
+		ra(stack);
+	else if (current->value < current->next->value
+		&& current->next->value > current->next->next->value
+		&& current->value < current->next->next->value)
+		swap_and_rotate(stack, 'f');
+	else if (current->value < current->next->value
+		&& current->next->value > current->next->next->value)
+		rra(stack);
 }
 
 /**
