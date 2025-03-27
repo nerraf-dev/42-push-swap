@@ -60,14 +60,24 @@ def run_test_cases(test_name, test_cases):
 	"""Run test cases"""
 	count = 0
 	ops = 0
+	op_total = 0
+	op_low = 2147483647
+	op_high = -21474836478
 	for name, test in test_cases:
 		# print(f"Testing: {test_name}")
-		ops += run_test(test.split())
+		ops = run_test(test.split())
+		print(f"TEST: {name} OPS: {ops}")
+		if (ops < op_low):
+			op_low = ops
+		if (ops > op_high):
+			op_high = ops
+		op_total += ops
 		count+=1
 	print(COLOUR["GREEN"],f"✅ Push Swap \"{test_name}\" cases passed",COLOUR["ENDC"])
 	if BONUS:
 		print(COLOUR["PURPLE"],f"✅ Checker \"{test_name}\" cases passed",COLOUR["ENDC"])
-	return ops/count
+	print(f"LOW: {op_low} HIGH: {op_high}")
+	return op_total/count
 
 def test_error_handling():
 	"""Verify error cases"""
@@ -131,16 +141,16 @@ def main():
 	# Test benchmarks
 	# 3 values: no more than 3 actions.
 	bm3 = run_test_cases("Benchmarks: 3", BM_3)
-	print(bm3)
+	print(f"🌐 Average ops: {bm3:.1f}")
 	# 5 values: no more than 12 actions.
 	bm5 = run_test_cases("Benchmarks: 5", BM_5)
-	print(bm5)
-	# 100 values: from 1 to 5 points depending on the number of actions:
-	bm100 = run_test_cases("Benchmarks: 100", BM_100)
-	print(bm100)
-	# 500 values: from 1 to 5 points depending on the number of actions:
-	bm500 = run_test_cases("Benchmarks: 500", BM_500)
-	print(bm500)
+	print(f"🌐 Average ops: {bm5:.1f}")
+	# # 100 values: from 1 to 5 points depending on the number of actions:
+	# bm100 = run_test_cases("Benchmarks: 100", BM_100)
+	# print(f"🌐 Average ops: {bm100:.1f}")
+	# # 500 values: from 1 to 5 points depending on the number of actions:
+	# bm500 = run_test_cases("Benchmarks: 500", BM_500)
+	# print(f"🌐 Average ops: {bm500:.1f}")
 
 	# Test random inputs
 	# total_ops = 0
