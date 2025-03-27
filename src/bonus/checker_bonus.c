@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker_BONUS.c                                    :+:      :+:    :+:   */
+/*   checker_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 11:12:30 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/25 19:43:29 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/27 13:24:53 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	execute_operation(char *op, t_stack_node **a, t_stack_node **b)
 		reverse_rotate(b);
 	}
 	else
-		return (0); // Invalid operation
+		return (0);
 	return (1);
 }
 

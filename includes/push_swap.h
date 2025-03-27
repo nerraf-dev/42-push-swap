@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 19:48:33 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/25 13:18:48 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/27 13:20:24 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 # include <limits.h>
 # include <stdbool.h>
 # include <stddef.h>
+
+typedef void	(*t_op_func)(t_stack_node **, t_stack_node **);
 
 // Error Handling Functions
 void	handle_error(bool error, char **split, int *int_array);
