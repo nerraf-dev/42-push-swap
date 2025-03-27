@@ -4,7 +4,17 @@ import random
 import sys
 from config import PUSH_SWAP, MAX_TEST_SIZE, TEST_COUNT, COLOUR
 from setup import set_checker, check_bonus, check_push_swap
-from tests import ERROR_HANDLING, EDGE_CASES, ALMOST_SORTED, DESCENDING_ORDER, RANDOM_ORDER
+from tests import (
+	ERROR_HANDLING,
+	EDGE_CASES,
+	ALMOST_SORTED,
+	DESCENDING_ORDER,
+	RANDOM_ORDER,
+	BM_3,
+	BM_5,
+	BM_100,
+	BM_500,
+	)
 
 
 
@@ -46,18 +56,6 @@ def test_random(size):
 		return op_count
 	return 0
 
-def test_edge_cases():
-	"""Test edge cases"""
-	count = 0
-	for name, test in EDGE_CASES:
-		# print(f"Testing: {name}")
-		run_test(test.split())
-		count+=1
-	print(COLOUR["GREEN"],f"✅ Push Swap \"edge\" cases passed",COLOUR["ENDC"])
-	if BONUS:
-		print(COLOUR["PURPLE"],f"✅ Checker \"edge\" cases passed",COLOUR["ENDC"])
-	return True
-
 def run_test_cases(test_name, test_cases):
 	"""Run test cases"""
 	count = 0
@@ -69,7 +67,6 @@ def run_test_cases(test_name, test_cases):
 	if BONUS:
 		print(COLOUR["PURPLE"],f"✅ Checker \"{test_name}\" cases passed",COLOUR["ENDC"])
 	return True
-
 
 def test_error_handling():
 	"""Verify error cases"""
@@ -130,6 +127,7 @@ def main():
 	# Test random inputs
 	random_cases = run_test_cases("Random", RANDOM_ORDER)
 	# Test benchmarks
+	run_test_cases("Benchmarks", BM_100)
 		# 3 values: no more than 3 actions.
 		# 5 values: no more than 12 actions.
 		# 100 values: from 1 to 5 points depending on the number of actions:

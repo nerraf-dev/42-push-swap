@@ -6,7 +6,7 @@ def set_checker():
 	if platform.system() == "Darwin":  # MacOS
 		CHECKER = "./checker_Mac"
 	elif platform.system() == "Linux":
-		CHECKER = "./checker_Linux"
+		CHECKER = "./checker_linux"
 	else:
 		raise Exception("Unsupported OS")
 	if not os.path.isfile(CHECKER):

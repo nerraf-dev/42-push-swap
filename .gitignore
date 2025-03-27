@@ -15,3 +15,4 @@ en.subject.pdf
 
 .DS_Store
 checker
+__pycache__/
