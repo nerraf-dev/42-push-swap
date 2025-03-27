@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 11:49:15 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/25 14:07:02 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/27 13:48:43 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ void			rra(t_stack_node **stack);
 void			rrb(t_stack_node **stack);
 void			rrr(t_stack_node **stack_a, t_stack_node **stack_b);
 
-void			rotate_stacks(t_stack_node **stack_a, t_stack_node **stack_b,
-					t_stack_node *lc_node);
-void			rev_rotate_stacks(t_stack_node **stack_a,
-					t_stack_node **stack_b, t_stack_node *lc_node);
+// void			rotate_stacks(t_stack_node **stack_a, t_stack_node **stack_b,
+// 					t_stack_node *lc_node);
+// void			rev_rotate_stacks(t_stack_node **stack_a,
+// 					t_stack_node **stack_b, t_stack_node *lc_node);
 #endif
