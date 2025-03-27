@@ -59,14 +59,15 @@ def test_random(size):
 def run_test_cases(test_name, test_cases):
 	"""Run test cases"""
 	count = 0
+	ops = 0
 	for name, test in test_cases:
 		# print(f"Testing: {test_name}")
-		run_test(test.split())
+		ops += run_test(test.split())
 		count+=1
 	print(COLOUR["GREEN"],f"✅ Push Swap \"{test_name}\" cases passed",COLOUR["ENDC"])
 	if BONUS:
 		print(COLOUR["PURPLE"],f"✅ Checker \"{test_name}\" cases passed",COLOUR["ENDC"])
-	return True
+	return ops/count
 
 def test_error_handling():
 	"""Verify error cases"""
@@ -126,23 +127,20 @@ def main():
 	descending_order = run_test_cases("Descending order", DESCENDING_ORDER)
 	# Test random inputs
 	random_cases = run_test_cases("Random", RANDOM_ORDER)
+	print(random_cases)
 	# Test benchmarks
-	run_test_cases("Benchmarks", BM_100)
-		# 3 values: no more than 3 actions.
-		# 5 values: no more than 12 actions.
-		# 100 values: from 1 to 5 points depending on the number of actions:
-			# - 5 points for less than 700 actions
-			# - 4 points for less than 900
-			# - 3 points for less than 1100
-			# - 2 points for less than 1300
-			# - 1 point for less than 1500
-		# 500 values: from 1 to 5 points depending on the number of actions:
-		#     - 5 points for less than 5500 actions
-		#     - 4 points for less than 7000
-		#     - 3 points for less than 8500
-		#     - 2 points for less than 10000
-		#     - 1 point for less than 11500
-		# Validating the project requires at least 80/100.
+	# 3 values: no more than 3 actions.
+	bm3 = run_test_cases("Benchmarks: 3", BM_3)
+	print(bm3)
+	# 5 values: no more than 12 actions.
+	bm5 = run_test_cases("Benchmarks: 5", BM_5)
+	print(bm5)
+	# 100 values: from 1 to 5 points depending on the number of actions:
+	bm100 = run_test_cases("Benchmarks: 100", BM_100)
+	print(bm100)
+	# 500 values: from 1 to 5 points depending on the number of actions:
+	bm500 = run_test_cases("Benchmarks: 500", BM_500)
+	print(bm500)
 
 	# Test random inputs
 	# total_ops = 0
