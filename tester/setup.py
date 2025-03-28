@@ -1,28 +1,20 @@
 import platform, os
-from config import PUSH_SWAP
+from config import PUSH_SWAP, CHECKER, COLOUR
 
-def set_checker():
-	# Determine the correct checker binary based on the OS
-	if platform.system() == "Darwin":  # MacOS
-		CHECKER = "./checker_Mac"
-	elif platform.system() == "Linux":
-		CHECKER = "./checker_linux"
-	else:
-		raise Exception("Unsupported OS")
-	if not os.path.isfile(CHECKER):
-		raise Exception(f"Checker binary not found: {CHECKER}")
-	return CHECKER
-
-def check_bonus():
+def check_bonus() -> bool:
 	# Check if bonus checker is available
-	if os.path.isfile("./checker"):
-		return True
-	raise Exception("⚠️  Bonus checker not found")
+	if not os.path.isfile("./checker"):
+		raise Exception("⚠️  Bonus checker not found")
+	return True
 
 def check_push_swap():
 	# Check if push_swap is available
 	if not os.path.isfile(PUSH_SWAP):
-		raise Exception(f"⚠️  push_swap not found")
+		raise FileNotFoundError(f"⚠️  push_swap not found")
 	return False
 
-
+def	check_checker() -> bool:
+	# Check if checker is available
+	if not os.path.isfile(CHECKER):
+		raise FileNotFoundError("⚠️  Checker binary not found")
+	return True

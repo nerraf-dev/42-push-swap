@@ -2,8 +2,8 @@
 import subprocess
 import random
 import sys
-from config import PUSH_SWAP, MAX_TEST_SIZE, TEST_COUNT, COLOUR
-from setup import set_checker, check_bonus, check_push_swap
+from config import PUSH_SWAP, MAX_TEST_SIZE, TEST_COUNT, COLOUR, CHECKER
+from setup import check_push_swap, check_checker, check_bonus
 from tests import (
 	ERROR_HANDLING,
 	EDGE_CASES,
@@ -15,11 +15,36 @@ from tests import (
 	BM_100,
 	BM_500,
 	)
+from runner import run_test_cases, run_error_cases
+from utils import print_error_exit
 
 
+def run_test(bonus, numbers):
+	"""
+	Executes a test for the push_swap program using the provided list of numbers.
 
-def run_test(numbers):
-	"""Test push_swap with given numbers and verify with checker"""
+	This function runs the push_swap program with the given numbers, counts the
+	number of operations performed, and verifies the result using the CHECKER
+	program. Optionally, it also verifies the result using a bonus checker.
+
+	Args:
+		numbers (list of int): A list of integers to be sorted by the push_swap program.
+
+	Returns:
+		int: The number of operations performed by the push_swap program if the test passes.
+		bool: False if the test fails or if the program crashes.
+
+	Behavior:
+		- Converts the list of numbers into string arguments for the push_swap program.
+		- Runs the push_swap program and captures its output.
+		- Counts the number of operations performed by push_swap.
+		- Verifies the output using the CHECKER program.
+		- Optionally verifies the output using a bonus checker if BONUS is enabled.
+		- Prints error messages if the test fails or the program crashes.
+
+	Raises:
+		subprocess.CalledProcessError: If the push_swap program crashes during execution.
+	"""
 	args = [str(n) for n in numbers]
 	cmd_push = [PUSH_SWAP] + args
 	cmd_check = [CHECKER] + args
@@ -36,7 +61,7 @@ def run_test(numbers):
 		if "KO" in checker.stdout:
 			print(f"❌ Failed on: {numbers}")
 			return False
-		if BONUS:
+		if bonus:
 			# Verify with bonus checker
 			checker_bonus = subprocess.run(cmd_bonus, input=result.stdout, capture_output=True, text=True)
 			if "KO" in checker_bonus.stdout:
@@ -48,43 +73,50 @@ def run_test(numbers):
 		return False
 
 def test_random(size):
-	"""Test with random numbers of given size"""
-	numbers = random.sample(range(-2147483648, 2147483647), size)
+	"""
+	Tests the push_swap program with a list of random integers of the specified size.
+
+	This function generates a list of random integers within the range of a 32-bit signed integer
+	and tests the push_swap program using these numbers. It then prints the number of operations
+	performed if the test is successful.
+
+	Args:
+		size (int): The number of random integers to generate for the test.
+
+	Returns:
+		int: The number of operations performed by the push_swap program if the test is successful,
+			 or 0 if the test fails.
+	"""
+	numbers = random.sample(range(-2147483648, 2147483647 + 1), size)
 	op_count = run_test(numbers)
 	if op_count:
 		print(f"✅ Size {size}: {op_count} ops")
 		return op_count
 	return 0
 
-def run_test_cases(test_name, test_cases):
-	"""Run test cases"""
-	count = 0
-	ops = 0
-	op_total = 0
-	op_low = 2147483647
-	op_high = -21474836478
-	for name, test in test_cases:
-		# print(f"Testing: {test_name}")
-		ops = run_test(test.split())
-		print(f"TEST: {name} OPS: {ops}")
-		if (ops < op_low):
-			op_low = ops
-		if (ops > op_high):
-			op_high = ops
-		op_total += ops
-		count+=1
-	print(COLOUR["GREEN"],f"✅ Push Swap \"{test_name}\" cases passed",COLOUR["ENDC"])
-	if BONUS:
-		print(COLOUR["PURPLE"],f"✅ Checker \"{test_name}\" cases passed",COLOUR["ENDC"])
-	print(f"LOW: {op_low} HIGH: {op_high}")
-	return op_total/count
+def test_error_handling(bonus: bool):
+	"""
+	Tests the error handling capabilities of the PUSH_SWAP program and its optional BONUS checker.
 
-def test_error_handling():
-	"""Verify error cases"""
+	This function iterates through a predefined list of test cases (`ERROR_HANDLING`), where each test case
+	includes a name, the input arguments (`test`), and a boolean (`should_error`) indicating whether an error
+	is expected. It runs the PUSH_SWAP program with the given input and verifies if the output matches the
+	expected error behavior.
+
+	If the BONUS feature is enabled, the function also tests the `checker` program by passing the output of
+	PUSH_SWAP as input and verifying its error handling behavior.
+
+	Prints:
+		- A success message if all tests pass.
+		- A failure message with details if any test fails.
+
+	Returns:
+		bool: True if all tests pass, False otherwise.
+	"""
 	count, bonus_count = 0, 0
 	for name, test, should_error in ERROR_HANDLING:
 		result = subprocess.run([PUSH_SWAP] + test.split(), capture_output=True, text=True)
-		if BONUS:
+		if bonus:
 			result_bonus = subprocess.run(["./checker"] + test.split(), input=result.stdout, capture_output=True, text=True)
 			if ("Error" in result_bonus.stderr) != should_error:
 				print(f"❌ Error checker test failed: {name} - {test}")
@@ -95,70 +127,32 @@ def test_error_handling():
 			print(f"❌ Error test failed: {name} - {test}")
 			return False
 	print(COLOUR["GREEN"],f"✅ Push Swap \"Error\" cases passed",COLOUR["ENDC"])
-	if BONUS:
+	if bonus:
 		print(COLOUR["PURPLE"],f"✅ Checker \"Error\" cases passed",COLOUR["ENDC"])
 	return True
 
-def print_error_exit(msg):
-	print(COLOUR["RED"], msg, COLOUR["ENDC"])
-	sys.exit(1)
-
 def main():
-	global CHECKER
-	global BONUS
-
-	# Check if push_swap is available
-	# Error & exit if not found
+	"""
+	Main function to execute the push_swap tester.
+	"""
 	try:
-		isPushSwap = check_push_swap()
+		check_push_swap()
+		check_checker()
+		bonus = check_bonus()
 	except Exception as e:
 		print_error_exit(e)
-	# Set correct checker binary
-	# Error & exit if not found
-	try:
-		CHECKER = set_checker()
-	except Exception as e:
-		print_error_exit(e)
-	# Check if bonus checker is available
-	try:
-		BONUS = check_bonus()
-	except Exception as e:
-		print(COLOUR["YELLOW"], e, COLOUR["ENDC"])
-		BONUS = False
 
-	# --- BEGIN TESTING ---
-	# Test error handling
-	errors = test_error_handling()
-	# Test edge cases
-	edge_cases = run_test_cases("Edge cases", EDGE_CASES)
-	# Test ALMOST_SORTED
-	almost_sorted = run_test_cases("Almost sorted", ALMOST_SORTED)
-	# Test DESCENDING_ORDER
-	descending_order = run_test_cases("Descending order", DESCENDING_ORDER)
-	# Test random inputs
-	random_cases = run_test_cases("Random", RANDOM_ORDER)
-	print(random_cases)
-	# Test benchmarks
-	# 3 values: no more than 3 actions.
-	bm3 = run_test_cases("Benchmarks: 3", BM_3)
-	print(f"🌐 Average ops: {bm3:.1f}")
-	# 5 values: no more than 12 actions.
-	bm5 = run_test_cases("Benchmarks: 5", BM_5)
-	print(f"🌐 Average ops: {bm5:.1f}")
-	# # 100 values: from 1 to 5 points depending on the number of actions:
-	# bm100 = run_test_cases("Benchmarks: 100", BM_100)
-	# print(f"🌐 Average ops: {bm100:.1f}")
-	# # 500 values: from 1 to 5 points depending on the number of actions:
-	# bm500 = run_test_cases("Benchmarks: 500", BM_500)
-	# print(f"🌐 Average ops: {bm500:.1f}")
-
-	# Test random inputs
-	# total_ops = 0
-	# for size in range(1, MAX_TEST_SIZE + 2, 50):  # Test sizes 3, 53, 103...
-	# 	for _ in range(TEST_COUNT):
-	# 		total_ops += test_random(size) or 0
-
-	# print(f"\n🌐 Average ops: {total_ops / (TEST_COUNT * (MAX_TEST_SIZE // 50)):.1f}")
+	# Run tests
+	print(COLOUR["HEADER"], "Starting tests...", COLOUR["ENDC"])
+	run_error_cases(bonus, "Error Handling", ERROR_HANDLING)
+	run_test_cases(bonus, "Edge Cases", EDGE_CASES)
+	run_test_cases(bonus, "Almost Sorted", ALMOST_SORTED)
+	run_test_cases(bonus, "Descending Order", DESCENDING_ORDER)
+	run_test_cases(bonus, "Random Order", RANDOM_ORDER)
+	run_test_cases(bonus, "Benchmarks: 3", BM_3)
+	run_test_cases(bonus, "Benchmarks: 5", BM_5)
+	run_test_cases(bonus, "Benchmarks: 100", BM_100)
+	run_test_cases(bonus, "Benchmarks: 500", BM_500)
 
 if __name__ == "__main__":
 	main()
