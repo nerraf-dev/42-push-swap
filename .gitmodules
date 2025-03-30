@@ -1,0 +1,3 @@
+[submodule "yapst"]
+	path = yapst
+	url = https://github.com/nerraf-dev/yapst.git
