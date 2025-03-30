@@ -141,7 +141,8 @@ def main():
 		bonus = check_bonus()
 	except Exception as e:
 		print_error_exit(e)
-
+	if bonus:
+		print(COLOUR["GREEN"], "Bonus Checker found", COLOUR["ENDC"])
 	# Run tests
 	print(COLOUR["HEADER"], "Starting tests...", COLOUR["ENDC"])
 	run_error_cases(bonus, "Error Handling", ERROR_HANDLING)
