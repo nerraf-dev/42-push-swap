@@ -4,6 +4,7 @@ push_swap_visualizer/
 .venv/
 .vscode/
 tester/
+yapst/
 
 *.o
 *.a
