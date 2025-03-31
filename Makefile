@@ -6,7 +6,7 @@
 #    By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/20 13:36:23 by sfarren           #+#    #+#              #
-#    Updated: 2025/03/27 13:56:14 by sfarren          ###   ########.fr        #
+#    Updated: 2025/03/31 11:23:11 by sfarren          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,8 +50,8 @@ OBJS = $(SRCS:src/%.c=$(OBJ_DIR)/%.o)
 
 # --- Bonus (checker) ---
 BONUS_NAME = checker
-GNL_DIR = src/gnl
-GNL = $(GNL_DIR)/libgnl.a  # Assuming GNL compiles to libgnl.a
+# GNL_DIR = src/gnl
+# GNL = $(GNL_DIR)/libgnl.a  # Assuming GNL compiles to libgnl.a
 
 BONUS_SRCS =	src/bonus/checker_bonus.c \
 				src/bonus/utils_bonus.c \
@@ -72,19 +72,19 @@ BONUS_OBJS = $(BONUS_SRCS:src/%.c=$(OBJ_DIR)/%.o)
 # --- Rules ---
 all: $(LIBFT) $(NAME)
 
-bonus: $(LIBFT) $(GNL) $(BONUS_NAME)
+bonus: $(LIBFT) $(BONUS_NAME)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
 
-$(GNL):
-	$(MAKE) -C $(GNL_DIR)
+# $(GNL):
+# 	$(MAKE) -C $(GNL_DIR)
 
 $(NAME): $(OBJS) $(LIBFT)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT)
 
-$(BONUS_NAME): $(BONUS_OBJS) $(LIBFT) $(GNL)
-	$(CC) $(CFLAGS) -o $(BONUS_NAME) $(BONUS_OBJS) $(LIBFT) $(GNL)
+$(BONUS_NAME): $(BONUS_OBJS) $(LIBFT)
+	$(CC) $(CFLAGS) -o $(BONUS_NAME) $(BONUS_OBJS) $(LIBFT)
 
 $(OBJ_DIR)/%.o: src/%.c
 	@mkdir -p $(dir $@)
@@ -92,13 +92,11 @@ $(OBJ_DIR)/%.o: src/%.c
 
 clean:
 	$(MAKE) -C $(LIBFT_DIR) clean
-	$(MAKE) -C $(GNL_DIR) clean
 	rm -f $(OBJS) $(BONUS_OBJS)
 	rm -rf $(OBJ_DIR)
 
 fclean: clean
 	$(MAKE) -C $(LIBFT_DIR) fclean
-	$(MAKE) -C $(GNL_DIR) fclean
 	rm -f $(NAME) $(BONUS_NAME)
 
 re: fclean all
