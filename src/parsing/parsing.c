@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 10:58:10 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/23 19:58:10 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/31 10:13:19 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ int	*argument_parser(int argc, char **argv, int *arr_size)
 
 	int_array = NULL;
 	if (argc == 1)
-		handle_error(false, NULL, NULL);
+		exit(0);
 	int_array = parse_arguments(argc, argv, arr_size);
 	if (!int_array)
 		handle_error(true, NULL, NULL);

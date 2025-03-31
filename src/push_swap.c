@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 21:00:45 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/26 22:12:12 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/31 10:38:45 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,15 @@ static bool	is_sorted(int *int_array, int arr_size)
 	return (true);
 }
 
+static void	clean_up_and_exit(int *int_array, t_stack_node *stack_a,
+		t_stack_node *stack_b)
+{
+	free(int_array);
+	free_stack(&stack_a);
+	free_stack(&stack_b);
+	// exit(0);
+}
+
 /**
  * @brief The main function that initializes the stacks and sorts the array.
  *
@@ -50,7 +59,10 @@ int	main(int argc, char **argv)
 	arr_size = 0;
 	int_array = argument_parser(argc, argv, &arr_size);
 	if (is_sorted(int_array, arr_size))
+	{
+		free(int_array);
 		return (0);
+	}
 	stack_a = initialise_stack(int_array, arr_size);
 	stack_b = initialise_stack(NULL, 0);
 	if (!stack_a)
@@ -61,8 +73,6 @@ int	main(int argc, char **argv)
 		sort_big(&stack_a, &stack_b, 20, 5);
 	else
 		sort_radix(&stack_a, &stack_b, arr_size);
-	free(int_array);
-	free_stack(&stack_a);
-	free_stack(&stack_b);
+	clean_up_and_exit(int_array, stack_a, stack_b);
 	return (0);
 }
