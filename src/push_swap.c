@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 21:00:45 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/31 10:38:45 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/31 10:59:29 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ static void	clean_up_and_exit(int *int_array, t_stack_node *stack_a,
 	free(int_array);
 	free_stack(&stack_a);
 	free_stack(&stack_b);
-	// exit(0);
 }
 
 /**

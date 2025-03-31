@@ -6,7 +6,7 @@
 /*   By: sfarren <sfarren@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 21:18:15 by sfarren           #+#    #+#             */
-/*   Updated: 2025/03/17 10:05:39 by sfarren          ###   ########.fr       */
+/*   Updated: 2025/03/31 11:04:59 by sfarren          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,5 @@
 # include "../src/libft/src/libft.h"
 
 void	assign_ranks(int *arr, int *ranks, int size);
-
 
 #endif
